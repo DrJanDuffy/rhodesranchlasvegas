@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import path from "path";
+
+/** Pin Turbopack root when multiple lockfiles exist above this repo (silences wrong-root warnings). */
+const turbopackRoot = path.resolve(process.cwd());
 
 const csp = [
   "default-src 'self'",
@@ -14,6 +18,9 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: turbopackRoot,
+  },
   async headers() {
     return [
       {
