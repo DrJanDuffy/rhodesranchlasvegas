@@ -20,16 +20,16 @@ export function OpenHousesMapSection() {
 
   return (
     <section
-      className="mt-10 rounded-2xl border border-emerald-900/15 bg-white p-6 shadow-sm sm:p-8"
+      className="mt-10 rounded-2xl border border-stone-200/90 bg-white p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-8"
       aria-labelledby="open-houses-map-heading"
     >
       <h2
         id="open-houses-map-heading"
-        className="text-xl font-semibold text-emerald-950 sm:text-2xl"
+        className="font-display text-2xl font-semibold tracking-tight text-emerald-950 sm:text-[1.65rem]"
       >
         Where are this weekend&apos;s open houses in Rhodes Ranch and Las Vegas?
       </h2>
-      <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
+      <p className="mt-3 max-w-3xl leading-relaxed text-stone-700">
         <strong>{secondaryContactName}</strong>, {secondaryContactTitle}, hosts the current tour
         lineup on a live Google Map covering Rhodes Ranch, Spring Valley, and nearby Las Vegas
         neighborhoods. Use it to plan your route, then call{" "}
@@ -42,13 +42,13 @@ export function OpenHousesMapSection() {
         </Link>{" "}
         for questions or a private showing.
       </p>
-      <p className="mt-2 text-sm text-slate-600">
+      <p className="mt-2 text-sm text-stone-600">
         Map updates when new open houses are added—bookmark this page and refresh before you head
         out.
       </p>
 
-      <div className="mt-6 overflow-hidden rounded-xl border border-emerald-900/20 bg-slate-100 shadow-inner">
-        <div className="relative aspect-[4/3] w-full min-h-[280px] sm:min-h-[360px] lg:min-h-[420px]">
+      <div className="mt-6 overflow-hidden rounded-xl border border-stone-200/90 bg-stone-100 shadow-inner">
+        <div className="relative aspect-4/3 w-full min-h-[280px] sm:min-h-[360px] lg:min-h-[420px]">
           <iframe
             title={`Open houses map — ${secondaryContactName}, ${secondaryContactTitle}`}
             src={embedSrc}
@@ -60,7 +60,7 @@ export function OpenHousesMapSection() {
         </div>
       </div>
 
-      <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600">
+      <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-stone-600">
         <a
           href={viewerHref}
           target="_blank"

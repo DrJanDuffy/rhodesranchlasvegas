@@ -121,6 +121,20 @@ export const publicEnv = {
    */
   mapQuery: envOptional("NEXT_PUBLIC_MAP_QUERY"),
 
+  /**
+   * Google Maps embed for the Rhodes Ranch / Spring Valley community area (dedicated /map page).
+   */
+  rhodesRanchAreaMapEmbedUrl: (() => {
+    const raw = env(
+      "NEXT_PUBLIC_RHODES_RANCH_AREA_MAP_EMBED_URL",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51599.877125736304!2d-115.29691299999999!3d36.0692914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8b8649f2725ab%3A0xa8bfb93b8b3b3a06!2sRhodes%20Ranch%2C%20Spring%20Valley%2C%20NV!5e0!3m2!1sen!2sus!4v1774989906439!5m2!1sen!2sus",
+    );
+    if (!raw.startsWith("https://www.google.com/maps/embed")) {
+      return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51599.877125736304!2d-115.29691299999999!3d36.0692914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8b8649f2725ab%3A0xa8bfb93b8b3b3a06!2sRhodes%20Ranch%2C%20Spring%20Valley%2C%20NV!5e0!3m2!1sen!2sus!4v1774989906439!5m2!1sen!2sus";
+    }
+    return raw;
+  })(),
+
   realScoutAgentId: (() => {
     const raw = env(
       "NEXT_PUBLIC_REALSCOUT_AGENT_ID",
@@ -154,29 +168,34 @@ export const publicEnv = {
     return raw === "full" ? "full" : "minimal";
   })(),
 
-  /** Office listings filter: MLS-style status (e.g. For Sale). */
+  /** Office listings filter: listing status (e.g. For Sale). */
   realScoutListingStatus: (() => {
     const raw = env("NEXT_PUBLIC_REALSCOUT_LISTING_STATUS", "For Sale");
     if (!/^[\w\s\-]{1,64}$/.test(raw)) return "For Sale";
     return raw;
   })(),
 
-  /** Comma-led MLS property type token (e.g. ,SFR for single-family). */
+  /** Comma-led property type token for the widget (e.g. ,SFR for single-family). */
   realScoutPropertyTypes: (() => {
     const raw = env("NEXT_PUBLIC_REALSCOUT_PROPERTY_TYPES", ",SFR");
     if (!/^[,A-Za-z0-9_-]{1,32}$/.test(raw)) return ",SFR";
     return raw;
   })(),
 
+  /**
+   * List price floor (USD) for the office listings widget—targets buyers/sellers, not rentals.
+   * ~$350k+ matches typical single-family purchase band in southwest Las Vegas / Rhodes Ranch area.
+   */
   realScoutPriceMin: (() => {
-    const raw = env("NEXT_PUBLIC_REALSCOUT_PRICE_MIN", "0");
-    if (!/^\d{1,12}$/.test(raw)) return "0";
+    const raw = env("NEXT_PUBLIC_REALSCOUT_PRICE_MIN", "350000");
+    if (!/^\d{1,12}$/.test(raw)) return "350000";
     return raw;
   })(),
 
+  /** List price ceiling (USD); keeps luxury inventory while avoiding unusable outliers. */
   realScoutPriceMax: (() => {
-    const raw = env("NEXT_PUBLIC_REALSCOUT_PRICE_MAX", "25000000");
-    if (!/^\d{1,12}$/.test(raw)) return "25000000";
+    const raw = env("NEXT_PUBLIC_REALSCOUT_PRICE_MAX", "15000000");
+    if (!/^\d{1,12}$/.test(raw)) return "15000000";
     return raw;
   })(),
   /** Default metadata / OG brand line */
@@ -188,5 +207,39 @@ export const publicEnv = {
   seoSiteTagline: env(
     "NEXT_PUBLIC_SEO_SITE_TAGLINE",
     "Rhodes Ranch Las Vegas homes — local REALTOR® expertise in 89148.",
+  ),
+
+  /**
+   * Calendly event URL (15-min consultation). Must be https://calendly.com/...
+   * Post-deploy: Google Search Console → URL Inspection for /contact and /search; confirm no CSP blocks.
+   */
+  calendlyEventUrl: (() => {
+    const fallback =
+      "https://calendly.com/drjanduffy/dr-duffy-private-15-min-conversation";
+    const raw = env("NEXT_PUBLIC_CALENDLY_EVENT_URL", fallback);
+    try {
+      const u = new URL(raw);
+      if (u.protocol === "https:" && u.hostname === "calendly.com") {
+        return u.toString().replace(/\/$/, "") || fallback;
+      }
+    } catch {
+      /* fall through */
+    }
+    return fallback;
+  })(),
+
+  calendlyBadgeColor: (() => {
+    const raw = env("NEXT_PUBLIC_CALENDLY_BADGE_COLOR", "#0069ff");
+    return /^#[0-9A-Fa-f]{6}$/.test(raw) ? raw : "#0069ff";
+  })(),
+
+  calendlyBadgeTextColor: (() => {
+    const raw = env("NEXT_PUBLIC_CALENDLY_BADGE_TEXT_COLOR", "#ffffff");
+    return /^#[0-9A-Fa-f]{6}$/.test(raw) ? raw : "#ffffff";
+  })(),
+
+  calendlyBadgeLabel: env(
+    "NEXT_PUBLIC_CALENDLY_BADGE_LABEL",
+    "Schedule time with me",
   ),
 } as const;

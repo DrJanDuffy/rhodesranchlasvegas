@@ -5,9 +5,9 @@ import { publicEnv } from "@/lib/env";
 import { ensureRealScoutReady } from "@/lib/realscout-load";
 
 /**
- * RealScout office listings custom element. Loads UMD once via ensureRealScoutReady(),
- * then mounts with createElement (reliable with React). Use minimal mode by default so
- * tight price/type filters cannot zero out the grid.
+ * Office listings custom element (broker IDX search). Loads UMD once via ensureRealScoutReady(),
+ * then mounts with createElement (reliable with React). Default minimal mode avoids extra
+ * type/status filters; list price min/max still scope results to a purchase-oriented band.
  */
 export function RealScoutOfficeListings({
   className,
@@ -47,17 +47,18 @@ export function RealScoutOfficeListings({
         if (realScoutWidgetMode === "full") {
           widget.setAttribute("listing-status", realScoutListingStatus);
           widget.setAttribute("property-types", realScoutPropertyTypes);
-          widget.setAttribute("price-min", realScoutPriceMin);
-          widget.setAttribute("price-max", realScoutPriceMax);
         } else {
           widget.setAttribute("listings-per-page", realScoutListingsPerPage);
         }
+        // Purchase-focused range (buyer/seller persona); applied in minimal and full modes.
+        widget.setAttribute("price-min", realScoutPriceMin);
+        widget.setAttribute("price-max", realScoutPriceMax);
 
         el.replaceChildren(widget);
       } catch (e) {
         if (!cancelled) {
           setError(
-            e instanceof Error ? e.message : "RealScout office listings failed to load.",
+            e instanceof Error ? e.message : "Office listings failed to load.",
           );
         }
       }

@@ -35,13 +35,13 @@ export default function HomePage() {
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <JsonLd data={faqPageJsonLd(rhodesRanchFaq)} />
       <header className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-emerald-900">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-900/85">
           Southwest Las Vegas · {siteContact.address.postalCode}
         </p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-emerald-950 sm:text-4xl">
+        <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-5xl">
           Rhodes Ranch Las Vegas homes: local expertise for buyers &amp; sellers
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-700">
+        <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Rhodes Ranch is a guard-gated, master-planned community in Spring Valley—about six miles
           southwest of the Las Vegas Strip—with a central golf course, recreation, and easy access
           to major roads, shopping, and schools.{" "}
@@ -50,45 +50,51 @@ export default function HomePage() {
           work with {siteContact.legalBrokerage} on listings, showings, and strategy for{" "}
           {siteContact.address.postalCode}.
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/search"
-            className="rounded-full bg-emerald-800 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-emerald-900"
+            className="rounded-full bg-emerald-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-950/15 ring-1 ring-white/10 transition hover:bg-emerald-950"
           >
             Browse Rhodes Ranch Las Vegas area homes
           </Link>
           <Link
-            href="/contact"
-            className="rounded-full border border-emerald-900/30 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-50"
+            href="/contact#schedule"
+            className="rounded-full border border-stone-300/90 bg-white/90 px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm backdrop-blur hover:border-stone-400"
           >
-            Call or message
+            Schedule or call
           </Link>
           <Link
             href="/buyers"
-            className="rounded-full border border-emerald-800/40 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-100"
+            className="rounded-full border border-emerald-900/25 bg-emerald-50/90 px-5 py-2.5 text-sm font-semibold text-emerald-950 shadow-sm hover:bg-emerald-100/90"
           >
             Home buyer guide
           </Link>
         </div>
       </header>
 
-      <RealScoutLeadSection className="mt-10" />
+      <RealScoutLeadSection
+        className="mt-10"
+        listingIntro="Use the same live listing search we use for Rhodes Ranch clients—filter by price and property type, then call for a private tour or a focused short list."
+      />
 
       <section
-        className="mt-10 rounded-2xl border border-emerald-900/15 bg-gradient-to-br from-white to-emerald-50/50 p-6 shadow-sm sm:p-8"
+        className="mt-10 rounded-2xl border border-stone-200/90 bg-gradient-to-br from-white via-white to-emerald-50/40 p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-8"
         aria-labelledby="buyers-engage-heading"
       >
-        <h2 id="buyers-engage-heading" className="text-xl font-semibold text-emerald-950">
+        <h2
+          id="buyers-engage-heading"
+          className="font-display text-2xl font-semibold tracking-tight text-emerald-950"
+        >
           Buying a home in Rhodes Ranch?
         </h2>
-        <p className="mt-2 max-w-2xl text-slate-700">
-          Get a clear path from pre-approval to tour to offer—plus MLS search and buyer specialist
+        <p className="mt-3 max-w-2xl text-stone-700">
+          Get a clear path from pre-approval to tour to offer—plus home search and buyer specialist
           support from {siteContact.secondaryContactName}. No fluff; just practical next steps.
         </p>
-        <div className="mt-4 flex flex-wrap gap-3">
+        <div className="mt-5 flex flex-wrap gap-3">
           <Link
             href="/buyers"
-            className="rounded-full bg-emerald-800 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-emerald-900"
+            className="rounded-full bg-emerald-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-950/15 ring-1 ring-white/10 transition hover:bg-emerald-950"
           >
             Open buyer hub
           </Link>
@@ -105,43 +111,33 @@ export default function HomePage() {
 
       <section className="mt-14 grid gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6 text-slate-700">
-          <h2 className="text-2xl font-semibold text-emerald-950">
+          <h2 className="font-display text-2xl font-semibold tracking-tight text-emerald-950 sm:text-[1.75rem]">
             Why buyers watch Rhodes Ranch
           </h2>
-          <p className="leading-relaxed">
-            The community wraps around{" "}
-            <a
-              href="https://rhodesranchgolf.com"
-              target="_blank"
-              rel="noopener noreferrer"
+          <p className="leading-relaxed text-stone-700">
+            Guard-gated Rhodes Ranch pairs a central Ted Robinson golf course with recreation,
+            trails, and southwest Las Vegas convenience. For the full community story—amenities,
+            recreation center, golf club context, and day-trip ideas—read the{" "}
+            <Link
+              href="/rhodes-ranch-lifestyle"
               className="font-medium text-emerald-900 underline-offset-2 hover:underline"
             >
-              Rhodes Ranch Golf Club
-            </a>
-            , a Ted Robinson design that opened in 1997. Beyond golf, residents use parks, trails,
-            and club facilities—plus everyday convenience from southwest Las Vegas retail and
-            dining.
-          </p>
-          <p className="leading-relaxed">
-            Need context for the broader valley? Explore{" "}
-            <Link href="/rhodes-ranch-lifestyle" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              Rhodes Ranch lifestyle &amp; nearby attractions
-            </Link>{" "}
-            — from Red Rock Canyon day trips to Strip entertainment—without losing focus on what makes
-            89148 home.
+              Rhodes Ranch community &amp; lifestyle guide
+            </Link>
+            .
           </p>
         </div>
         <NapBlock />
       </section>
 
       <section className="mt-16">
-        <h2 className="text-2xl font-semibold text-emerald-950">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-emerald-950">
           Rhodes Ranch real estate help
         </h2>
-        <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
+        <p className="mt-3 max-w-3xl leading-relaxed text-stone-700">
           Whether you are relocating from California, upsizing locally, or preparing to sell Rhodes
           Ranch Las Vegas homes, {siteContact.agentName} and {siteContact.secondaryContactName}{" "}
-          provide pricing perspective, contract guidance, and MLS search support aligned with
+          provide pricing perspective, contract guidance, and home search support aligned with
           today&apos;s market—without sensational claims. Start with a conversation or browse{" "}
           <Link href="/search" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
             active listings for the Rhodes Ranch Las Vegas area

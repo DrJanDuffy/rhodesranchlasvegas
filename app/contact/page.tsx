@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
+import { CalendlyInline } from "@/components/calendly/CalendlyInline";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
-import { ContactForm } from "@/components/contact/ContactForm";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { contactFaq } from "@/lib/faq-contact";
 import { defaultMetadata } from "@/lib/metadata";
+import { faqPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: `Contact ${siteContact.agentName} & ${siteContact.secondaryContactName} | Rhodes Ranch Las Vegas`,
-  description: `Call or email ${siteContact.agentName} (${siteContact.agentTitle}) or ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}) for Rhodes Ranch Las Vegas homes. Nevada license ${siteContact.license}. ${siteContact.legalBrokerage}. ${siteContact.address.streetAddress}, ${siteContact.address.addressLocality}, ${siteContact.address.addressRegion} ${siteContact.address.postalCode}.`,
+  title: `Schedule a consultation | Contact ${siteContact.agentName} | Rhodes Ranch Las Vegas 89148`,
+  description: `Book a private 15-minute conversation with ${siteContact.agentName} or reach ${siteContact.secondaryContactName} for Rhodes Ranch Las Vegas homes. Call ${siteContact.phoneDisplay}, visit ${siteContact.address.addressLocality} office, or use the calendar below. Nevada license ${siteContact.license}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: `Contact ${siteContact.agentName} | Rhodes Ranch Las Vegas team`,
+    title: `Schedule with ${siteContact.agentName} | Rhodes Ranch Las Vegas`,
+    description: `Schedule a consultation or call for Rhodes Ranch and 89148 real estate. ${siteContact.legalBrokerage}.`,
   },
 };
 
@@ -25,21 +30,51 @@ const gbpSearchUrl =
 export default function ContactPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd data={faqPageJsonLd(contactFaq)} />
       <header className="max-w-3xl">
-        <h1 className="text-3xl font-bold tracking-tight text-emerald-950 sm:text-4xl">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
+          Get in touch
+        </p>
+        <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
           Contact the Rhodes Ranch Las Vegas team
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-700">
+        <p className="mt-5 text-lg leading-relaxed text-stone-700">
           <strong>{siteContact.agentName}</strong> ({siteContact.agentTitle}) and{" "}
           <strong>{siteContact.secondaryContactName}</strong> ({siteContact.secondaryContactTitle}
-          ). Reach us by phone or email, send a secure message, or open directions in Google Maps.
-          Hours: {siteContact.hoursSummaryLine}
+          ). Book a time on the calendar below, call{" "}
+          <a href={siteContact.phoneTelHref} className="font-semibold text-emerald-900 underline-offset-2 hover:underline">
+            {siteContact.phoneDisplay}
+          </a>
+          , or email—hours: {siteContact.hoursSummaryLine}
         </p>
       </header>
 
-      <RealScoutLeadSection className="mt-10" />
+      <RealScoutLeadSection
+        className="mt-10"
+        listingIntro="See active listings before you book time on the calendar—narrow your search by price and features, then use the scheduler below for a 15-minute private conversation."
+      />
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-2">
+      <section
+        id="schedule"
+        className="mt-14 scroll-mt-24"
+        aria-labelledby="schedule-heading"
+      >
+        <h2
+          id="schedule-heading"
+          className="font-display text-2xl font-semibold tracking-tight text-emerald-950 sm:text-[1.65rem]"
+        >
+          Schedule a private 15-minute conversation
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">
+          Pick a time that works for you. Prefer phone or email first? Use the NAP block below—the
+          same numbers and addresses match our Google Business Profile.
+        </p>
+        <div className="mt-6 rounded-2xl border border-stone-200/90 bg-white p-3 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-4">
+          <CalendlyInline />
+        </div>
+      </section>
+
+      <div className="mt-14 grid gap-10 lg:grid-cols-2">
         <div className="space-y-6">
           <div className="flex flex-wrap gap-3">
             <a
@@ -78,7 +113,6 @@ export default function ContactPage() {
             </a>
           </div>
           <NapBlock />
-          <ContactForm />
         </div>
         <div className="space-y-4">
           <h2 className="text-lg font-semibold text-emerald-950">Map &amp; service area</h2>
@@ -88,6 +122,14 @@ export default function ContactPage() {
             in {siteContact.serviceAreaDescription}.
           </p>
         </div>
+      </div>
+
+      <div className="mt-16">
+        <FaqSection
+          id="contact-faq-heading"
+          heading="Questions about scheduling and contact"
+          items={contactFaq}
+        />
       </div>
     </main>
   );

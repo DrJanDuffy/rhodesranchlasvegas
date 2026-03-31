@@ -1,5 +1,5 @@
 /**
- * Single-flight loader for RealScout UMD web components (client-only).
+ * Single-flight loader for the office listings UMD web component (client-only).
  * One script tag; waits until <realscout-office-listings> is defined.
  */
 export const REALSCOUT_WIDGET_SCRIPT_SRC =
@@ -28,7 +28,7 @@ export function ensureRealScoutReady(): Promise<void> {
       document.head.appendChild(script);
       await new Promise<void>((resolve, reject) => {
         script!.onload = () => resolve();
-        script!.onerror = () => reject(new Error("RealScout script failed to load"));
+        script!.onerror = () => reject(new Error("Office listings script failed to load"));
       });
     } else {
       await new Promise<void>((resolve) => {

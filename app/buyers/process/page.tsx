@@ -20,13 +20,13 @@ export default function BuyersProcessPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <header className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-emerald-900">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Buyers · Process overview
         </p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-emerald-950 sm:text-4xl">
+        <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
           From search to keys: what Las Vegas buyers typically do
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-700">
+        <p className="mt-5 text-lg leading-relaxed text-stone-700">
           This page is an educational overview for Rhodes Ranch and Las Vegas area buyers. Timelines
           vary by lender, property type, and contract. For legal or tax questions, consult a qualified
           Nevada attorney or CPA.
@@ -36,7 +36,10 @@ export default function BuyersProcessPage() {
         </div>
       </header>
 
-      <RealScoutLeadSection className="mt-10" />
+      <RealScoutLeadSection
+        className="mt-10"
+        listingIntro="Browse current listings while you learn the purchase timeline—pause on any step to talk with your buyer specialist or schedule a call."
+      />
 
       <div className="mt-12 max-w-3xl space-y-10 text-slate-700">
         <section>
@@ -51,7 +54,7 @@ export default function BuyersProcessPage() {
           <p className="mt-3 leading-relaxed">
             Use the{" "}
             <Link href="/search" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              MLS search
+              Home search
             </Link>{" "}
             to track new inventory. Save favorites and note questions about HOA documents, golf
             membership, or community rules—we help you request disclosures through normal channels.

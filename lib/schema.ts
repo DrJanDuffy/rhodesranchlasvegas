@@ -1,3 +1,4 @@
+import { publicEnv } from "@/lib/env";
 import { siteContact } from "@/lib/site-contact";
 
 const base = siteContact.siteUrl.replace(/\/$/, "");
@@ -50,6 +51,18 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
       name: siteContact.legalBrokerage,
     },
     openingHoursSpecification,
+    potentialAction: {
+      "@type": "ScheduleAction",
+      name: "Schedule a private conversation",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: publicEnv.calendlyEventUrl,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+    },
     knowsAbout: [
       "Rhodes Ranch Las Vegas homes",
       "Rhodes Ranch Las Vegas",

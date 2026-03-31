@@ -12,7 +12,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: "Buy a Home in Rhodes Ranch Las Vegas | Buyer Guide",
-  description: `Rhodes Ranch Las Vegas home buyers: work with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}, and ${siteContact.agentName} for MLS search, showings, and offers in 89148. ${siteContact.legalBrokerage}.`,
+  description: `Rhodes Ranch Las Vegas home buyers: work with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}, and ${siteContact.agentName} for home search, showings, and offers in 89148. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/buyers" },
   openGraph: {
     ...defaultMetadata.openGraph,
@@ -26,13 +26,13 @@ export default function BuyersPage() {
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <JsonLd data={faqPageJsonLd(buyerFaq)} />
       <header className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-emerald-900">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Home buyers · {siteContact.address.postalCode}
         </p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-emerald-950 sm:text-4xl">
+        <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
           Buy a home in Rhodes Ranch Las Vegas
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-700">
+        <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Whether you are relocating, upsizing, or buying your first Nevada home, our team focuses on
           Rhodes Ranch Las Vegas homes and the surrounding southwest valley.{" "}
           <strong>{siteContact.secondaryContactName}</strong> is your{" "}
@@ -44,7 +44,10 @@ export default function BuyersPage() {
         </div>
       </header>
 
-      <RealScoutLeadSection className="mt-10" />
+      <RealScoutLeadSection
+        className="mt-10"
+        listingIntro="Buyer-first home search: short-list homes in 89148 and nearby with your specialist, then book showings or compare notes with Dr. Jan Duffy when you are also selling."
+      />
 
       <section className="mt-14 space-y-6 text-slate-700">
         <h2 className="text-2xl font-semibold text-emerald-950">
@@ -52,7 +55,7 @@ export default function BuyersPage() {
         </h2>
         <p className="leading-relaxed">
           Rhodes Ranch offers guard-gated neighborhoods, a Ted Robinson golf course, recreation, and
-          quick access to shopping and major roads. When you are ready, we align MLS search filters
+          quick access to shopping and major roads. When you are ready, we align home search filters
           with your budget, commute, and must-haves—then schedule tours that respect community access
           rules.
         </p>
@@ -69,7 +72,7 @@ export default function BuyersPage() {
           <li>
             <strong>Search &amp; save.</strong> Use our{" "}
             <Link href="/search" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              MLS search
+              Home search
             </Link>{" "}
             for Rhodes Ranch Las Vegas area listings; ask us to refine results or set showings.
           </li>

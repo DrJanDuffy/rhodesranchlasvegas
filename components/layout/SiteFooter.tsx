@@ -12,21 +12,21 @@ export function SiteFooter({ className }: { className?: string }) {
   return (
     <footer
       className={cn(
-        "mt-auto border-t border-emerald-900/10 bg-slate-50 text-slate-800",
+        "mt-auto border-t border-emerald-950/30 bg-stone-950 text-stone-300",
         className,
       )}
     >
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-3">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-emerald-900">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400/90">
             NAP (matches Google Business Profile)
           </p>
-          <p className="mt-2 text-base font-medium">{siteContact.businessName}</p>
-          <p className="text-sm text-slate-600">{siteContact.legalBrokerage}</p>
-          <p className="mt-2 text-sm">
-            Nevada License {siteContact.license}
+          <p className="mt-3 font-display text-lg font-semibold text-stone-50">
+            {siteContact.businessName}
           </p>
-          <p className="mt-3 text-sm leading-relaxed">
+          <p className="text-sm text-stone-400">{siteContact.legalBrokerage}</p>
+          <p className="mt-2 text-sm text-stone-400">Nevada License {siteContact.license}</p>
+          <p className="mt-3 text-sm leading-relaxed text-stone-400">
             {siteContact.address.streetAddress}
             <br />
             {siteContact.address.addressLocality}, {siteContact.address.addressRegion}{" "}
@@ -35,7 +35,7 @@ export function SiteFooter({ className }: { className?: string }) {
           <p className="mt-2">
             <a
               href={siteContact.phoneTelHref}
-              className="font-semibold text-emerald-900 hover:underline"
+              className="font-semibold text-emerald-400 hover:text-emerald-300"
             >
               {siteContact.phoneDisplay}
             </a>
@@ -44,11 +44,11 @@ export function SiteFooter({ className }: { className?: string }) {
             <p>
               <a
                 href={`mailto:${siteContact.email}`}
-                className="text-emerald-900 hover:underline"
+                className="text-emerald-400/95 hover:text-emerald-300"
               >
                 {siteContact.email}
               </a>
-              <span className="text-slate-500">
+              <span className="text-stone-500">
                 {" "}
                 — {siteContact.agentName}, {siteContact.agentTitle}
               </span>
@@ -56,11 +56,11 @@ export function SiteFooter({ className }: { className?: string }) {
             <p>
               <a
                 href={`mailto:${siteContact.secondaryEmail}`}
-                className="text-emerald-900 hover:underline"
+                className="text-emerald-400/95 hover:text-emerald-300"
               >
                 {siteContact.secondaryEmail}
               </a>
-              <span className="text-slate-500">
+              <span className="text-stone-500">
                 {" "}
                 — {siteContact.secondaryContactName}, {siteContact.secondaryContactTitle}
               </span>
@@ -68,41 +68,50 @@ export function SiteFooter({ className }: { className?: string }) {
           </div>
         </div>
         <div>
-          <p className="text-sm font-semibold text-emerald-900">Explore</p>
-          <ul className="mt-3 space-y-2 text-sm">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400/90">
+            Explore
+          </p>
+          <ul className="mt-3 space-y-2.5 text-sm">
             <li>
-              <Link href="/buyers" className="hover:underline">
+              <Link href="/buyers" className="text-stone-300 hover:text-white">
                 Home buyer guide (Rhodes Ranch)
               </Link>
             </li>
             <li>
-              <Link href="/buyers/process" className="hover:underline">
+              <Link href="/buyers/process" className="text-stone-300 hover:text-white">
                 Las Vegas home buying process
               </Link>
             </li>
             <li>
-              <Link href="/rhodes-ranch-lifestyle" className="hover:underline">
+              <Link href="/rhodes-ranch-lifestyle" className="text-stone-300 hover:text-white">
                 Rhodes Ranch lifestyle &amp; amenities
               </Link>
             </li>
             <li>
-              <Link href="/search" className="hover:underline">
+              <Link href="/map" className="text-stone-300 hover:text-white">
+                Rhodes Ranch &amp; Spring Valley map
+              </Link>
+            </li>
+            <li>
+              <Link href="/search" className="text-stone-300 hover:text-white">
                 Search Rhodes Ranch area homes
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:underline">
+              <Link href="/contact" className="text-stone-300 hover:text-white">
                 Contact &amp; directions
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="text-sm font-semibold text-emerald-900">Actions</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400/90">
+            Actions
+          </p>
           <div className="mt-3 flex flex-col gap-2 text-sm">
             <a
               href={siteContact.phoneTelHref}
-              className="inline-flex w-fit rounded-md border border-emerald-800 px-3 py-2 font-medium text-emerald-900 hover:bg-white"
+              className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"
             >
               Call now
             </a>
@@ -110,7 +119,7 @@ export function SiteFooter({ className }: { className?: string }) {
               href={gbpSearchUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit rounded-md border border-emerald-800 px-3 py-2 font-medium text-emerald-900 hover:bg-white"
+              className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"
             >
               View on Google Maps
             </a>
@@ -118,20 +127,21 @@ export function SiteFooter({ className }: { className?: string }) {
               href={gbpSearchUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit rounded-md border border-emerald-800 px-3 py-2 font-medium text-emerald-900 hover:bg-white"
+              className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"
             >
               Google reviews
             </a>
           </div>
         </div>
       </div>
-      <div className="border-t border-emerald-900/10 px-4 py-4 text-center text-xs text-slate-600 sm:px-6">
+      <div className="border-t border-stone-800 px-4 py-5 text-center text-xs text-stone-500 sm:px-6">
         <p>
-          IDX listings provided by RealScout. MLS disclaimers apply where shown on listing
-          tools.
+          Listing data (IDX) is provided through our broker feed. Listing disclaimers apply where shown on
+          listing tools.
         </p>
-        <p className="mt-2">
-          © {new Date().getFullYear()} {siteContact.agentName}. All rights reserved.
+        <p className="mx-auto mt-2 max-w-4xl leading-relaxed text-stone-500">
+          © 2026 Berkshire Hathaway HomeServices Nevada Properties - Rhodes Ranch Las Vegas Real Estate
+          Division. Comprehensive Real Estate Services by Dr. Jan Duffy S.0197614. All rights reserved.
         </p>
       </div>
     </footer>

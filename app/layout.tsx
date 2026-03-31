@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { CalendlyBadge } from "@/components/calendly/CalendlyBadge";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -17,10 +18,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/** Editorial serif for headlines—luxury real estate tone without sacrificing readability. */
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = defaultMetadata;
 
 export const viewport: Viewport = {
-  themeColor: "#ecfdf5",
+  themeColor: "#14532d",
   width: "device-width",
   initialScale: 1,
 };
@@ -33,17 +42,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-emerald-50/40 font-sans text-slate-900">
+      <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
         <JsonLd data={realEstateAgentJsonLd()} />
         {/*
-          RealScout UMD is loaded once from the client (lib/realscout-load.ts) when the widget mounts.
+          Office listings widget script loads from the client (lib/realscout-load.ts) when the widget mounts.
           Do not add a second script tag here — avoids duplicate loads and define() races.
         */}
         <SiteHeader />
         <div className="flex-1">{children}</div>
         <SiteFooter />
+        <CalendlyBadge />
       </body>
     </html>
   );

@@ -7,13 +7,13 @@ const turbopackRoot = path.resolve(process.cwd());
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://em.realscout.com",
-  "style-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://em.realscout.com https://assets.calendly.com",
+  "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   "worker-src 'self' blob:",
-  "connect-src 'self' https://www.realscout.com https://em.realscout.com wss://www.realscout.com",
-  "frame-src 'self' https://maps.google.com https://www.google.com https://www.google.com/maps https://www.realscout.com https://em.realscout.com",
+  "connect-src 'self' https://www.realscout.com https://em.realscout.com wss://www.realscout.com https://calendly.com https://api.calendly.com",
+  "frame-src 'self' https://maps.google.com https://www.google.com https://www.google.com/maps https://www.realscout.com https://em.realscout.com https://calendly.com https://*.calendly.com",
   "object-src 'none'",
   "upgrade-insecure-requests",
 ].join("; ");

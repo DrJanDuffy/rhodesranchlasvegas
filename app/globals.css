@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf9f7;
+  --foreground: #1c1917;
 }
 
 @theme inline {
@@ -10,22 +10,32 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-cormorant), ui-serif, Georgia, "Times New Roman", serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0c0a09;
+    --foreground: #fafaf9;
   }
 }
 
+/**
+ * Warm, editorial canvas: subtle vertical gradient + faint noise for depth (luxury brochure feel).
+ */
+.luxury-canvas {
+  background-color: #f6f4f0;
+  background-image:
+    linear-gradient(180deg, #faf9f7 0%, #f3f0ea 42%, #eef1ef 100%),
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgb(20 83 45 / 0.06), transparent 55%);
+}
+
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-/* RealScout office listings web component (script once in root layout) */
+/* Office listings web component (broker search widget; script loads with client loader) */
 realscout-office-listings {
   --rs-listing-divider-color: #0e64c8;
   width: 100%;
