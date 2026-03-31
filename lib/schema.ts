@@ -1,0 +1,75 @@
+import { siteContact } from "@/lib/site-contact";
+
+const base = siteContact.siteUrl.replace(/\/$/, "");
+
+export function realEstateAgentJsonLd(): Record<string, unknown> {
+  const openingHoursSpecification = siteContact.openingHoursSpecification.map(
+    (row) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: row.days,
+      opens: row.opens,
+      closes: row.closes,
+    }),
+  );
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "@id": `${base}/#agent`,
+    name: siteContact.agentName,
+    url: base,
+    telephone: siteContact.phoneE164,
+    email: siteContact.email,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Nevada real estate license",
+      value: siteContact.license,
+    },
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteContact.address.streetAddress,
+      addressLocality: siteContact.address.addressLocality,
+      addressRegion: siteContact.address.addressRegion,
+      postalCode: siteContact.address.postalCode,
+      addressCountry: siteContact.address.addressCountry,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: siteContact.geo.latitude,
+      longitude: siteContact.geo.longitude,
+    },
+    areaServed: {
+      "@type": "Place",
+      name: siteContact.serviceAreaDescription,
+    },
+    parentOrganization: {
+      "@type": "Organization",
+      name: siteContact.legalBrokerage,
+    },
+    openingHoursSpecification,
+    knowsAbout: [
+      "Rhodes Ranch Las Vegas",
+      "Rhodes Ranch Golf Club",
+      "89148 real estate",
+      "Southwest Las Vegas homes",
+    ],
+  };
+}
+
+export type FaqItem = { question: string; answer: string };
+
+export function faqPageJsonLd(items: FaqItem[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
