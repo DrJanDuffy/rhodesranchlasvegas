@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
@@ -35,6 +36,8 @@ export default function ContactPage() {
           Hours: {siteContact.hoursSummaryLine}
         </p>
       </header>
+
+      <RealScoutLeadSection className="mt-10" />
 
       <div className="mt-10 grid gap-10 lg:grid-cols-2">
         <div className="space-y-6">

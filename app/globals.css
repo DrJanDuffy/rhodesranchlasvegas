@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
+
+/* RealScout office listings web component (script once in root layout) */
+realscout-office-listings {
+  --rs-listing-divider-color: #0e64c8;
+  width: 100%;
+}

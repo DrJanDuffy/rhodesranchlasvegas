@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/schema";
+import { siteContact } from "@/lib/site-contact";
 
 /**
  * Static FAQ copy for AEO; keep answers accurate—no dollar amounts for HOA or fees unless sourced.
@@ -28,5 +29,9 @@ export const rhodesRanchFaq: FaqItem[] = [
     question: "What real estate options exist in Rhodes Ranch?",
     answer:
       "The community includes single-family homes across a range of sizes and floor plans. Inventory and pricing change daily—use the MLS search on this site or ask Dr. Jan Duffy or Chance Fuller for a curated list that matches your criteria.",
+  },
+  {
+    question: "Where can I find open houses for Rhodes Ranch Las Vegas homes?",
+    answer: `${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}) maintains an interactive Google Map of upcoming open houses and tour stops in Rhodes Ranch, Spring Valley, and southwest Las Vegas—use the map on this site's homepage. Inventory and times change; call ${siteContact.phoneDisplay} or use the contact page for private showings.`,
   },
 ];

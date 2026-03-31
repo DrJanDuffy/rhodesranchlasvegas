@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
+import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
 import { rhodesRanchFaq } from "@/lib/faq-rhodes-ranch";
 import { publicEnv } from "@/lib/env";
 import { defaultMetadata } from "@/lib/metadata";
@@ -12,12 +14,19 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: `Rhodes Ranch Las Vegas Homes for Sale | ${siteContact.agentName}`,
-  description: `${siteContact.agentName}, ${siteContact.agentTitle}, helps you buy or sell Rhodes Ranch Las Vegas homes (89148). Partner with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}, for buyer needs. ${siteContact.legalBrokerage}.`,
+  description: `${siteContact.agentName}, ${siteContact.agentTitle}, helps you buy or sell Rhodes Ranch Las Vegas homes (89148). Weekend open house map from ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Partner with ${siteContact.secondaryContactName} for buyer needs. ${siteContact.legalBrokerage}.`,
+  keywords: [
+    "Rhodes Ranch Las Vegas homes",
+    "Rhodes Ranch open houses",
+    "Las Vegas open houses",
+    "89148 homes",
+    "Spring Valley real estate",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     ...defaultMetadata.openGraph,
     title: `Rhodes Ranch Las Vegas Homes | ${siteContact.agentName}`,
-    description: publicEnv.seoSiteTagline,
+    description: `${publicEnv.seoSiteTagline} Open house map: ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}).`,
   },
 };
 
@@ -63,6 +72,8 @@ export default function HomePage() {
         </div>
       </header>
 
+      <RealScoutLeadSection className="mt-10" />
+
       <section
         className="mt-10 rounded-2xl border border-emerald-900/15 bg-gradient-to-br from-white to-emerald-50/50 p-6 shadow-sm sm:p-8"
         aria-labelledby="buyers-engage-heading"
@@ -89,6 +100,8 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      <OpenHousesMapSection />
 
       <section className="mt-14 grid gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6 text-slate-700">

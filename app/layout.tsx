@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -38,11 +37,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-emerald-50/40 font-sans text-slate-900">
         <JsonLd data={realEstateAgentJsonLd()} />
-        <Script
-          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-          type="module"
-          strategy="afterInteractive"
-        />
+        {/*
+          RealScout UMD is loaded once from the client (lib/realscout-load.ts) when the widget mounts.
+          Do not add a second script tag here — avoids duplicate loads and define() races.
+        */}
         <SiteHeader />
         <div className="flex-1">{children}</div>
         <SiteFooter />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { defaultMetadata } from "@/lib/metadata";
 import { siteContact } from "@/lib/site-contact";
 
@@ -63,6 +64,8 @@ export default function RhodesRanchLifestylePage() {
           and fees. Links open official or authoritative sites when possible.
         </p>
       </header>
+
+      <RealScoutLeadSection className="mt-10" />
 
       <section className="mt-12 space-y-6">
         <h2 className="text-2xl font-semibold text-emerald-950">

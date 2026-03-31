@@ -11,8 +11,9 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.realscout.com https://em.realscout.com",
-  "frame-src 'self' https://maps.google.com https://www.google.com https://www.google.com/maps",
+  "worker-src 'self' blob:",
+  "connect-src 'self' https://www.realscout.com https://em.realscout.com wss://www.realscout.com",
+  "frame-src 'self' https://maps.google.com https://www.google.com https://www.google.com/maps https://www.realscout.com https://em.realscout.com",
   "object-src 'none'",
   "upgrade-insecure-requests",
 ].join("; ");

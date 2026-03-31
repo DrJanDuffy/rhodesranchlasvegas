@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { RealScoutOfficeListings } from "@/components/realscout/RealScoutOfficeListings";
+import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { defaultMetadata } from "@/lib/metadata";
 import { siteContact } from "@/lib/site-contact";
 
@@ -38,14 +38,7 @@ export default function SearchPage() {
         </p>
       </header>
 
-      <section className="mt-10 rounded-2xl border border-emerald-900/10 bg-white p-4 shadow-sm sm:p-6">
-        <RealScoutOfficeListings className="min-h-[480px]" />
-      </section>
-
-      <p className="mt-6 text-xs leading-relaxed text-slate-600">
-        Listing data is provided through RealScout; availability, price, and status change daily.
-        MLS rules require brokerage attribution on listing detail pages—confirm with your REALTOR®.
-      </p>
+      <RealScoutLeadSection className="mt-10" />
     </main>
   );
 }

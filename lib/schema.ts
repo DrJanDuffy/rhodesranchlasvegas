@@ -56,6 +56,8 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
       "Rhodes Ranch Golf Club",
       "89148 real estate",
       "Southwest Las Vegas homes",
+      "Las Vegas open houses",
+      "Rhodes Ranch open houses",
     ],
   };
 }

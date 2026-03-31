@@ -70,7 +70,7 @@ export const publicEnv = {
   ),
   secondaryContactTitle: env(
     "NEXT_PUBLIC_SECONDARY_CONTACT_TITLE",
-    "Buyer Specialist",
+    "Home Buyer Specialist",
   ),
 
   phoneE164: env("NEXT_PUBLIC_PHONE_E164", "+17025001942"),
@@ -107,6 +107,15 @@ export const publicEnv = {
   mapEmbedUrl: envOptional("NEXT_PUBLIC_MAP_EMBED_URL"),
 
   /**
+   * Google My Maps embed for weekend open houses (Share → Embed a map).
+   * Used on the homepage; update in Vercel when the map layer changes.
+   */
+  openHousesMapEmbedUrl: env(
+    "NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL",
+    "https://www.google.com/maps/d/embed?mid=1fl048P0dAxnuNvwqHLrJU4i4zZmkwpE&ehbc=2E312F",
+  ),
+
+  /**
    * Query for maps.google.com embed when NEXT_PUBLIC_MAP_EMBED_URL is not set.
    * Defaults to office address line + city, state, zip.
    */
@@ -136,6 +145,40 @@ export const publicEnv = {
     return String(n);
   })(),
 
+  /**
+   * minimal = agent + sort + listings-per-page (most reliable; avoids empty grid from tight filters).
+   * full = also listing-status, property-types, price-min, price-max.
+   */
+  realScoutWidgetMode: (() => {
+    const raw = env("NEXT_PUBLIC_REALSCOUT_WIDGET_MODE", "minimal").toLowerCase();
+    return raw === "full" ? "full" : "minimal";
+  })(),
+
+  /** Office listings filter: MLS-style status (e.g. For Sale). */
+  realScoutListingStatus: (() => {
+    const raw = env("NEXT_PUBLIC_REALSCOUT_LISTING_STATUS", "For Sale");
+    if (!/^[\w\s\-]{1,64}$/.test(raw)) return "For Sale";
+    return raw;
+  })(),
+
+  /** Comma-led MLS property type token (e.g. ,SFR for single-family). */
+  realScoutPropertyTypes: (() => {
+    const raw = env("NEXT_PUBLIC_REALSCOUT_PROPERTY_TYPES", ",SFR");
+    if (!/^[,A-Za-z0-9_-]{1,32}$/.test(raw)) return ",SFR";
+    return raw;
+  })(),
+
+  realScoutPriceMin: (() => {
+    const raw = env("NEXT_PUBLIC_REALSCOUT_PRICE_MIN", "0");
+    if (!/^\d{1,12}$/.test(raw)) return "0";
+    return raw;
+  })(),
+
+  realScoutPriceMax: (() => {
+    const raw = env("NEXT_PUBLIC_REALSCOUT_PRICE_MAX", "25000000");
+    if (!/^\d{1,12}$/.test(raw)) return "25000000";
+    return raw;
+  })(),
   /** Default metadata / OG brand line */
   siteBrandShort: env("NEXT_PUBLIC_SITE_BRAND_SHORT", "Rhodes Ranch Homes"),
   /**

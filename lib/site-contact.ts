@@ -38,6 +38,8 @@ export const siteContact = {
   ],
   serviceAreaDescription: publicEnv.serviceAreaDescription,
   hoursSummaryLine: publicEnv.hoursSummaryLine,
+  /** Google My Maps embed URL for open houses (homepage). */
+  openHousesMapEmbedUrl: publicEnv.openHousesMapEmbedUrl,
 } as const;
 
 export type SiteContact = typeof siteContact;

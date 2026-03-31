@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { BuyerCtaStrip } from "@/components/buyers/BuyerCtaStrip";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -42,6 +43,8 @@ export default function BuyersPage() {
           <BuyerCtaStrip />
         </div>
       </header>
+
+      <RealScoutLeadSection className="mt-10" />
 
       <section className="mt-14 space-y-6 text-slate-700">
         <h2 className="text-2xl font-semibold text-emerald-950">

@@ -1,0 +1,27 @@
+---
+description: RealScout office widgets vs IDX; script-once and per-route widget placement for rhodesranchlasvegas
+globs: app/layout.tsx,components/realscout/**,app/**/page.tsx,next.config.ts
+alwaysApply: false
+---
+
+# RealScout + IDX boundaries (Rhodes Ranch site)
+
+## Do not confuse with IDX
+
+- **`components/idx/**`** — MLS/IDX compliance. **Do not edit** unless the user explicitly requests it.
+- **`components/realscout/**`** — RealScout web components and lead strips. This is the correct place for office listing widgets.
+
+## Script: load once (client loader)
+
+- Load RealScout UMD **once** via **`lib/realscout-load.ts`** (`ensureRealScoutReady()`), called from **`RealScoutOfficeListings`**. Do **not** add a second script in **`app/layout.tsx`** or pages.
+- **Never** use `type="module"` on the UMD file — it is not an ES module; module mode breaks the widget.
+
+## Widget markup: per route by default
+
+- **`RealScoutOfficeListings`** mounts `<realscout-office-listings>` with **`createElement` + `setAttribute`** after `ensureRealScoutReady()` (see component).
+- **Do not** mount the full MLS lead strip in **root `layout.tsx`** unless the user explicitly asks for a site-wide block. Prefer importing **`RealScoutLeadSection`** (or the listings component) on **`app/**/page.tsx`** where each route needs it—usually **below the page hero**—to control weight, SEO, and layout.
+- Avoid duplicating the **same** strip twice on one URL (layout + page).
+
+## CSP
+
+- When changing RealScout or embeds, keep **`next.config.ts`** CSP in sync: `script-src` / `connect-src` for `em.realscout.com` and `www.realscout.com`, and any `frame-src` / `wss:` hosts the widget needs.
