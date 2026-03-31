@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteContact } from "@/lib/site-contact";
 
 export default function NotFound() {
   return (
@@ -8,6 +9,7 @@ export default function NotFound() {
       <p className="mt-3 text-sm text-slate-700">
         The page you requested is not available. Start from the home page or contact Dr. Jan Duffy.
       </p>
+      <p className="mt-2 text-xs text-stone-500">{siteContact.fullAddressLine}</p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link
           href="/"

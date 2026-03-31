@@ -25,6 +25,8 @@ export const siteContact = {
     postalCode: publicEnv.postalCode,
     addressCountry: publicEnv.addressCountry,
   },
+  /** Single-line NAP street + city + state + ZIP (align with Google Business Profile for GSC). */
+  fullAddressLine: `${publicEnv.addressStreet}, ${publicEnv.addressLocality}, ${publicEnv.addressRegion} ${publicEnv.postalCode}`,
   geo: {
     latitude: publicEnv.geoLatitude,
     longitude: publicEnv.geoLongitude,

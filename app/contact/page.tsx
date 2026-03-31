@@ -12,12 +12,12 @@ import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: `Schedule a consultation | Contact ${siteContact.agentName} | Rhodes Ranch Las Vegas 89148`,
-  description: `Book a private 15-minute conversation with ${siteContact.agentName} or reach ${siteContact.secondaryContactName} for Rhodes Ranch Las Vegas homes. Call ${siteContact.phoneDisplay}, visit ${siteContact.address.addressLocality} office, or use the calendar below. Nevada license ${siteContact.license}. ${siteContact.legalBrokerage}.`,
+  description: `Book a private 15-minute conversation with ${siteContact.agentName} or reach ${siteContact.secondaryContactName} for Rhodes Ranch Las Vegas homes. Call ${siteContact.phoneDisplay} or visit ${siteContact.fullAddressLine}. Use the calendar below. Nevada license ${siteContact.license}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     ...defaultMetadata.openGraph,
     title: `Schedule with ${siteContact.agentName} | Rhodes Ranch Las Vegas`,
-    description: `Schedule a consultation or call for Rhodes Ranch and 89148 real estate. ${siteContact.legalBrokerage}.`,
+    description: `Schedule a consultation or call for Rhodes Ranch and 89148 real estate. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
   },
 };
 
@@ -116,7 +116,9 @@ export default function ContactPage() {
         </div>
         <div className="space-y-4">
           <h2 className="text-lg font-semibold text-emerald-950">Map &amp; service area</h2>
-          <MapEmbed title="Berkshire Hathaway HomeServices Nevada Properties office map" />
+          <MapEmbed
+            title={`Office map — ${siteContact.fullAddressLine} (${siteContact.legalBrokerage})`}
+          />
           <p className="text-sm text-slate-600">
             {siteContact.agentName} and {siteContact.secondaryContactName} serve buyers and sellers
             in {siteContact.serviceAreaDescription}.

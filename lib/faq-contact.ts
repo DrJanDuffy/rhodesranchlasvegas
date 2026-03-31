@@ -3,8 +3,13 @@
  */
 
 import type { FaqItem } from "@/lib/schema";
+import { siteContact } from "@/lib/site-contact";
 
 export const contactFaq: FaqItem[] = [
+  {
+    question: "What is your office address in Las Vegas?",
+    answer: `Our office is at ${siteContact.fullAddressLine}. Phone and hours on this page match our Google Business Profile.`,
+  },
   {
     question: "How do I schedule a call with Dr. Jan Duffy or the buyer specialist?",
     answer:

@@ -78,15 +78,15 @@ export const publicEnv = {
 
   addressStreet: env(
     "NEXT_PUBLIC_ADDRESS_STREET",
-    "8850 W. Sunset Road, Suite 200",
+    "7272 S El Capitan Way",
   ),
   addressLocality: env("NEXT_PUBLIC_ADDRESS_CITY", "Las Vegas"),
   addressRegion: env("NEXT_PUBLIC_ADDRESS_STATE", "NV"),
   postalCode: env("NEXT_PUBLIC_ADDRESS_ZIP", "89148"),
   addressCountry: env("NEXT_PUBLIC_ADDRESS_COUNTRY", "US"),
 
-  geoLatitude: envNumber("NEXT_PUBLIC_GEO_LATITUDE", 36.0639),
-  geoLongitude: envNumber("NEXT_PUBLIC_GEO_LONGITUDE", -115.2982),
+  geoLatitude: envNumber("NEXT_PUBLIC_GEO_LATITUDE", 36.05581),
+  geoLongitude: envNumber("NEXT_PUBLIC_GEO_LONGITUDE", -115.28788),
 
   serviceAreaDescription: env(
     "NEXT_PUBLIC_SERVICE_AREA",

@@ -8,7 +8,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: "Las Vegas Home Buying Process | Rhodes Ranch Buyers",
-  description: `Overview of the Las Vegas area home purchase flow for Rhodes Ranch buyers: search, offer, escrow, and closing—with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}. Not legal or tax advice.`,
+  description: `Overview of the Las Vegas area home purchase flow for Rhodes Ranch buyers: search, offer, escrow, and closing—with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}. Office: ${siteContact.fullAddressLine}. Not legal or tax advice.`,
   alternates: { canonical: "/buyers/process" },
   openGraph: {
     ...defaultMetadata.openGraph,

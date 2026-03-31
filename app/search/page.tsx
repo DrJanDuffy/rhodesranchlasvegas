@@ -6,11 +6,12 @@ import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: "Search Rhodes Ranch Las Vegas Area Homes for Sale | Active Listings",
-  description: `Browse up-to-date homes for sale on this site. For Rhodes Ranch Las Vegas homes (89148), contact ${siteContact.agentName} (${siteContact.agentTitle}) or ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${siteContact.legalBrokerage}.`,
+  description: `Browse up-to-date homes for sale on this site. For Rhodes Ranch Las Vegas homes (89148), contact ${siteContact.agentName} (${siteContact.agentTitle}) or ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/search" },
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "Search Las Vegas Area Homes for Sale",
+    description: `Find homes for sale near Rhodes Ranch and 89148. Office: ${siteContact.fullAddressLine}.`,
   },
 };
 
