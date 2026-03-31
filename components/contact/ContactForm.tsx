@@ -6,6 +6,7 @@ import {
   submitContactForm,
   type ContactFormState,
 } from "@/app/contact/actions";
+import { siteContact } from "@/lib/site-contact";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -28,7 +29,8 @@ export function ContactForm() {
   if (state.ok) {
     return (
       <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
-        Thank you—your message was received. Dr. Jan Duffy or the team will follow up shortly.
+        Thank you—your message was received. {siteContact.agentName},{" "}
+        {siteContact.secondaryContactName}, or the team will follow up shortly.
       </p>
     );
   }

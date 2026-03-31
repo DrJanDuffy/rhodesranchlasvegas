@@ -38,6 +38,26 @@ export function NapBlock() {
           </dd>
         </div>
         <div>
+          <dt className="font-medium text-slate-800">Email</dt>
+          <dd className="space-y-1">
+            <a className="text-emerald-900 hover:underline" href={`mailto:${siteContact.email}`}>
+              {siteContact.email}
+            </a>
+            <span className="block text-slate-600">
+              {siteContact.agentName} — {siteContact.agentTitle}
+            </span>
+            <a
+              className="block text-emerald-900 hover:underline"
+              href={`mailto:${siteContact.secondaryEmail}`}
+            >
+              {siteContact.secondaryEmail}
+            </a>
+            <span className="text-slate-600">
+              {siteContact.secondaryContactName} — {siteContact.secondaryContactTitle}
+            </span>
+          </dd>
+        </div>
+        <div>
           <dt className="font-medium text-slate-800">License</dt>
           <dd>{siteContact.license}</dd>
         </div>

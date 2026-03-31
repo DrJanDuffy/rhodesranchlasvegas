@@ -53,7 +53,25 @@ export const publicEnv = {
     "Berkshire Hathaway HomeServices Nevada Properties",
   ),
   license: env("NEXT_PUBLIC_LICENSE_NUMBER", "S.0197614.LLC"),
-  email: env("NEXT_PUBLIC_CONTACT_EMAIL", "drduffy@bhhsnv.com"),
+  agentTitle: env("NEXT_PUBLIC_AGENT_TITLE", "Listing Agent Specialist"),
+  /** Primary inbox (Dr. Jan Duffy); align with GBP / site NAP. */
+  email: env(
+    "NEXT_PUBLIC_CONTACT_EMAIL",
+    "DrDuffySells@RhodesRanchLasVegas.com",
+  ),
+  /** Team / secondary inbox (e.g. Chance). */
+  secondaryContactEmail: env(
+    "NEXT_PUBLIC_SECONDARY_CONTACT_EMAIL",
+    "ChanceSells@RhodesRanchLasVegas.com",
+  ),
+  secondaryContactName: env(
+    "NEXT_PUBLIC_SECONDARY_CONTACT_NAME",
+    "Chance Fuller",
+  ),
+  secondaryContactTitle: env(
+    "NEXT_PUBLIC_SECONDARY_CONTACT_TITLE",
+    "Buyer Specialist",
+  ),
 
   phoneE164: env("NEXT_PUBLIC_PHONE_E164", "+17025001942"),
   phoneDisplay: env("NEXT_PUBLIC_PHONE_DISPLAY", "(702) 500-1942"),
@@ -120,4 +138,12 @@ export const publicEnv = {
 
   /** Default metadata / OG brand line */
   siteBrandShort: env("NEXT_PUBLIC_SITE_BRAND_SHORT", "Rhodes Ranch Homes"),
+  /**
+   * Optional homepage / default meta subline (Rhodes Ranch Las Vegas homes + E-E-A-T).
+   * Override in Vercel without code changes.
+   */
+  seoSiteTagline: env(
+    "NEXT_PUBLIC_SEO_SITE_TAGLINE",
+    "Rhodes Ranch Las Vegas homes — local REALTOR® expertise in 89148.",
+  ),
 } as const;

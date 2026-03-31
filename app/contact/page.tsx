@@ -6,13 +6,12 @@ import { defaultMetadata } from "@/lib/metadata";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Contact Dr. Jan Duffy | Rhodes Ranch & Las Vegas Real Estate",
-  description:
-    "Call, email, or message Dr. Jan Duffy (Nevada license S.0197614.LLC) at Berkshire Hathaway HomeServices Nevada Properties. Office at 8850 W. Sunset Road, Suite 200, Las Vegas, NV 89148.",
+  title: `Contact ${siteContact.agentName} & ${siteContact.secondaryContactName} | Rhodes Ranch Las Vegas`,
+  description: `Call or email ${siteContact.agentName} (${siteContact.agentTitle}) or ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}) for Rhodes Ranch Las Vegas homes. Nevada license ${siteContact.license}. ${siteContact.legalBrokerage}. ${siteContact.address.streetAddress}, ${siteContact.address.addressLocality}, ${siteContact.address.addressRegion} ${siteContact.address.postalCode}.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: "Contact Dr. Jan Duffy",
+    title: `Contact ${siteContact.agentName} | Rhodes Ranch Las Vegas team`,
   },
 };
 
@@ -27,11 +26,13 @@ export default function ContactPage() {
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <header className="max-w-3xl">
         <h1 className="text-3xl font-bold tracking-tight text-emerald-950 sm:text-4xl">
-          Contact {siteContact.agentName}
+          Contact the Rhodes Ranch Las Vegas team
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-slate-700">
-          Reach the office by phone or email, send a secure message, or open directions in Google
-          Maps. Hours: {siteContact.hoursSummaryLine}
+          <strong>{siteContact.agentName}</strong> ({siteContact.agentTitle}) and{" "}
+          <strong>{siteContact.secondaryContactName}</strong> ({siteContact.secondaryContactTitle}
+          ). Reach us by phone or email, send a secure message, or open directions in Google Maps.
+          Hours: {siteContact.hoursSummaryLine}
         </p>
       </header>
 
@@ -48,7 +49,13 @@ export default function ContactPage() {
               href={`mailto:${siteContact.email}`}
               className="rounded-full border border-emerald-900/30 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-50"
             >
-              Email {siteContact.email}
+              Email {siteContact.agentName} (listings)
+            </a>
+            <a
+              href={`mailto:${siteContact.secondaryEmail}`}
+              className="rounded-full border border-emerald-900/30 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-50"
+            >
+              Email {siteContact.secondaryContactName} (buyers)
             </a>
             <a
               href={gbpSearchUrl}
@@ -74,8 +81,8 @@ export default function ContactPage() {
           <h2 className="text-lg font-semibold text-emerald-950">Map &amp; service area</h2>
           <MapEmbed title="Berkshire Hathaway HomeServices Nevada Properties office map" />
           <p className="text-sm text-slate-600">
-            {siteContact.agentName} serves buyers and sellers in {siteContact.serviceAreaDescription}
-            .
+            {siteContact.agentName} and {siteContact.secondaryContactName} serve buyers and sellers
+            in {siteContact.serviceAreaDescription}.
           </p>
         </div>
       </div>

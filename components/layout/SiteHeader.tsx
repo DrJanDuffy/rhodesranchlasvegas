@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/rhodes-ranch-lifestyle", label: "Rhodes Ranch Lifestyle" },
+  { href: "/buyers", label: "Buyers" },
+  { href: "/rhodes-ranch-lifestyle", label: "Lifestyle" },
   { href: "/search", label: "Homes for Sale" },
   { href: "/contact", label: "Contact" },
 ];
@@ -24,6 +25,9 @@ export function SiteHeader({ className }: { className?: string }) {
           </span>
           <span className="text-base font-medium text-slate-800 group-hover:text-emerald-800">
             {siteContact.agentName}
+          </span>
+          <span className="mt-0.5 block text-xs font-medium text-emerald-900/90">
+            {siteContact.agentTitle}
           </span>
           <span className="mt-0.5 block text-xs text-slate-600">
             {siteContact.legalBrokerage}

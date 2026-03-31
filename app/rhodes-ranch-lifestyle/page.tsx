@@ -99,7 +99,7 @@ export default function RhodesRanchLifestylePage() {
           </Link>{" "}
           or{" "}
           <Link href="/contact" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-            contact {siteContact.agentName}
+            contact {siteContact.agentName} or {siteContact.secondaryContactName}
           </Link>
           .
         </p>

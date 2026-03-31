@@ -27,6 +27,6 @@ export const rhodesRanchFaq: FaqItem[] = [
   {
     question: "What real estate options exist in Rhodes Ranch?",
     answer:
-      "The community includes single-family homes across a range of sizes and floor plans. Inventory and pricing change daily—use the MLS search on this site or ask Dr. Jan Duffy for a curated list that matches your criteria.",
+      "The community includes single-family homes across a range of sizes and floor plans. Inventory and pricing change daily—use the MLS search on this site or ask Dr. Jan Duffy or Chance Fuller for a curated list that matches your criteria.",
   },
 ];

@@ -13,6 +13,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${base}/buyers`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${base}/buyers/process`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.82,
+    },
+    {
       url: `${base}/rhodes-ranch-lifestyle`,
       lastModified,
       changeFrequency: "monthly",

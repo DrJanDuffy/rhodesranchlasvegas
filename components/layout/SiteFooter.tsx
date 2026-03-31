@@ -40,18 +40,46 @@ export function SiteFooter({ className }: { className?: string }) {
               {siteContact.phoneDisplay}
             </a>
           </p>
-          <p className="mt-1">
-            <a
-              href={`mailto:${siteContact.email}`}
-              className="text-sm text-emerald-900 hover:underline"
-            >
-              {siteContact.email}
-            </a>
-          </p>
+          <div className="mt-1 space-y-1 text-sm">
+            <p>
+              <a
+                href={`mailto:${siteContact.email}`}
+                className="text-emerald-900 hover:underline"
+              >
+                {siteContact.email}
+              </a>
+              <span className="text-slate-500">
+                {" "}
+                — {siteContact.agentName}, {siteContact.agentTitle}
+              </span>
+            </p>
+            <p>
+              <a
+                href={`mailto:${siteContact.secondaryEmail}`}
+                className="text-emerald-900 hover:underline"
+              >
+                {siteContact.secondaryEmail}
+              </a>
+              <span className="text-slate-500">
+                {" "}
+                — {siteContact.secondaryContactName}, {siteContact.secondaryContactTitle}
+              </span>
+            </p>
+          </div>
         </div>
         <div>
           <p className="text-sm font-semibold text-emerald-900">Explore</p>
           <ul className="mt-3 space-y-2 text-sm">
+            <li>
+              <Link href="/buyers" className="hover:underline">
+                Home buyer guide (Rhodes Ranch)
+              </Link>
+            </li>
+            <li>
+              <Link href="/buyers/process" className="hover:underline">
+                Las Vegas home buying process
+              </Link>
+            </li>
             <li>
               <Link href="/rhodes-ranch-lifestyle" className="hover:underline">
                 Rhodes Ranch lifestyle &amp; amenities
