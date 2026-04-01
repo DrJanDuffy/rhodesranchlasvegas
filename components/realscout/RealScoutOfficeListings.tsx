@@ -19,11 +19,14 @@ export type RealScoutMountStrategy = "immediate" | "idle" | "visible";
 export function RealScoutOfficeListings({
   className,
   listingStatusOverride,
+  /** When true (open-house hub), omit property-types so MLS open houses are not over-filtered by ,SFR. */
+  omitPropertyTypes = false,
   mountStrategy = "idle",
 }: {
   className?: string;
   /** e.g. "Open House" — must match RealScout/MLS; when set, listing-status + property filters apply. */
   listingStatusOverride?: string;
+  omitPropertyTypes?: boolean;
   mountStrategy?: RealScoutMountStrategy;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -68,7 +71,9 @@ export function RealScoutOfficeListings({
 
         if (listingStatusOverride) {
           widget.setAttribute("listing-status", listingStatusOverride);
-          widget.setAttribute("property-types", realScoutPropertyTypes);
+          if (!omitPropertyTypes) {
+            widget.setAttribute("property-types", realScoutPropertyTypes);
+          }
           widget.setAttribute("listings-per-page", realScoutListingsPerPage);
         } else if (realScoutWidgetMode === "full") {
           widget.setAttribute("listing-status", realScoutListingStatus);
@@ -97,7 +102,7 @@ export function RealScoutOfficeListings({
       el.replaceChildren();
       setHasWidget(false);
     };
-  }, [listingStatusOverride, mountStrategy]);
+  }, [listingStatusOverride, mountStrategy, omitPropertyTypes]);
 
   return (
     <>

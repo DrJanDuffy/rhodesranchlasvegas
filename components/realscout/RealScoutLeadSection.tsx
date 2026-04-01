@@ -16,7 +16,8 @@ type RealScoutLeadSectionProps = {
   /** Optional id for the section heading (a11y). */
   headingId?: string;
   /**
-   * When to mount the listing grid (default `idle` for LCP). Use `immediate` on `/search` and similar.
+   * When to mount the listing grid (default `idle` for LCP; `openHouses` defaults to `immediate`).
+   * Use `immediate` on `/search` and similar primary-content routes.
    */
   listingMountStrategy?: RealScoutMountStrategy;
 };
@@ -30,7 +31,7 @@ export function RealScoutLeadSection({
   heading = "Featured office listings",
   variant = "listings",
   headingId = "office-listings-lead-heading",
-  listingMountStrategy = "idle",
+  listingMountStrategy,
 }: RealScoutLeadSectionProps) {
   const intro =
     listingIntro ??
@@ -38,6 +39,9 @@ export function RealScoutLeadSection({
 
   const listingStatusOverride =
     variant === "openHouses" ? publicEnv.realScoutOpenHouseListingStatus : undefined;
+
+  const mountStrategy =
+    listingMountStrategy ?? (variant === "openHouses" ? "immediate" : "idle");
 
   return (
     <section
@@ -59,7 +63,8 @@ export function RealScoutLeadSection({
           <RealScoutOfficeListings
             className="min-h-[480px]"
             listingStatusOverride={listingStatusOverride}
-            mountStrategy={listingMountStrategy}
+            omitPropertyTypes={variant === "openHouses"}
+            mountStrategy={mountStrategy}
           />
         </div>
         <p className="mt-4 text-xs leading-relaxed text-stone-600">

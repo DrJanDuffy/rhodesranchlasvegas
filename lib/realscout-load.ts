@@ -50,6 +50,12 @@ export function ensureRealScoutReady(): Promise<void> {
     ) {
       await new Promise((r) => setTimeout(r, 32));
     }
+
+    if (!window.customElements.get("realscout-office-listings")) {
+      throw new Error(
+        "Office listings widget did not register (check network, ad blockers, and CSP for em.realscout.com).",
+      );
+    }
   })().catch((e) => {
     loadPromise = null;
     throw e;
