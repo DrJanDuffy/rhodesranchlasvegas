@@ -99,7 +99,7 @@ export default function RhodesRanchLifestylePage() {
 
         <section aria-labelledby="golf-heading">
           <h2 id="golf-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Living in Rhodes Ranch: golf &amp; the club
+            Living in Rhodes Ranch: golf and the club
           </h2>
           <p className="mt-4 leading-relaxed">
             Rhodes Ranch is built around the 18-hole{" "}
@@ -122,7 +122,7 @@ export default function RhodesRanchLifestylePage() {
 
         <section aria-labelledby="rec-center-heading">
           <h2 id="rec-center-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Recreation center &amp; indoor amenities
+            Recreation center and indoor amenities
           </h2>
           <p className="mt-4 leading-relaxed">
             Beyond golf, Rhodes Ranch offers a large recreation center—on the order of 35,000 square
@@ -144,7 +144,7 @@ export default function RhodesRanchLifestylePage() {
 
         <section aria-labelledby="outdoor-heading">
           <h2 id="outdoor-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Outdoor amenities &amp; nearby open space
+            Outdoor amenities and nearby open space
           </h2>
           <p className="mt-4 leading-relaxed">
             Inside the gates, residents also use outdoor amenities such as basketball courts,
@@ -178,7 +178,7 @@ export default function RhodesRanchLifestylePage() {
 
         <section aria-labelledby="lifestyle-heading">
           <h2 id="lifestyle-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Resort-style living &amp; city access
+            Resort-style living and city access
           </h2>
           <p className="mt-4 leading-relaxed">
             Many families choose Rhodes Ranch for a resort-style feel—golf, recreation, and
@@ -194,7 +194,7 @@ export default function RhodesRanchLifestylePage() {
 
         <section aria-labelledby="market-heading">
           <h2 id="market-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Homes, pricing &amp; HOA context
+            Homes, pricing, and HOA context
           </h2>
           <p className="mt-4 leading-relaxed">
             Inventory in Rhodes Ranch spans attached products through large single-family homes;
@@ -253,7 +253,7 @@ export default function RhodesRanchLifestylePage() {
 
       <section className="mt-14 space-y-6">
         <h2 className="font-display text-2xl font-semibold text-emerald-950">
-          Recreation &amp; landmarks (editorial)
+          Recreation and landmarks (editorial)
         </h2>
         <p className="max-w-3xl text-sm leading-relaxed text-stone-600">
           Quick links to official or authoritative sites—same list as our short &ldquo;nearby&rdquo;

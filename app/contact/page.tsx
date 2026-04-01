@@ -97,7 +97,7 @@ export default function ContactPage() {
           Schedule a private 15-minute conversation
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">
-          Pick a time that works for you. Prefer phone or email first? Use the Office &amp; contact
+          Pick a time that works for you. Prefer phone or email first? Use the Office and contact
           section below for the same phone number, address, and inboxes.
         </p>
         <div className="mt-6 rounded-2xl border border-stone-200/90 bg-white p-3 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-4">
@@ -152,7 +152,7 @@ export default function ContactPage() {
           <NapBlock />
         </div>
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-emerald-950">Map &amp; service area</h2>
+          <h2 className="text-lg font-semibold text-emerald-950">Map and service area</h2>
           <MapEmbed
             title={`Office map — ${siteContact.fullAddressLine} (${siteContact.legalBrokerage})`}
           />

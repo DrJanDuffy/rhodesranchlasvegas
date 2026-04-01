@@ -123,7 +123,7 @@ export default function HomePage() {
               href="/rhodes-ranch-lifestyle"
               className="font-medium text-emerald-900 underline-offset-2 hover:underline"
             >
-              Rhodes Ranch community &amp; lifestyle guide
+              Rhodes Ranch community and lifestyle guide
             </Link>
             .
           </p>

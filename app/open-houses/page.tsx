@@ -10,7 +10,7 @@ import { siteContact } from "@/lib/site-contact";
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: "Rhodes Ranch and Las Vegas Open Houses by Day | Tour Schedule",
-  description: `Plan open houses in Rhodes Ranch, Spring Valley, and Las Vegas 89148 by day of the week. Map + MLS open house search. ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
+  description: `Plan open houses in Rhodes Ranch, Spring Valley, and Las Vegas 89148 by day of the week. Map and MLS open house search. ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
   alternates: { canonical: "/open-houses" },
   openGraph: {
     ...defaultMetadata.openGraph,

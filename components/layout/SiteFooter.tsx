@@ -84,7 +84,7 @@ export function SiteFooter({ className }: { className?: string }) {
             </li>
             <li>
               <Link href="/rhodes-ranch-lifestyle" className="text-stone-300 hover:text-white">
-                Rhodes Ranch lifestyle &amp; amenities
+                Rhodes Ranch lifestyle and amenities
               </Link>
             </li>
             <li>
@@ -109,7 +109,7 @@ export function SiteFooter({ className }: { className?: string }) {
             </li>
             <li>
               <Link href="/contact" className="text-stone-300 hover:text-white">
-                Contact &amp; directions
+                Contact and directions
               </Link>
             </li>
           </ul>

@@ -71,14 +71,14 @@ export default function BuyersPage() {
             you know your price range and loan options.
           </li>
           <li>
-            <strong>Search &amp; save.</strong> Use our{" "}
+            <strong>Search and save.</strong> Use our{" "}
             <Link href="/search" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
               Home search
             </Link>{" "}
             for Rhodes Ranch Las Vegas area listings; ask us to refine results or set showings.
           </li>
           <li>
-            <strong>Tour &amp; offer.</strong> We coordinate gated access, review comps with you, and
+            <strong>Tour and offer.</strong> We coordinate gated access, review comps with you, and
             structure offers under your direction—not as legal or tax advice.
           </li>
           <li>
@@ -108,7 +108,7 @@ export default function BuyersPage() {
           href="/rhodes-ranch-lifestyle"
           className="mt-4 inline-flex font-semibold text-emerald-900 underline-offset-2 hover:underline"
         >
-          Rhodes Ranch lifestyle &amp; area highlights
+          Rhodes Ranch lifestyle and area highlights
         </Link>
       </section>
 

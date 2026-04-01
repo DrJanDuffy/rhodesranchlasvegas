@@ -72,7 +72,7 @@ export default function QuestionsPage() {
               href="/rhodes-ranch-lifestyle"
               className="font-medium text-emerald-900 underline-offset-2 hover:underline"
             >
-              Rhodes Ranch lifestyle &amp; amenities
+              Rhodes Ranch lifestyle and amenities
             </Link>
           </li>
           <li>
