@@ -10,12 +10,12 @@ import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: "Rhodes Ranch & Las Vegas Real Estate Questions & Answers",
+  title: "Rhodes Ranch and Las Vegas Real Estate Q&A",
   description: `Straight answers about Rhodes Ranch (89148), ${siteContact.agentName}, ${siteContact.secondaryContactName}, home search, open houses, and southwest Las Vegas. ${metaDescriptionTail}`,
   alternates: { canonical: "/questions" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: "Real estate Q&A | Rhodes Ranch & Las Vegas",
+    title: "Rhodes Ranch and Las Vegas | Real estate Q&A",
     description: `Straight answers for buyers and sellers in ${siteContact.serviceAreaDescription}. Contact details on this page.`,
   },
 };
@@ -29,7 +29,7 @@ export default function QuestionsPage() {
           Q&amp;A · {siteContact.address.postalCode}
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
-          Rhodes Ranch &amp; Las Vegas real estate questions and answers
+          Rhodes Ranch and Las Vegas real estate Q&amp;A
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Short, direct answers to common questions about our team, Rhodes Ranch, home search, open
