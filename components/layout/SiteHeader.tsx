@@ -9,6 +9,7 @@ const nav = [
   { href: "/open-houses", label: "Open houses" },
   { href: "/map", label: "Area map" },
   { href: "/search", label: "Homes for Sale" },
+  { href: "/questions", label: "Q&A" },
   { href: "/contact", label: "Contact" },
 ];
 

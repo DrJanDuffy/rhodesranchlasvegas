@@ -143,6 +143,10 @@ export default function HomePage() {
           <Link href="/search" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
             active listings for the Rhodes Ranch Las Vegas area
           </Link>
+          . For direct answers about our team, open houses, and 89148, see the{" "}
+          <Link href="/questions" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
+            Rhodes Ranch &amp; Las Vegas real estate Q&amp;A
+          </Link>
           .
         </p>
       </section>

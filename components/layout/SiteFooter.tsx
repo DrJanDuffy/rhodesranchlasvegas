@@ -103,6 +103,11 @@ export function SiteFooter({ className }: { className?: string }) {
               </Link>
             </li>
             <li>
+              <Link href="/questions" className="text-stone-300 hover:text-white">
+                Real estate Q&amp;A (Rhodes Ranch &amp; Las Vegas)
+              </Link>
+            </li>
+            <li>
               <Link href="/contact" className="text-stone-300 hover:text-white">
                 Contact &amp; directions
               </Link>
