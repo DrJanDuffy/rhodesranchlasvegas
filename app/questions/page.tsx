@@ -4,19 +4,19 @@ import { NapBlock } from "@/components/sections/NapBlock";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { aeoFaq } from "@/lib/faq-aeo";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaDescriptionTail } from "@/lib/metadata";
 import { faqPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: "Rhodes Ranch & Las Vegas Real Estate Questions & Answers",
-  description: `Straight answers about Rhodes Ranch (89148), ${siteContact.agentName}, ${siteContact.secondaryContactName}, home search, open houses, and southwest Las Vegas. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+  description: `Straight answers about Rhodes Ranch (89148), ${siteContact.agentName}, ${siteContact.secondaryContactName}, home search, open houses, and southwest Las Vegas. ${metaDescriptionTail}`,
   alternates: { canonical: "/questions" },
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "Real estate Q&A | Rhodes Ranch & Las Vegas",
-    description: `Answer-focused guide for buyers and sellers in ${siteContact.serviceAreaDescription}. NAP matches Google Business Profile.`,
+    description: `Straight answers for buyers and sellers in ${siteContact.serviceAreaDescription}. Contact details on this page.`,
   },
 };
 
@@ -26,7 +26,7 @@ export default function QuestionsPage() {
       <JsonLd data={faqPageJsonLd(aeoFaq)} />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
-          Answer engine optimization · {siteContact.address.postalCode}
+          Q&amp;A · {siteContact.address.postalCode}
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
           Rhodes Ranch &amp; Las Vegas real estate questions and answers
@@ -37,14 +37,13 @@ export default function QuestionsPage() {
           <Link href="/contact" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
             contact the office
           </Link>{" "}
-          with specifics. Business name, address, and phone match our Google Business Profile
-          (see NAP below).
+          with specifics. Office phone and address are listed below.
         </p>
       </header>
 
       <div className="mt-14">
         <FaqSection
-          id="aeo-faq-heading"
+          id="questions-faq-heading"
           heading="Questions and answers"
           items={aeoFaq}
         />
@@ -52,7 +51,7 @@ export default function QuestionsPage() {
 
       <section className="mt-14 rounded-2xl border border-emerald-900/10 bg-emerald-50/40 p-6 sm:p-8">
         <h2 className="font-display text-xl font-semibold text-emerald-950">
-          Related guides (internal links)
+          Related guides
         </h2>
         <ul className="mt-4 list-disc space-y-2 pl-6 text-sm leading-relaxed text-stone-700">
           <li>

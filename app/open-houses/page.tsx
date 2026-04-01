@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaDescriptionTail } from "@/lib/metadata";
 import { WEEKDAY_SLUGS, weekdayMeta } from "@/lib/open-houses-weekdays";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: "Rhodes Ranch & Las Vegas Open Houses by Day | Tour Schedule",
-  description: `Plan open houses in Rhodes Ranch, Spring Valley, and Las Vegas 89148 by day of the week. Map + MLS open house search. ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+  description: `Plan open houses in Rhodes Ranch, Spring Valley, and Las Vegas 89148 by day of the week. Map + MLS open house search. ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
   alternates: { canonical: "/open-houses" },
   openGraph: {
     ...defaultMetadata.openGraph,

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaAddressOnly } from "@/lib/metadata";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title:
     "Rhodes Ranch Community Guide: Golf, Amenities & Southwest Las Vegas Lifestyle | 89148",
-  description: `Guard-gated Rhodes Ranch (89148): Ted Robinson golf, recreation center, trails, and resort-style living southwest of the Strip. Community context for buyers and sellers—${siteContact.agentName}, ${siteContact.legalBrokerage}. Office: ${siteContact.fullAddressLine}.`,
+  description: `Guard-gated Rhodes Ranch (89148): Ted Robinson golf, recreation center, trails, and resort-style living southwest of the Strip. Community context for buyers and sellers—${siteContact.agentName}, ${siteContact.legalBrokerage}. ${metaAddressOnly}`,
   alternates: { canonical: "/rhodes-ranch-lifestyle" },
   openGraph: {
     ...defaultMetadata.openGraph,

@@ -1,18 +1,18 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaAddressOnly } from "@/lib/metadata";
 import { publicEnv } from "@/lib/env";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: "Rhodes Ranch & Spring Valley Area Map | Las Vegas 89148",
-  description: `Interactive map of Rhodes Ranch and Spring Valley (${siteContact.address.postalCode})—orientation for buyers and sellers. Office: ${siteContact.fullAddressLine}. ${siteContact.agentName}, ${siteContact.agentTitle}. ${siteContact.legalBrokerage}.`,
+  description: `Interactive map of Rhodes Ranch and Spring Valley (${siteContact.address.postalCode})—orientation for buyers and sellers. ${metaAddressOnly} ${siteContact.agentName}, ${siteContact.agentTitle}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/map" },
   openGraph: {
     ...defaultMetadata.openGraph,
     title: "Rhodes Ranch area map | Spring Valley, Las Vegas",
-    description: `Community map for 89148. Office: ${siteContact.fullAddressLine}.`,
+    description: `Community map for 89148. ${metaAddressOnly}`,
   },
 };
 

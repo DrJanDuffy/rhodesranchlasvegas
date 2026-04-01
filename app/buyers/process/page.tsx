@@ -3,13 +3,13 @@ import type { Metadata } from "next";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { BuyerCtaStrip } from "@/components/buyers/BuyerCtaStrip";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaAddressOnly } from "@/lib/metadata";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: "Las Vegas Home Buying Process | Rhodes Ranch Buyers",
-  description: `Overview of the Las Vegas area home purchase flow for Rhodes Ranch buyers: search, offer, escrow, and closing—with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}. Office: ${siteContact.fullAddressLine}. Not legal or tax advice.`,
+  description: `Overview of the Las Vegas area home purchase flow for Rhodes Ranch buyers: search, offer, escrow, and closing—with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}. ${metaAddressOnly} Not legal or tax advice.`,
   alternates: { canonical: "/buyers/process" },
   openGraph: {
     ...defaultMetadata.openGraph,

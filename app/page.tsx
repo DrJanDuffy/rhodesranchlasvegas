@@ -7,14 +7,14 @@ import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSectio
 import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
 import { rhodesRanchFaq } from "@/lib/faq-rhodes-ranch";
 import { publicEnv } from "@/lib/env";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaAddressOnly, metaDescriptionTail } from "@/lib/metadata";
 import { faqPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: `${siteContact.businessName} Homes for Sale | ${siteContact.agentName}`,
-  description: `${siteContact.agentName}, ${siteContact.agentTitle}, helps you buy or sell Rhodes Ranch Las Vegas homes (89148). Weekend open house map from ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Partner with ${siteContact.secondaryContactName} for buyer needs. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+  description: `${siteContact.agentName}, ${siteContact.agentTitle}, helps you buy or sell Rhodes Ranch Las Vegas homes (89148). Weekend open house map from ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Partner with ${siteContact.secondaryContactName} for buyer needs. ${metaDescriptionTail}`,
   keywords: [
     "Rhodes Ranch Las Vegas homes",
     "Rhodes Ranch open houses",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: `${siteContact.businessName} Homes | ${siteContact.agentName}`,
-    description: `${publicEnv.seoSiteTagline} Open house map: ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Office: ${siteContact.fullAddressLine}.`,
+    description: `${publicEnv.seoSiteTagline} Open house map: ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaAddressOnly}`,
   },
 };
 

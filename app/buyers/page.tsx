@@ -6,19 +6,19 @@ import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { buyerFaq } from "@/lib/faq-buyers";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaAddressOnly, metaDescriptionTail } from "@/lib/metadata";
 import { faqPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: "Buy a Home in Rhodes Ranch Las Vegas | Buyer Guide",
-  description: `Rhodes Ranch Las Vegas home buyers: work with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}, and ${siteContact.agentName} for home search, showings, and offers in 89148. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+  description: `Rhodes Ranch Las Vegas home buyers: work with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}, and ${siteContact.agentName} for home search, showings, and offers in 89148. ${metaDescriptionTail}`,
   alternates: { canonical: "/buyers" },
   openGraph: {
     ...defaultMetadata.openGraph,
     title: `Rhodes Ranch Buyers | ${siteContact.secondaryContactName}`,
-    description: `Search homes, book tours, and get buyer guidance for Rhodes Ranch (89148). Office: ${siteContact.fullAddressLine}.`,
+    description: `Search homes, book tours, and get buyer guidance for Rhodes Ranch (89148). ${metaAddressOnly}`,
   },
 };
 

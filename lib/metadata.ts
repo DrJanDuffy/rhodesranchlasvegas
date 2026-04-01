@@ -4,6 +4,12 @@ import { siteContact } from "@/lib/site-contact";
 
 const baseUrl = new URL(siteContact.siteUrl);
 
+/** Address + brokerage for meta descriptions (avoids repeating stiff “Office:” in every snippet). */
+export const metaDescriptionTail = `${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`;
+
+/** Single-line address with period (when brokerage is already mentioned in the same sentence). */
+export const metaAddressOnly = `${siteContact.fullAddressLine}.`;
+
 export const defaultMetadata: Metadata = {
   metadataBase: baseUrl,
   title: {
@@ -16,7 +22,7 @@ export const defaultMetadata: Metadata = {
       .slice(0, 2)
       .join(" ")
       .trim();
-    const tail = `${siteContact.agentName} (${siteContact.agentTitle}). Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`;
+    const tail = `${siteContact.agentName} (${siteContact.agentTitle}). ${metaDescriptionTail}`;
     const combined = `${lead} ${tail}`;
     const max = 320;
     return combined.length <= max ? combined : `${combined.slice(0, max - 1).trim()}…`;

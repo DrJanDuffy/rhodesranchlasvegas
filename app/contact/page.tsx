@@ -6,7 +6,7 @@ import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { contactFaq } from "@/lib/faq-contact";
-import { defaultMetadata } from "@/lib/metadata";
+import { defaultMetadata, metaDescriptionTail } from "@/lib/metadata";
 import { faqPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultMetadata.openGraph,
     title: `Schedule with ${siteContact.agentName} | ${siteContact.businessName}`,
-    description: `Schedule a consultation or call for Rhodes Ranch and 89148 real estate. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+    description: `Schedule a consultation or call for Rhodes Ranch and 89148 real estate. ${metaDescriptionTail}`,
   },
 };
 
@@ -55,10 +55,10 @@ export default function ContactPage() {
 
       <section
         className="mt-10 max-w-3xl rounded-2xl border border-stone-200/90 bg-white p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-8"
-        aria-labelledby="gbp-about-heading"
+        aria-labelledby="about-business-heading"
       >
         <h2
-          id="gbp-about-heading"
+          id="about-business-heading"
           className="font-display text-xl font-semibold tracking-tight text-emerald-950 sm:text-2xl"
         >
           About {siteContact.businessName}
@@ -67,16 +67,16 @@ export default function ContactPage() {
           {siteContact.gbpBusinessDescription}
         </p>
         <p className="mt-3 text-sm text-stone-600">
-          This description matches our{" "}
+          See reviews and directions on{" "}
           <a
             href={gbpSearchUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-emerald-900 underline-offset-2 hover:underline"
           >
-            Google Business Profile
+            Google Maps
           </a>
-          ; call or text for the fastest response during business hours.
+          . Call or text for the fastest response during business hours.
         </p>
       </section>
 
@@ -97,8 +97,8 @@ export default function ContactPage() {
           Schedule a private 15-minute conversation
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">
-          Pick a time that works for you. Prefer phone or email first? Use the NAP block below—the
-          same numbers and addresses match our Google Business Profile.
+          Pick a time that works for you. Prefer phone or email first? Use the Office &amp; contact
+          section below for the same phone number, address, and inboxes.
         </p>
         <div className="mt-6 rounded-2xl border border-stone-200/90 bg-white p-3 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-4">
           <CalendlyInline />
