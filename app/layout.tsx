@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist } from "next/font/google";
 import { CalendlyBadge } from "@/components/calendly/CalendlyBadge";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -13,16 +13,11 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 /** Editorial serif for headlines—luxury real estate tone without sacrificing readability. */
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   display: "swap",
 });
 
@@ -40,10 +35,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${cormorant.variable} h-full antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://em.realscout.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.realscout.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://assets.calendly.com" />
+        <link rel="dns-prefetch" href="https://maps.google.com" />
+      </head>
       <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
         <JsonLd data={realEstateAgentJsonLd()} />
         <JsonLd data={websiteJsonLd()} />

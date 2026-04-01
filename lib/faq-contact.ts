@@ -13,7 +13,7 @@ export const contactFaq: FaqItem[] = [
   {
     question: "How do I schedule a call with Dr. Jan Duffy or the buyer specialist?",
     answer:
-      "Use the scheduling calendar on this page to book a private 15-minute conversation. You can also call the office number shown in our NAP block for immediate questions, or email the listing or buyer inbox if you prefer written contact first.",
+      "Use the scheduling calendar on this page to book a private 15-minute conversation. You can also call or text the office number shown in our NAP block for immediate questions, or email the listing or buyer inbox if you prefer written contact first.",
   },
   {
     question: "What should I prepare before a Rhodes Ranch home consultation?",

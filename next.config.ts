@@ -19,6 +19,16 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  /** Tailwind-friendly: inline CSS in production to shorten the HTML → stylesheet critical chain (FCP/LCP). */
+  experimental: {
+    inlineCss: true,
+  },
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === "production"
+        ? { exclude: ["error", "warn"] }
+        : false,
+  },
   turbopack: {
     root: turbopackRoot,
   },

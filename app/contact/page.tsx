@@ -45,9 +45,40 @@ export default function ContactPage() {
           <a href={siteContact.phoneTelHref} className="font-semibold text-emerald-900 underline-offset-2 hover:underline">
             {siteContact.phoneDisplay}
           </a>
+          ,{" "}
+          <a href={siteContact.phoneSmsHref} className="font-semibold text-emerald-900 underline-offset-2 hover:underline">
+            text us
+          </a>
           , or email—hours: {siteContact.hoursSummaryLine}
         </p>
       </header>
+
+      <section
+        className="mt-10 max-w-3xl rounded-2xl border border-stone-200/90 bg-white p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-8"
+        aria-labelledby="gbp-about-heading"
+      >
+        <h2
+          id="gbp-about-heading"
+          className="font-display text-xl font-semibold tracking-tight text-emerald-950 sm:text-2xl"
+        >
+          About {siteContact.businessName}
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-stone-700">
+          {siteContact.gbpBusinessDescription}
+        </p>
+        <p className="mt-3 text-sm text-stone-600">
+          This description matches our{" "}
+          <a
+            href={gbpSearchUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-emerald-900 underline-offset-2 hover:underline"
+          >
+            Google Business Profile
+          </a>
+          ; call or text for the fastest response during business hours.
+        </p>
+      </section>
 
       <RealScoutLeadSection
         className="mt-10"
@@ -82,6 +113,12 @@ export default function ContactPage() {
               className="rounded-full bg-emerald-800 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-emerald-900"
             >
               Call {siteContact.phoneDisplay}
+            </a>
+            <a
+              href={siteContact.phoneSmsHref}
+              className="rounded-full border border-emerald-900/35 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-950 shadow-sm hover:bg-emerald-100"
+            >
+              Text {siteContact.phoneDisplay}
             </a>
             <a
               href={`mailto:${siteContact.email}`}

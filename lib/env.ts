@@ -37,6 +37,15 @@ export function telHrefFromE164(e164: string): string {
   return `tel:${trimmed}`;
 }
 
+/** SMS href for GBP “Chat” / text (e.g. +17026026878 → sms:+17026026878). */
+export function smsHrefFromE164(e164: string): string {
+  let n = e164.trim();
+  if (n.toLowerCase().startsWith("sms:")) return n;
+  if (n.toLowerCase().startsWith("tel:")) n = n.slice(4);
+  const digits = n.startsWith("+") ? n : `+${n.replace(/\D/g, "")}`;
+  return `sms:${digits}`;
+}
+
 /**
  * All public site configuration used by NAP, metadata, maps, and widgets.
  * Defaults match production Rhodes Ranch / Dr. Jan Duffy branding; override per deploy.
@@ -88,6 +97,27 @@ export const publicEnv = {
   phoneE164: env("NEXT_PUBLIC_PHONE_E164", "+17026026878"),
   phoneDisplay: env("NEXT_PUBLIC_PHONE_DISPLAY", "(702) 602-6878"),
 
+  /**
+   * Override for `sms:` links (Google Business Profile). If unset, derived from `NEXT_PUBLIC_PHONE_E164`.
+   */
+  phoneSmsHref: (() => {
+    const explicit = envOptional("NEXT_PUBLIC_PHONE_SMS_HREF");
+    if (explicit) {
+      const t = explicit.trim();
+      if (/^sms:\+[1-9]\d{6,14}$/i.test(t)) return t;
+    }
+    return smsHrefFromE164(env("NEXT_PUBLIC_PHONE_E164", "+17026026878"));
+  })(),
+
+  /**
+   * Mirrors Google Business Profile “About your business” (visible copy + JSON-LD seed).
+   * Override in Vercel to stay in sync with GBP edits.
+   */
+  gbpBusinessDescription: env(
+    "NEXT_PUBLIC_GBP_BUSINESS_DESCRIPTION",
+    "Rhodes Ranch Las Vegas is your local real estate resource for Rhodes Ranch, Spring Valley, and southwest Las Vegas. Whether you're buying or selling, you get expert guidance on pricing, marketing, negotiations, and paperwork. Buyers receive personalized home search, tour coordination, and clear next steps. Sellers get a strategy built for your specific neighborhood. Clear communication, professional representation, and deep knowledge of the communities that matter to you.",
+  ),
+
   addressStreet: env(
     "NEXT_PUBLIC_ADDRESS_STREET",
     "7272 S El Capitan Way",
@@ -100,18 +130,22 @@ export const publicEnv = {
   geoLatitude: envNumber("NEXT_PUBLIC_GEO_LATITUDE", 36.05581),
   geoLongitude: envNumber("NEXT_PUBLIC_GEO_LONGITUDE", -115.28788),
 
+  /** Google Business Profile “service area” string (align with GBP). */
   serviceAreaDescription: env(
     "NEXT_PUBLIC_SERVICE_AREA",
-    "Rhodes Ranch, Spring Valley, and southwest Las Vegas (89148)",
+    "Rhodes Ranch, Spring Valley, NV, USA",
   ),
   hoursSummaryLine: env(
     "NEXT_PUBLIC_HOURS_SUMMARY",
-    "Monday–Friday 9:00 a.m.–5:00 p.m. (weekend showings by appointment)",
+    "Open daily 9:00 a.m.–6:00 p.m. (Las Vegas time).",
   ),
 
-  /** Weekday office hours for JSON-LD (24h HH:mm). */
+  /**
+   * Opening/closing times for JSON-LD — applied to all days listed in `siteContact.openingHoursSpecification`
+   * (Google Business Profile: Sun–Sat same hours).
+   */
   officeWeekdayOpens: env("NEXT_PUBLIC_OFFICE_WEEKDAY_OPENS", "09:00"),
-  officeWeekdayCloses: env("NEXT_PUBLIC_OFFICE_WEEKDAY_CLOSES", "17:00"),
+  officeWeekdayCloses: env("NEXT_PUBLIC_OFFICE_WEEKDAY_CLOSES", "18:00"),
 
   /**
    * Full Google Maps embed URL (optional). If unset, built from NEXT_PUBLIC_MAP_QUERY or address fields.

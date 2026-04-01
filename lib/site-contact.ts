@@ -18,6 +18,9 @@ export const siteContact = {
   phoneDisplay: publicEnv.phoneDisplay,
   phoneE164: publicEnv.phoneE164,
   phoneTelHref: telHrefFromE164(publicEnv.phoneE164),
+  phoneSmsHref: publicEnv.phoneSmsHref,
+  /** Google Business Profile “About your business” (same source as visible About + JSON-LD description seed). */
+  gbpBusinessDescription: publicEnv.gbpBusinessDescription,
   address: {
     streetAddress: publicEnv.addressStreet,
     addressLocality: publicEnv.addressLocality,
@@ -33,7 +36,15 @@ export const siteContact = {
   },
   openingHoursSpecification: [
     {
-      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      days: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
       opens: publicEnv.officeWeekdayOpens,
       closes: publicEnv.officeWeekdayCloses,
     },

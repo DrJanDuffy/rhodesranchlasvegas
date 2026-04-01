@@ -2,25 +2,33 @@
 
 import { useEffect, useRef, useState } from "react";
 import { publicEnv } from "@/lib/env";
+import { waitForIdle, waitUntilVisible } from "@/lib/perf-scheduler";
 import { ensureRealScoutReady } from "@/lib/realscout-load";
+import { cn } from "@/lib/utils";
+
+export type RealScoutMountStrategy = "immediate" | "idle" | "visible";
 
 /**
  * Office listings custom element (broker IDX search). Loads UMD once via ensureRealScoutReady(),
  * then mounts with createElement (reliable with React). Default minimal mode avoids extra
  * type/status filters; list price min/max still scope results to a purchase-oriented band.
  *
- * When `listingStatusOverride` is set (e.g. open house pages), listing-status + property filters apply.
+ * `mountStrategy` defaults to `idle` to improve LCP on marketing pages (listing images are heavy).
+ * Use `immediate` on search-focused routes where the grid is the primary content.
  */
 export function RealScoutOfficeListings({
   className,
   listingStatusOverride,
+  mountStrategy = "idle",
 }: {
   className?: string;
-  /** e.g. "Open House" — must match RealScout/MLS; when set, listing-status + property-types are applied. */
+  /** e.g. "Open House" — must match RealScout/MLS; when set, listing-status + property filters apply. */
   listingStatusOverride?: string;
+  mountStrategy?: RealScoutMountStrategy;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
+  const [hasWidget, setHasWidget] = useState(false);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -30,7 +38,16 @@ export function RealScoutOfficeListings({
 
     async function run() {
       setError(null);
+      setHasWidget(false);
       try {
+        if (mountStrategy === "idle") {
+          await waitForIdle(2000);
+        } else if (mountStrategy === "visible") {
+          if (!el) return;
+          await waitUntilVisible(el, { rootMargin: "320px 0px 240px 0px" });
+        }
+        if (cancelled || !el) return;
+
         await ensureRealScoutReady();
         if (cancelled || !el) return;
 
@@ -63,6 +80,7 @@ export function RealScoutOfficeListings({
         widget.setAttribute("price-max", realScoutPriceMax);
 
         el.replaceChildren(widget);
+        if (!cancelled) setHasWidget(true);
       } catch (e) {
         if (!cancelled) {
           setError(
@@ -77,8 +95,9 @@ export function RealScoutOfficeListings({
     return () => {
       cancelled = true;
       el.replaceChildren();
+      setHasWidget(false);
     };
-  }, [listingStatusOverride]);
+  }, [listingStatusOverride, mountStrategy]);
 
   return (
     <>
@@ -87,7 +106,22 @@ export function RealScoutOfficeListings({
           {error}
         </p>
       ) : null}
-      <div ref={containerRef} className={className} suppressHydrationWarning />
+      <div className="relative">
+        <div
+          ref={containerRef}
+          className={cn(className, !hasWidget && !error && "min-h-[480px]")}
+          suppressHydrationWarning
+        />
+        {!hasWidget && !error ? (
+          <div
+            className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-stone-50/90 ring-1 ring-stone-200/80"
+            aria-busy="true"
+            aria-live="polite"
+          >
+            <span className="text-sm font-medium text-stone-500">Loading listings…</span>
+          </div>
+        ) : null}
+      </div>
     </>
   );
 }

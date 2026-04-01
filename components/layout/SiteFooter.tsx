@@ -139,12 +139,12 @@ export function SiteFooter({ className }: { className?: string }) {
           </div>
         </div>
       </div>
-      <div className="border-t border-stone-800 px-4 py-5 text-center text-xs text-stone-500 sm:px-6">
+      <div className="border-t border-stone-800 px-4 py-5 text-center text-xs text-stone-400 sm:px-6">
         <p>
           Listing data (IDX) is provided through our broker feed. Listing disclaimers apply where shown on
           listing tools.
         </p>
-        <p className="mx-auto mt-2 max-w-4xl leading-relaxed text-stone-500">
+        <p className="mx-auto mt-2 max-w-4xl leading-relaxed text-stone-400">
           © 2026 Berkshire Hathaway HomeServices Nevada Properties - Rhodes Ranch Las Vegas Real Estate
           Division. Comprehensive Real Estate Services by Dr. Jan Duffy S.0197614. All rights reserved.
         </p>

@@ -10,7 +10,17 @@ export const defaultMetadata: Metadata = {
     default: `${siteContact.businessName} | ${siteContact.agentName} | REALTOR®`,
     template: `%s | ${siteContact.businessName}`,
   },
-  description: `${siteContact.agentName}, ${siteContact.agentTitle}, focuses on Rhodes Ranch Las Vegas homes (89148): guard-gated golf community, Ted Robinson course, and southwest Las Vegas. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+  description: (() => {
+    const lead = publicEnv.gbpBusinessDescription
+      .split(/(?<=[.!?])\s+/)
+      .slice(0, 2)
+      .join(" ")
+      .trim();
+    const tail = `${siteContact.agentName} (${siteContact.agentTitle}). Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`;
+    const combined = `${lead} ${tail}`;
+    const max = 320;
+    return combined.length <= max ? combined : `${combined.slice(0, max - 1).trim()}…`;
+  })(),
   robots: { index: true, follow: true },
   ...(publicEnv.googleSiteVerification
     ? { verification: { google: publicEnv.googleSiteVerification } }

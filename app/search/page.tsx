@@ -46,6 +46,7 @@ export default function SearchPage() {
       <RealScoutLeadSection
         className="mt-10"
         listingIntro="Refine by price, status, and property type, then reach out for a tour in Rhodes Ranch, Spring Valley, or the southwest valley."
+        listingMountStrategy="immediate"
       />
 
       <div className="mt-14">

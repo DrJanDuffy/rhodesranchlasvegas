@@ -38,6 +38,25 @@ export function NapBlock() {
           </dd>
         </div>
         <div>
+          <dt className="font-medium text-stone-800">Text (SMS)</dt>
+          <dd>
+            <a
+              className="font-semibold text-emerald-900 hover:underline"
+              href={siteContact.phoneSmsHref}
+            >
+              Text {siteContact.phoneDisplay}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt className="font-medium text-stone-800">Hours</dt>
+          <dd>{siteContact.hoursSummaryLine}</dd>
+        </div>
+        <div>
+          <dt className="font-medium text-stone-800">Service area</dt>
+          <dd>{siteContact.serviceAreaDescription}</dd>
+        </div>
+        <div>
           <dt className="font-medium text-stone-800">Email</dt>
           <dd className="space-y-1">
             <a className="text-emerald-900 hover:underline" href={`mailto:${siteContact.email}`}>

@@ -1,4 +1,7 @@
-import { RealScoutOfficeListings } from "@/components/realscout/RealScoutOfficeListings";
+import {
+  RealScoutOfficeListings,
+  type RealScoutMountStrategy,
+} from "@/components/realscout/RealScoutOfficeListings";
 import { publicEnv } from "@/lib/env";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +15,10 @@ type RealScoutLeadSectionProps = {
   variant?: "listings" | "openHouses";
   /** Optional id for the section heading (a11y). */
   headingId?: string;
+  /**
+   * When to mount the listing grid (default `idle` for LCP). Use `immediate` on `/search` and similar.
+   */
+  listingMountStrategy?: RealScoutMountStrategy;
 };
 
 /**
@@ -23,6 +30,7 @@ export function RealScoutLeadSection({
   heading = "Featured office listings",
   variant = "listings",
   headingId = "office-listings-lead-heading",
+  listingMountStrategy = "idle",
 }: RealScoutLeadSectionProps) {
   const intro =
     listingIntro ??
@@ -51,6 +59,7 @@ export function RealScoutLeadSection({
           <RealScoutOfficeListings
             className="min-h-[480px]"
             listingStatusOverride={listingStatusOverride}
+            mountStrategy={listingMountStrategy}
           />
         </div>
         <p className="mt-4 text-xs leading-relaxed text-stone-600">

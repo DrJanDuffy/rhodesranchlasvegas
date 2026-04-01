@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { siteContact } from "@/lib/site-contact";
 
 function viewerUrlFromEmbed(embedUrl: string): string {
@@ -9,17 +12,43 @@ function viewerUrlFromEmbed(embedUrl: string): string {
 }
 
 /**
- * Weekend open houses map (Google My Maps) hosted by the buyer specialist.
- * Visible copy + iframe support SEO/AEO/GEO; map URL is env-driven for GSC-friendly updates without redeploy copy.
+ * Weekend open houses map (Google My Maps). Iframe `src` loads only when the section is near the
+ * viewport to reduce mobile LCP and main-thread work on first paint.
  */
 export function OpenHousesMapSection() {
-  const embedSrc = siteContact.openHousesMapEmbedUrl;
-  const viewerHref = viewerUrlFromEmbed(embedSrc);
+  const embedSrcFull = siteContact.openHousesMapEmbedUrl;
+  const viewerHref = viewerUrlFromEmbed(embedSrcFull);
   const { secondaryContactName, secondaryContactTitle, phoneTelHref, phoneDisplay } =
     siteContact;
 
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const [iframeSrc, setIframeSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const root = sentinelRef.current;
+    if (!root) return;
+
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+      setIframeSrc(embedSrcFull);
+      return;
+    }
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIframeSrc(embedSrcFull);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: "280px 0px 200px 0px", threshold: 0.01 },
+    );
+    obs.observe(root);
+    return () => obs.disconnect();
+  }, [embedSrcFull]);
+
   return (
     <section
+      ref={sentinelRef}
       className="mt-10 rounded-2xl border border-stone-200/90 bg-white p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-8"
       aria-labelledby="open-houses-map-heading"
     >
@@ -49,14 +78,24 @@ export function OpenHousesMapSection() {
 
       <div className="mt-6 overflow-hidden rounded-xl border border-stone-200/90 bg-stone-100 shadow-inner">
         <div className="relative aspect-4/3 w-full min-h-[280px] sm:min-h-[360px] lg:min-h-[420px]">
-          <iframe
-            title={`Open houses map — ${secondaryContactName}, ${secondaryContactTitle}`}
-            src={embedSrc}
-            className="absolute inset-0 h-full w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+          {iframeSrc ? (
+            <iframe
+              title={`Open houses map — ${secondaryContactName}, ${secondaryContactTitle}`}
+              src={iframeSrc}
+              className="absolute inset-0 h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          ) : (
+            <div
+              className="absolute inset-0 flex items-center justify-center bg-stone-100 text-sm text-stone-500"
+              aria-busy="true"
+              aria-live="polite"
+            >
+              Loading map preview…
+            </div>
+          )}
         </div>
       </div>
 
