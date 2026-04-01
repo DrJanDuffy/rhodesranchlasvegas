@@ -7,11 +7,8 @@ export function NapBlock() {
       className="rounded-2xl border border-stone-200/90 bg-white p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5"
     >
       <h2 id="nap-heading" className="font-display text-xl font-semibold text-emerald-950">
-        Office &amp; contact (NAP)
+        Office &amp; contact
       </h2>
-      <p className="mt-2 text-sm text-stone-600">
-        Business name, address, and phone match our Google Business Profile.
-      </p>
       <dl className="mt-4 space-y-2 text-sm">
         <div>
           <dt className="font-medium text-stone-800">Name</dt>

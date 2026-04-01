@@ -45,7 +45,7 @@ export const aeoFaq: FaqItem[] = [
   },
   {
     question: "How do I reach your office for a private showing or listing consultation?",
-    answer: `Office NAP on this site matches our Google Business Profile: ${siteContact.fullAddressLine}, phone ${siteContact.phoneDisplay}. Use the Contact page for Calendly scheduling, or call or text for faster coordination. Listing questions go to ${siteContact.email}; buyer-side questions go to ${siteContact.secondaryEmail}.`,
+    answer: `Our office is at ${siteContact.fullAddressLine}; phone ${siteContact.phoneDisplay}. Use the Contact page for Calendly scheduling, or call or text for faster coordination. Listing questions go to ${siteContact.email}; buyer-side questions go to ${siteContact.secondaryEmail}.`,
   },
   {
     question: "What should I read next if I am new to buying a home in Las Vegas?",

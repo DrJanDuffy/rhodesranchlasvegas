@@ -8,12 +8,12 @@ import { siteContact } from "@/lib/site-contact";
 export const contactFaq: FaqItem[] = [
   {
     question: "What is your office address in Las Vegas?",
-    answer: `Our office is at ${siteContact.fullAddressLine}. Phone and hours on this page match our Google Business Profile.`,
+    answer: `Our office is at ${siteContact.fullAddressLine}. Phone and hours are listed on this page.`,
   },
   {
     question: "How do I schedule a call with Dr. Jan Duffy or the buyer specialist?",
     answer:
-      "Use the scheduling calendar on this page to book a private 15-minute conversation. You can also call or text the office number shown in our NAP block for immediate questions, or email the listing or buyer inbox if you prefer written contact first.",
+      "Use the scheduling calendar on this page to book a private 15-minute conversation. You can also call or text the office number in the contact section for immediate questions, or email the listing or buyer inbox if you prefer written contact first.",
   },
   {
     question: "What should I prepare before a Rhodes Ranch home consultation?",

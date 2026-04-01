@@ -19,7 +19,7 @@ export function SiteFooter({ className }: { className?: string }) {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-3">
         <div>
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400/90">
-            NAP (matches Google Business Profile)
+            Office
           </p>
           <p className="mt-3 font-display text-lg font-semibold text-stone-50">
             {siteContact.businessName}

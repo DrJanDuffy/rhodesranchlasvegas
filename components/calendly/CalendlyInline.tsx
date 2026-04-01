@@ -27,7 +27,7 @@ export function CalendlyInline({ className }: CalendlyInlineProps) {
           parentElement: parentRef.current,
         });
       } catch {
-        // Widget failed; page still has phone/email NAP.
+        // Widget failed; page still has phone and email in the contact section.
       }
     })();
 

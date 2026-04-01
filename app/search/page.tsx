@@ -45,6 +45,8 @@ export default function SearchPage() {
 
       <RealScoutLeadSection
         className="mt-10"
+        heading="Rhodes Ranch area listings"
+        headingId="search-listings-heading"
         listingIntro="Refine by price, status, and property type, then reach out for a tour in Rhodes Ranch, Spring Valley, or the southwest valley."
         listingMountStrategy="immediate"
       />
