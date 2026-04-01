@@ -7,12 +7,12 @@ import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title:
-    "Rhodes Ranch Community Guide: Golf, Amenities & Southwest Las Vegas Lifestyle | 89148",
+    "Rhodes Ranch Community Guide: Golf, Amenities, and Southwest Las Vegas Lifestyle | 89148",
   description: `Guard-gated Rhodes Ranch (89148): Ted Robinson golf, recreation center, trails, and resort-style living southwest of the Strip. Community context for buyers and sellers—${siteContact.agentName}, ${siteContact.legalBrokerage}. ${metaAddressOnly}`,
   alternates: { canonical: "/rhodes-ranch-lifestyle" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: "Rhodes Ranch community guide: golf, amenities & Las Vegas 89148 lifestyle",
+    title: "Rhodes Ranch community guide: golf, amenities, and Las Vegas 89148 lifestyle",
   },
 };
 
@@ -57,7 +57,7 @@ export default function RhodesRanchLifestylePage() {
           Community guide · {siteContact.address.postalCode} · Not affiliated with named venues
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.4rem]">
-          Rhodes Ranch community guide: golf, amenities &amp; southwest Las Vegas lifestyle
+          Rhodes Ranch community guide: golf, amenities, and southwest Las Vegas lifestyle
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           {siteContact.serviceAreaDescription}. Below is an editorial overview of the neighborhood—
@@ -91,7 +91,7 @@ export default function RhodesRanchLifestylePage() {
               href="/map"
               className="font-medium text-emerald-900 underline-offset-2 hover:underline"
             >
-              Rhodes Ranch &amp; Spring Valley map
+              Rhodes Ranch and Spring Valley map
             </Link>
             .
           </p>

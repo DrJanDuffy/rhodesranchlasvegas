@@ -40,7 +40,7 @@ export default function HomePage() {
           Southwest Las Vegas · {siteContact.address.postalCode}
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-5xl">
-          Rhodes Ranch Las Vegas homes: local expertise for buyers &amp; sellers
+          Rhodes Ranch Las Vegas homes: local expertise for buyers and sellers
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Rhodes Ranch is a guard-gated, master-planned community in Spring Valley—about six miles
@@ -145,7 +145,7 @@ export default function HomePage() {
           </Link>
           . For direct answers about our team, open houses, and 89148, see the{" "}
           <Link href="/questions" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-            Rhodes Ranch &amp; Las Vegas real estate Q&amp;A
+            Rhodes Ranch and Las Vegas real estate Q&amp;A
           </Link>
           .
         </p>

@@ -9,12 +9,12 @@ import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: "Rhodes Ranch & Las Vegas Open Houses by Day | Tour Schedule",
+  title: "Rhodes Ranch and Las Vegas Open Houses by Day | Tour Schedule",
   description: `Plan open houses in Rhodes Ranch, Spring Valley, and Las Vegas 89148 by day of the week. Map + MLS open house search. ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
   alternates: { canonical: "/open-houses" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: "Open houses by day | Rhodes Ranch & Las Vegas",
+    title: "Open houses by day | Rhodes Ranch and Las Vegas",
     description: `Weekend map and daily open house listings for ${siteContact.serviceAreaDescription}.`,
   },
 };
@@ -27,7 +27,7 @@ export default function OpenHousesHubPage() {
           Open houses · {siteContact.address.postalCode}
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
-          Rhodes Ranch &amp; Las Vegas open houses by day
+          Rhodes Ranch and Las Vegas open houses by day
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Use the weekend map to route your tour, then pick a day below for MLS open house listings

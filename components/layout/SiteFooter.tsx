@@ -94,7 +94,7 @@ export function SiteFooter({ className }: { className?: string }) {
             </li>
             <li>
               <Link href="/map" className="text-stone-300 hover:text-white">
-                Rhodes Ranch &amp; Spring Valley map
+                Rhodes Ranch and Spring Valley map
               </Link>
             </li>
             <li>
@@ -104,7 +104,7 @@ export function SiteFooter({ className }: { className?: string }) {
             </li>
             <li>
               <Link href="/questions" className="text-stone-300 hover:text-white">
-                Real estate Q&amp;A (Rhodes Ranch &amp; Las Vegas)
+                Real estate Q&amp;A (Rhodes Ranch and Las Vegas)
               </Link>
             </li>
             <li>

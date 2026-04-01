@@ -6,12 +6,12 @@ import { publicEnv } from "@/lib/env";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Rhodes Ranch & Spring Valley Area Map | Las Vegas 89148",
+  title: "Rhodes Ranch and Spring Valley Area Map | Las Vegas 89148",
   description: `Interactive map of Rhodes Ranch and Spring Valley (${siteContact.address.postalCode})—orientation for buyers and sellers. ${metaAddressOnly} ${siteContact.agentName}, ${siteContact.agentTitle}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/map" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: "Rhodes Ranch area map | Spring Valley, Las Vegas",
+    title: "Rhodes Ranch and Spring Valley map | Las Vegas 89148",
     description: `Community map for 89148. ${metaAddressOnly}`,
   },
 };
@@ -26,7 +26,7 @@ export default function MapPage() {
           Area guide · {siteContact.address.postalCode}
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
-          Rhodes Ranch &amp; Spring Valley map
+          Rhodes Ranch and Spring Valley area map
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Use the embedded Google Map to orient to Rhodes Ranch, Spring Valley, and southwest Las

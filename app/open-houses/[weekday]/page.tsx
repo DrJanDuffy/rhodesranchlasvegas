@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { label, title } = weekdayMeta[raw];
   return {
     ...defaultMetadata,
-    title: `${label} Open Houses | Rhodes Ranch & Las Vegas 89148`,
+    title: `${label} Open Houses | Rhodes Ranch and Las Vegas 89148`,
     description: `${title} — MLS open house search, map on the open houses hub, and ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
     alternates: { canonical: `/open-houses/${raw}` },
     openGraph: {
@@ -75,7 +75,7 @@ export default async function OpenHousesWeekdayPage({ params }: PageProps) {
         <p className="mt-5 text-lg leading-relaxed text-stone-700">{intro}</p>
         <p className="mt-4 text-sm text-stone-600">
           <Link href="/open-houses" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-            Weekend open house map &amp; all days
+            Weekend open house map and all days
           </Link>
           {" · "}
           <Link href="/contact#schedule" className="font-medium text-emerald-900 underline-offset-2 hover:underline">

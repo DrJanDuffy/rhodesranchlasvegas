@@ -25,31 +25,31 @@ export const weekdayMeta: Record<
 > = {
   monday: {
     label: "Monday",
-    title: "Monday open houses & showings",
+    title: "Monday open houses and showings",
     intro:
       "Start the week with a focused plan: review open house listings below, cross-check times on the map, and call for a private tour if a Rhodes Ranch or southwest Las Vegas home fits your list.",
   },
   tuesday: {
     label: "Tuesday",
-    title: "Tuesday open houses & showings",
+    title: "Tuesday open houses and showings",
     intro:
       "Tuesday tours often have lighter traffic—use the listings search for scheduled opens, then confirm details on the weekend map or with your agent before you drive.",
   },
   wednesday: {
     label: "Wednesday",
-    title: "Wednesday open houses & showings",
+    title: "Wednesday open houses and showings",
     intro:
       "Midweek is a good time to compare new inventory and line up weekend routes. Listings update as brokers publish open house times; refresh before you head out.",
   },
   thursday: {
     label: "Thursday",
-    title: "Thursday open houses & showings",
+    title: "Thursday open houses and showings",
     intro:
       "Thursday listings help you finalize a short list for the weekend. Guard-gated communities may require advance notice—call if you need access arranged.",
   },
   friday: {
     label: "Friday",
-    title: "Friday open houses & showings",
+    title: "Friday open houses and showings",
     intro:
       "Friday often previews the weekend lineup. Pair the search below with the map to plan Saturday and Sunday stops across Rhodes Ranch and nearby neighborhoods.",
   },

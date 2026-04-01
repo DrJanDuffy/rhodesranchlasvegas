@@ -77,7 +77,7 @@ export default function QuestionsPage() {
           </li>
           <li>
             <Link href="/open-houses" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              Open houses by day &amp; weekend map
+              Open houses by day and weekend map
             </Link>
           </li>
           <li>
