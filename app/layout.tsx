@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { defaultMetadata } from "@/lib/metadata";
-import { realEstateAgentJsonLd } from "@/lib/schema";
+import { realEstateAgentJsonLd, websiteJsonLd } from "@/lib/schema";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,6 +46,7 @@ export default function RootLayout({
     >
       <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
         <JsonLd data={realEstateAgentJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
         {/*
           Office listings widget script loads from the client (lib/realscout-load.ts) when the widget mounts.
           Do not add a second script tag here — avoids duplicate loads and define() races.

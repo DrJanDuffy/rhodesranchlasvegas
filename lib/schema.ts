@@ -3,6 +3,20 @@ import { siteContact } from "@/lib/site-contact";
 
 const base = siteContact.siteUrl.replace(/\/$/, "");
 
+/** WebSite graph node — pairs with RealEstateAgent for Search Console / rich result clarity. */
+export function websiteJsonLd(): Record<string, unknown> {
+  const base = siteContact.siteUrl.replace(/\/$/, "");
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${base}/#website`,
+    name: siteContact.businessName,
+    url: base,
+    inLanguage: "en-US",
+    publisher: { "@id": `${base}/#agent` },
+  };
+}
+
 export function realEstateAgentJsonLd(): Record<string, unknown> {
   const openingHoursSpecification = siteContact.openingHoursSpecification.map(
     (row) => ({

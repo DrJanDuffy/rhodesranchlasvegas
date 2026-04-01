@@ -46,6 +46,18 @@ export const publicEnv = {
     env("NEXT_PUBLIC_SITE_URL", "https://www.rhodesranchlasvegas.com"),
   ),
 
+  /**
+   * Google Search Console HTML tag verification (`<meta name="google-site-verification" content="…">`).
+   * Paste the **content** value from GSC → Settings → Ownership verification → HTML tag.
+   */
+  googleSiteVerification: (() => {
+    const v = envOptional("NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION");
+    if (!v) return undefined;
+    const t = v.trim();
+    if (t.length < 6 || t.length > 256 || /[<>"'\s]/.test(t)) return undefined;
+    return t;
+  })(),
+
   agentName: env("NEXT_PUBLIC_AGENT_NAME", "Dr. Jan Duffy"),
   businessName: env("NEXT_PUBLIC_BUSINESS_NAME", "Rhodes Ranch Las Vegas"),
   legalBrokerage: env(
