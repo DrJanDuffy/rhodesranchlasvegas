@@ -1,0 +1,88 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
+import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
+import { NapBlock } from "@/components/sections/NapBlock";
+import { defaultMetadata } from "@/lib/metadata";
+import { WEEKDAY_SLUGS, weekdayMeta } from "@/lib/open-houses-weekdays";
+import { siteContact } from "@/lib/site-contact";
+
+export const metadata: Metadata = {
+  ...defaultMetadata,
+  title: "Rhodes Ranch & Las Vegas Open Houses by Day | Tour Schedule",
+  description: `Plan open houses in Rhodes Ranch, Spring Valley, and Las Vegas 89148 by day of the week. Map + MLS open house search. ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+  alternates: { canonical: "/open-houses" },
+  openGraph: {
+    ...defaultMetadata.openGraph,
+    title: "Open houses by day | Rhodes Ranch & Las Vegas",
+    description: `Weekend map and daily open house listings for ${siteContact.serviceAreaDescription}.`,
+  },
+};
+
+export default function OpenHousesHubPage() {
+  return (
+    <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <header className="max-w-3xl">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
+          Open houses · {siteContact.address.postalCode}
+        </p>
+        <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
+          Rhodes Ranch &amp; Las Vegas open houses by day
+        </h1>
+        <p className="mt-5 text-lg leading-relaxed text-stone-700">
+          Use the weekend map to route your tour, then pick a day below for MLS open house listings
+          and tips. Times change—confirm on each listing and refresh the map before you drive.{" "}
+          <strong>{siteContact.secondaryContactName}</strong> ({siteContact.secondaryContactTitle})
+          maintains the map; <strong>{siteContact.agentName}</strong> supports listings and strategy.
+        </p>
+      </header>
+
+      <OpenHousesMapSection />
+
+      <section
+        className="mt-12"
+        aria-labelledby="by-day-heading"
+      >
+        <h2
+          id="by-day-heading"
+          className="font-display text-2xl font-semibold tracking-tight text-emerald-950"
+        >
+          Open houses by day of the week
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm text-stone-600">
+          Choose a day for day-specific guidance. Each page includes the same broker open house
+          search so you can match calendar planning with live inventory.
+        </p>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {WEEKDAY_SLUGS.map((slug) => (
+            <li key={slug}>
+              <Link
+                href={`/open-houses/${slug}`}
+                className="flex h-full flex-col rounded-xl border border-stone-200/90 bg-white p-4 shadow-sm ring-1 ring-stone-900/5 transition hover:border-emerald-800/30 hover:bg-emerald-50/40"
+              >
+                <span className="font-display text-lg font-semibold text-emerald-950">
+                  {weekdayMeta[slug].label}
+                </span>
+                <span className="mt-1 text-sm text-stone-600 line-clamp-2">
+                  {weekdayMeta[slug].title}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <RealScoutLeadSection
+        className="mt-14 border-t-0"
+        variant="openHouses"
+        heading="Open house listings (broker search)"
+        headingId="hub-open-house-listings-heading"
+        listingIntro="Search open house inventory from our office feed—filter in the widget, then call for guard-gate access or a private showing if the home is not holding a public open."
+      />
+
+      <div className="mt-14">
+        <NapBlock />
+      </div>
+    </main>
+  );
+}

@@ -13,7 +13,7 @@ import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: `Rhodes Ranch Las Vegas Homes for Sale | ${siteContact.agentName}`,
+  title: `${siteContact.businessName} Homes for Sale | ${siteContact.agentName}`,
   description: `${siteContact.agentName}, ${siteContact.agentTitle}, helps you buy or sell Rhodes Ranch Las Vegas homes (89148). Weekend open house map from ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Partner with ${siteContact.secondaryContactName} for buyer needs. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
   keywords: [
     "Rhodes Ranch Las Vegas homes",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: `Rhodes Ranch Las Vegas Homes | ${siteContact.agentName}`,
+    title: `${siteContact.businessName} Homes | ${siteContact.agentName}`,
     description: `${publicEnv.seoSiteTagline} Open house map: ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Office: ${siteContact.fullAddressLine}.`,
   },
 };

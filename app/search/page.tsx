@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
+import { NapBlock } from "@/components/sections/NapBlock";
 import { defaultMetadata } from "@/lib/metadata";
 import { siteContact } from "@/lib/site-contact";
 
@@ -46,6 +47,10 @@ export default function SearchPage() {
         className="mt-10"
         listingIntro="Refine by price, status, and property type, then reach out for a tour in Rhodes Ranch, Spring Valley, or the southwest valley."
       />
+
+      <div className="mt-14">
+        <NapBlock />
+      </div>
     </main>
   );
 }

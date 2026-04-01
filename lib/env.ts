@@ -30,7 +30,7 @@ function envNumber(name: string, fallback: number): number {
   return Number.isFinite(n) ? n : fallback;
 }
 
-/** Tel: href from E.164 (e.g. +17025001942 → tel:+17025001942). */
+/** Tel: href from E.164 (e.g. +17026026878 → tel:+17026026878). */
 export function telHrefFromE164(e164: string): string {
   const trimmed = e164.trim();
   if (trimmed.startsWith("tel:")) return trimmed;
@@ -47,7 +47,7 @@ export const publicEnv = {
   ),
 
   agentName: env("NEXT_PUBLIC_AGENT_NAME", "Dr. Jan Duffy"),
-  businessName: env("NEXT_PUBLIC_BUSINESS_NAME", "Dr. Jan Duffy"),
+  businessName: env("NEXT_PUBLIC_BUSINESS_NAME", "Rhodes Ranch Las Vegas"),
   legalBrokerage: env(
     "NEXT_PUBLIC_BROKERAGE_NAME",
     "Berkshire Hathaway HomeServices Nevada Properties",
@@ -73,8 +73,8 @@ export const publicEnv = {
     "Home Buyer Specialist",
   ),
 
-  phoneE164: env("NEXT_PUBLIC_PHONE_E164", "+17025001942"),
-  phoneDisplay: env("NEXT_PUBLIC_PHONE_DISPLAY", "(702) 500-1942"),
+  phoneE164: env("NEXT_PUBLIC_PHONE_E164", "+17026026878"),
+  phoneDisplay: env("NEXT_PUBLIC_PHONE_DISPLAY", "(702) 602-6878"),
 
   addressStreet: env(
     "NEXT_PUBLIC_ADDRESS_STREET",
@@ -175,6 +175,16 @@ export const publicEnv = {
     return raw;
   })(),
 
+  /**
+   * Status token for `/open-houses/*` RealScout strip (must match your MLS/RealScout labels).
+   * If the grid is empty, try "For Sale" or your board’s open-house label in Vercel.
+   */
+  realScoutOpenHouseListingStatus: (() => {
+    const raw = env("NEXT_PUBLIC_REALSCOUT_OPEN_HOUSE_LISTING_STATUS", "Open House");
+    if (!/^[\w\s\-]{1,64}$/.test(raw)) return "Open House";
+    return raw;
+  })(),
+
   /** Comma-led property type token for the widget (e.g. ,SFR for single-family). */
   realScoutPropertyTypes: (() => {
     const raw = env("NEXT_PUBLIC_REALSCOUT_PROPERTY_TYPES", ",SFR");
@@ -199,7 +209,7 @@ export const publicEnv = {
     return raw;
   })(),
   /** Default metadata / OG brand line */
-  siteBrandShort: env("NEXT_PUBLIC_SITE_BRAND_SHORT", "Rhodes Ranch Homes"),
+  siteBrandShort: env("NEXT_PUBLIC_SITE_BRAND_SHORT", "Rhodes Ranch Las Vegas"),
   /**
    * Optional homepage / default meta subline (Rhodes Ranch Las Vegas homes + E-E-A-T).
    * Override in Vercel without code changes.

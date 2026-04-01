@@ -18,6 +18,10 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
     "@type": "RealEstateAgent",
     "@id": `${base}/#agent`,
     name: siteContact.agentName,
+    brand: {
+      "@type": "Brand",
+      name: siteContact.businessName,
+    },
     jobTitle: siteContact.agentTitle,
     description: `${siteContact.agentName} is a ${siteContact.agentTitle} helping clients buy and sell Rhodes Ranch Las Vegas homes (89148) with ${siteContact.legalBrokerage}. Office: ${siteContact.fullAddressLine}.`,
     url: base,

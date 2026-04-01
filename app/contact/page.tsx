@@ -11,12 +11,12 @@ import { faqPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: `Schedule a consultation | Contact ${siteContact.agentName} | Rhodes Ranch Las Vegas 89148`,
+  title: `Schedule a consultation | Contact ${siteContact.agentName} | ${siteContact.businessName} 89148`,
   description: `Book a private 15-minute conversation with ${siteContact.agentName} or reach ${siteContact.secondaryContactName} for Rhodes Ranch Las Vegas homes. Call ${siteContact.phoneDisplay} or visit ${siteContact.fullAddressLine}. Use the calendar below. Nevada license ${siteContact.license}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     ...defaultMetadata.openGraph,
-    title: `Schedule with ${siteContact.agentName} | Rhodes Ranch Las Vegas`,
+    title: `Schedule with ${siteContact.agentName} | ${siteContact.businessName}`,
     description: `Schedule a consultation or call for Rhodes Ranch and 89148 real estate. Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
   },
 };

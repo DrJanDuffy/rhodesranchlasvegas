@@ -1,0 +1,100 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
+import { NapBlock } from "@/components/sections/NapBlock";
+import { defaultMetadata } from "@/lib/metadata";
+import {
+  type WeekdaySlug,
+  WEEKDAY_SLUGS,
+  isWeekdaySlug,
+  weekdayMeta,
+} from "@/lib/open-houses-weekdays";
+import { siteContact } from "@/lib/site-contact";
+
+type PageProps = {
+  params: Promise<{ weekday: string }>;
+};
+
+export function generateStaticParams(): { weekday: WeekdaySlug }[] {
+  return WEEKDAY_SLUGS.map((weekday) => ({ weekday }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { weekday: raw } = await params;
+  if (!isWeekdaySlug(raw)) {
+    return { title: "Open houses" };
+  }
+  const { label, title } = weekdayMeta[raw];
+  return {
+    ...defaultMetadata,
+    title: `${label} Open Houses | Rhodes Ranch & Las Vegas 89148`,
+    description: `${title} — MLS open house search, map on the open houses hub, and ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Office: ${siteContact.fullAddressLine}. ${siteContact.legalBrokerage}.`,
+    alternates: { canonical: `/open-houses/${raw}` },
+    openGraph: {
+      ...defaultMetadata.openGraph,
+      title: `${label} open houses | Las Vegas`,
+      description: `Plan ${label} tours in ${siteContact.address.postalCode} and southwest Las Vegas. Open house listings below.`,
+    },
+  };
+}
+
+export default async function OpenHousesWeekdayPage({ params }: PageProps) {
+  const { weekday: raw } = await params;
+  if (!isWeekdaySlug(raw)) notFound();
+
+  const { label, intro, title } = weekdayMeta[raw];
+
+  return (
+    <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <nav className="text-sm text-stone-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-x-2 gap-y-1">
+          <li>
+            <Link href="/" className="text-emerald-900 hover:underline">
+              Home
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <Link href="/open-houses" className="text-emerald-900 hover:underline">
+              Open houses
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li className="font-medium text-stone-800">{label}</li>
+        </ol>
+      </nav>
+
+      <header className="mt-6 max-w-3xl">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
+          {label} · {siteContact.address.postalCode}
+        </p>
+        <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
+          {title}
+        </h1>
+        <p className="mt-5 text-lg leading-relaxed text-stone-700">{intro}</p>
+        <p className="mt-4 text-sm text-stone-600">
+          <Link href="/open-houses" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
+            Weekend open house map &amp; all days
+          </Link>
+          {" · "}
+          <Link href="/contact#schedule" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
+            Schedule a private tour
+          </Link>
+        </p>
+      </header>
+
+      <RealScoutLeadSection
+        className="mt-10"
+        variant="openHouses"
+        heading={`Open house listings — ${label}`}
+        headingId={`open-house-${raw}-listings-heading`}
+        listingIntro={`Broker open house search for ${label}—confirm date and time on each listing card, then use the hub map when you plan multiple stops across ${siteContact.address.postalCode}.`}
+      />
+
+      <div className="mt-14">
+        <NapBlock />
+      </div>
+    </main>
+  );
+}

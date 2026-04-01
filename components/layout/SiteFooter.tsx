@@ -88,6 +88,11 @@ export function SiteFooter({ className }: { className?: string }) {
               </Link>
             </li>
             <li>
+              <Link href="/open-houses" className="text-stone-300 hover:text-white">
+                Open houses by day
+              </Link>
+            </li>
+            <li>
               <Link href="/map" className="text-stone-300 hover:text-white">
                 Rhodes Ranch &amp; Spring Valley map
               </Link>

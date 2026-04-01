@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
+import { NapBlock } from "@/components/sections/NapBlock";
 import { defaultMetadata } from "@/lib/metadata";
 import { siteContact } from "@/lib/site-contact";
 
@@ -294,6 +295,10 @@ export default function RhodesRanchLifestylePage() {
           .
         </p>
       </section>
+
+      <div className="mt-14">
+        <NapBlock />
+      </div>
     </main>
   );
 }

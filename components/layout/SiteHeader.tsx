@@ -6,6 +6,7 @@ const nav = [
   { href: "/", label: "Home" },
   { href: "/buyers", label: "Buyers" },
   { href: "/rhodes-ranch-lifestyle", label: "Lifestyle" },
+  { href: "/open-houses", label: "Open houses" },
   { href: "/map", label: "Area map" },
   { href: "/search", label: "Homes for Sale" },
   { href: "/contact", label: "Contact" },
@@ -22,7 +23,7 @@ export function SiteHeader({ className }: { className?: string }) {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link href="/" className="group max-w-md">
           <span className="block text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-900/85">
-            Rhodes Ranch Las Vegas
+            {siteContact.businessName}
           </span>
           <span className="font-display text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl group-hover:text-emerald-950">
             {siteContact.agentName}

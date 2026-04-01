@@ -72,6 +72,12 @@ export function OpenHousesMapSection() {
         <span aria-hidden="true" className="hidden sm:inline">
           ·
         </span>
+        <Link href="/open-houses" className="font-medium text-emerald-800 underline-offset-2 hover:underline">
+          Open houses by day + MLS search
+        </Link>
+        <span aria-hidden="true" className="hidden sm:inline">
+          ·
+        </span>
         <Link href="/buyers" className="font-medium text-emerald-800 underline-offset-2 hover:underline">
           Home buyer resources
         </Link>

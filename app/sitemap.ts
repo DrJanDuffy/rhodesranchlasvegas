@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { WEEKDAY_SLUGS } from "@/lib/open-houses-weekdays";
 import { siteContact } from "@/lib/site-contact";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -42,6 +43,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
+    {
+      url: `${base}/open-houses`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.86,
+    },
+    ...WEEKDAY_SLUGS.map((weekday) => ({
+      url: `${base}/open-houses/${weekday}`,
+      lastModified,
+      changeFrequency: "daily" as const,
+      priority: 0.84,
+    })),
     {
       url: `${base}/contact`,
       lastModified,

@@ -32,6 +32,6 @@ export const rhodesRanchFaq: FaqItem[] = [
   },
   {
     question: "Where can I find open houses for Rhodes Ranch Las Vegas homes?",
-    answer: `${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}) maintains an interactive Google Map of upcoming open houses and tour stops in Rhodes Ranch, Spring Valley, and southwest Las Vegas—use the map on this site's homepage. Inventory and times change; call ${siteContact.phoneDisplay} or use the contact page for private showings.`,
+    answer: `${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}) maintains an interactive Google Map of upcoming open houses and tour stops in Rhodes Ranch, Spring Valley, and southwest Las Vegas—the map appears on the homepage and on our Open houses hub. For day-by-day planning and an MLS open house search, use ${siteContact.siteUrl.replace(/\/$/, "")}/open-houses. Inventory and times change; call ${siteContact.phoneDisplay} or use the contact page for private showings.`,
   },
 ];
