@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { startTransition, useEffect, useRef, useState } from "react";
 import { siteContact } from "@/lib/site-contact";
 
 function viewerUrlFromEmbed(embedUrl: string): string {
@@ -29,7 +29,7 @@ export function OpenHousesMapSection() {
     if (!root) return;
 
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      setIframeSrc(embedSrcFull);
+      startTransition(() => setIframeSrc(embedSrcFull));
       return;
     }
 
