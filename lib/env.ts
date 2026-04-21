@@ -315,4 +315,30 @@ export const publicEnv = {
     "NEXT_PUBLIC_CALENDLY_BADGE_LABEL",
     "Schedule with Dr. Jan Duffy",
   ),
+
+  /**
+   * Optional `sameAs` profile URLs for RealEstateAgent JSON-LD (E-E-A-T). Comma- or space-separated HTTPS URLs, max 8.
+   * Example: `https://www.linkedin.com/in/yourprofile,https://www.youtube.com/@yourchannel`
+   */
+  schemaSameAs: ((): readonly string[] => {
+    const raw = envOptional("NEXT_PUBLIC_SCHEMA_SAME_AS");
+    if (!raw) return [];
+    const parts = raw
+      .split(/[,;\s]+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+    const out: string[] = [];
+    for (const p of parts) {
+      if (out.length >= 8) break;
+      try {
+        const u = new URL(p);
+        if (u.protocol === "https:" && u.hostname.includes(".")) {
+          out.push(u.toString().replace(/\/$/, "") || p);
+        }
+      } catch {
+        /* skip invalid */
+      }
+    }
+    return out;
+  })(),
 } as const;

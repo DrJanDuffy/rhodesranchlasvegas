@@ -27,7 +27,7 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
     }),
   );
 
-  return {
+  const node: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "@id": `${base}/#agent`,
@@ -92,6 +92,12 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
       "Rhodes Ranch open houses",
     ],
   };
+
+  if (publicEnv.schemaSameAs.length > 0) {
+    node.sameAs = [...publicEnv.schemaSameAs];
+  }
+
+  return node;
 }
 
 export type FaqItem = { question: string; answer: string };

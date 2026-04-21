@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 /**
  * Canonical host redirect (apex → www) when NEXT_PUBLIC_SITE_URL uses a www hostname.
  * Vercel/DNS should still be primary; this guards misconfigured DNS or alternate entry hosts.
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/proxy
  */
 function canonicalHostname(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
@@ -16,7 +17,7 @@ function canonicalHostname(): string {
   }
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const canonical = canonicalHostname();
   const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
   if (!host || host === canonical) {

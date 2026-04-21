@@ -46,10 +46,19 @@ export const defaultMetadata: Metadata = {
     locale: "en_US",
     url: siteContact.siteUrl,
     siteName: siteContact.businessName,
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteContact.businessName} — ${siteContact.agentName}, Rhodes Ranch and Las Vegas 89148`,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${siteContact.businessName} | ${siteContact.agentName}`,
     description: `Rhodes Ranch and Las Vegas 89148 real estate with ${siteContact.agentName}. ${metaAddressOnly}`,
+    images: ["/og-default.png"],
   },
 };
