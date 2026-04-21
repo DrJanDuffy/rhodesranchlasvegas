@@ -110,6 +110,40 @@ export default function HomePage() {
 
       <OpenHousesMapSection />
 
+      <nav
+        className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-sm text-stone-600"
+        aria-label="Open house and map shortcuts"
+      >
+        <span className="font-medium text-stone-700">Plan tours:</span>
+        <Link href="/open-houses/saturday" className="text-emerald-900 underline-offset-2 hover:underline">
+          Saturday open houses (89148)
+        </Link>
+        <span aria-hidden="true" className="text-stone-400">
+          ·
+        </span>
+        <Link href="/open-houses/sunday" className="text-emerald-900 underline-offset-2 hover:underline">
+          Sunday open houses
+        </Link>
+        <span aria-hidden="true" className="text-stone-400">
+          ·
+        </span>
+        <Link href="/open-houses" className="text-emerald-900 underline-offset-2 hover:underline">
+          All weekdays
+        </Link>
+        <span aria-hidden="true" className="text-stone-400">
+          ·
+        </span>
+        <Link href="/map" className="text-emerald-900 underline-offset-2 hover:underline">
+          Rhodes Ranch area map
+        </Link>
+        <span aria-hidden="true" className="text-stone-400">
+          ·
+        </span>
+        <Link href="/contact" className="text-emerald-900 underline-offset-2 hover:underline">
+          Contact for access
+        </Link>
+      </nav>
+
       <section className="mt-14 grid gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6 text-slate-700">
           <h2 className="font-display text-2xl font-semibold tracking-tight text-emerald-950 sm:text-[1.75rem]">

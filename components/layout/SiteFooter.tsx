@@ -93,6 +93,16 @@ export function SiteFooter({ className }: { className?: string }) {
               </Link>
             </li>
             <li>
+              <Link href="/open-houses/saturday" className="text-stone-300 hover:text-white">
+                Saturday open houses — Rhodes Ranch &amp; Las Vegas 89148
+              </Link>
+            </li>
+            <li>
+              <Link href="/open-houses/sunday" className="text-stone-300 hover:text-white">
+                Sunday open houses — weekend tour planning
+              </Link>
+            </li>
+            <li>
               <Link href="/map" className="text-stone-300 hover:text-white">
                 Rhodes Ranch and Spring Valley map
               </Link>

@@ -27,43 +27,43 @@ export const weekdayMeta: Record<
     label: "Monday",
     title: "Monday open houses and showings",
     intro:
-      "Start the week with a focused plan: review open house listings below, cross-check times on the map, and call for a private tour if a Rhodes Ranch or southwest Las Vegas home fits your list.",
+      "Monday is when serious buyers reset the week: scan new MLS open house rows for Rhodes Ranch and Spring Valley (89148), note broker-reported windows, then cross-check the weekend map so you are not chasing stale pins after a quiet Sunday night.",
   },
   tuesday: {
     label: "Tuesday",
     title: "Tuesday open houses and showings",
     intro:
-      "Tuesday tours often have lighter traffic—use the listings search for scheduled opens, then confirm details on the weekend map or with your agent before you drive.",
+      "Tuesday walk-through traffic is usually lighter than Saturday, which can mean easier parking at guard-gated entries and more time with the hosting agent—still verify gate rules and ID requirements before you queue at Rhodes Ranch.",
   },
   wednesday: {
     label: "Wednesday",
     title: "Wednesday open houses and showings",
     intro:
-      "Midweek is a good time to compare new inventory and line up weekend routes. Listings update as brokers publish open house times; refresh before you head out.",
+      "Wednesday is ideal for comparing list-to-list without weekend crowds: use the office search below for midweek opens, then short-list two or three Spring Valley alternates if your first Rhodes Ranch pick does not hold an open this cycle.",
   },
   thursday: {
     label: "Thursday",
     title: "Thursday open houses and showings",
     intro:
-      "Thursday listings help you finalize a short list for the weekend. Guard-gated communities may require advance notice—call if you need access arranged.",
+      "Thursday listings often tee up the Friday-through-Sunday surge—lock your route early, text the listing side if a Rhodes Ranch address needs RSVP for gate access, and keep a backup slot open in case one host moves hours at the last minute.",
   },
   friday: {
     label: "Friday",
     title: "Friday open houses and showings",
     intro:
-      "Friday often previews the weekend lineup. Pair the search below with the map to plan Saturday and Sunday stops across Rhodes Ranch and nearby neighborhoods.",
+      "Friday is when the weekend tour plan comes together: blend the live MLS widget with the Google My Maps layer for Rhodes Ranch and southwest Las Vegas so you are not doubling back between 89148 pockets and parallel Spring Valley corridors.",
   },
   saturday: {
     label: "Saturday",
     title: "Saturday open houses",
     intro:
-      "Saturday is peak open-house day in Las Vegas—arrive early, bring questions about HOA and timing, and use the map to route multiple properties in 89148 and Spring Valley.",
+      "Saturday remains the busiest open-house block in the valley—start near Rhodes Ranch if guard lines form, carry HOA questions for the listing agent, and budget extra drive time between Spring Valley pockets when multiple 89148 homes overlap.",
   },
   sunday: {
     label: "Sunday",
     title: "Sunday open houses",
     intro:
-      "Sunday opens are popular for busy buyers. Confirm hours on each listing; times and status can change the same day in a competitive market.",
+      "Sunday draws relocation buyers and locals finishing a two-day sweep—re-read each listing status the same morning, watch for early closes, and call if you need a private showing after a crowded Rhodes Ranch or Las Vegas open house window.",
   },
 };
 
