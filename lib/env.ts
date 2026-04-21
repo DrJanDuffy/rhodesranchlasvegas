@@ -158,7 +158,7 @@ export const publicEnv = {
    */
   openHousesMapEmbedUrl: env(
     "NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL",
-    "https://www.google.com/maps/d/embed?mid=1fl048P0dAxnuNvwqHLrJU4i4zZmkwpE&ehbc=2E312F",
+    "https://www.google.com/maps/d/embed?mid=1BCGJcJb8ItmJtXroBUqvrBlpwRlDKGk&ehbc=2E312F",
   ),
 
   /**
