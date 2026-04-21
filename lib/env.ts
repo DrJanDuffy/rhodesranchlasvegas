@@ -68,7 +68,9 @@ export const publicEnv = {
   })(),
 
   /**
-   * Google Analytics 4 measurement ID (Google tag). Invalid `NEXT_PUBLIC_GA_MEASUREMENT_ID` values are ignored so production never loses the default stream.
+   * GA4 Web data stream — Measurement ID (Google tag).
+   * Admin reference: stream name `rhodesranchlasvegas`, numeric stream ID `14412088623`, URL must match `NEXT_PUBLIC_SITE_URL` (https://www.rhodesranchlasvegas.com, no typos).
+   * Invalid `NEXT_PUBLIC_GA_MEASUREMENT_ID` env values are ignored so production keeps this default.
    */
   googleAnalyticsMeasurementId: ((): string => {
     const fromEnv = envOptional("NEXT_PUBLIC_GA_MEASUREMENT_ID")?.trim();
