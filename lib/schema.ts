@@ -76,8 +76,8 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
         "@type": "EntryPoint",
         urlTemplate: publicEnv.calendlyEventUrl,
         actionPlatform: [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform",
+          "https://schema.org/DesktopWebPlatform",
+          "https://schema.org/MobileWebPlatform",
         ],
       },
     },

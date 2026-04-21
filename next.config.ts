@@ -12,7 +12,7 @@ const csp = [
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   "worker-src 'self' blob:",
-  "connect-src 'self' https://www.realscout.com https://em.realscout.com wss://www.realscout.com https://calendly.com https://api.calendly.com",
+  "connect-src 'self' https://www.realscout.com https://em.realscout.com wss://www.realscout.com https://calendly.com https://*.calendly.com https://api.calendly.com",
   "frame-src 'self' https://maps.google.com https://www.google.com https://www.google.com/maps https://www.realscout.com https://em.realscout.com https://calendly.com https://*.calendly.com",
   "object-src 'none'",
   "upgrade-insecure-requests",
@@ -39,10 +39,12 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "Content-Security-Policy", value: csp },
           { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-DNS-Prefetch-Control", value: "on" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
+            value:
+              "camera=(), microphone=(), geolocation=(), browsing-topics=(), join-ad-interest-group=(), payment=()",
           },
         ],
       },

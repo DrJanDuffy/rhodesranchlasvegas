@@ -27,7 +27,17 @@ export const defaultMetadata: Metadata = {
     const max = 320;
     return combined.length <= max ? combined : `${combined.slice(0, max - 1).trim()}…`;
   })(),
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   ...(publicEnv.googleSiteVerification
     ? { verification: { google: publicEnv.googleSiteVerification } }
     : {}),
@@ -36,5 +46,10 @@ export const defaultMetadata: Metadata = {
     locale: "en_US",
     url: siteContact.siteUrl,
     siteName: siteContact.businessName,
+  },
+  twitter: {
+    card: "summary",
+    title: `${siteContact.businessName} | ${siteContact.agentName}`,
+    description: `Rhodes Ranch and Las Vegas 89148 real estate with ${siteContact.agentName}. ${metaAddressOnly}`,
   },
 };
