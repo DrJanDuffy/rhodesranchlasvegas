@@ -192,6 +192,18 @@ export const publicEnv = {
     }
     return raw;
   })(),
+
+  /**
+   * Office listings UMD script (must stay on em.realscout.com per RealScout embed docs).
+   * Override only if RealScout provides a new path; keep CSP script-src in sync.
+   */
+  realScoutWidgetScriptSrc: (() => {
+    const fallback =
+      "https://em.realscout.com/widgets/realscout-web-components.umd.js";
+    const raw = envOptional("NEXT_PUBLIC_REALSCOUT_SCRIPT_URL") ?? fallback;
+    if (!/^https:\/\/em\.realscout\.com\/[\w./-]+\.js$/.test(raw)) return fallback;
+    return raw;
+  })(),
   /** RealScout sort token; restricted to safe characters for use in widget HTML attributes. */
   realScoutSortOrder: (() => {
     const raw = env("NEXT_PUBLIC_REALSCOUT_SORT_ORDER", "NEWEST");
@@ -273,9 +285,13 @@ export const publicEnv = {
     const fallback =
       "https://calendly.com/drjanduffy/dr-duffy-private-15-min-conversation";
     const raw = env("NEXT_PUBLIC_CALENDLY_EVENT_URL", fallback);
+    const isCalendlyHost = (hostname: string) => {
+      const h = hostname.toLowerCase();
+      return h === "calendly.com" || h.endsWith(".calendly.com");
+    };
     try {
       const u = new URL(raw);
-      if (u.protocol === "https:" && u.hostname === "calendly.com") {
+      if (u.protocol === "https:" && isCalendlyHost(u.hostname)) {
         return u.toString().replace(/\/$/, "") || fallback;
       }
     } catch {
@@ -284,9 +300,10 @@ export const publicEnv = {
     return fallback;
   })(),
 
+  /** Matches site themeColor / emerald brand (override via NEXT_PUBLIC_CALENDLY_BADGE_COLOR). */
   calendlyBadgeColor: (() => {
-    const raw = env("NEXT_PUBLIC_CALENDLY_BADGE_COLOR", "#0069ff");
-    return /^#[0-9A-Fa-f]{6}$/.test(raw) ? raw : "#0069ff";
+    const raw = env("NEXT_PUBLIC_CALENDLY_BADGE_COLOR", "#14532d");
+    return /^#[0-9A-Fa-f]{6}$/.test(raw) ? raw : "#14532d";
   })(),
 
   calendlyBadgeTextColor: (() => {
@@ -296,6 +313,6 @@ export const publicEnv = {
 
   calendlyBadgeLabel: env(
     "NEXT_PUBLIC_CALENDLY_BADGE_LABEL",
-    "Schedule time with me",
+    "Schedule with Dr. Jan Duffy",
   ),
 } as const;

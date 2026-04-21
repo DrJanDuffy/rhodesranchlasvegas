@@ -39,7 +39,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://em.realscout.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.realscout.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://assets.calendly.com" />
+        <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://maps.google.com" />
       </head>
       <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">

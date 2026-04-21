@@ -1,11 +1,15 @@
 /**
  * Single-flight loader for the office listings UMD web component (client-only).
  * One script tag; waits until <realscout-office-listings> is defined.
+ * Script URL defaults in {@link publicEnv.realScoutWidgetScriptSrc} (override with NEXT_PUBLIC_REALSCOUT_SCRIPT_URL).
  */
-export const REALSCOUT_WIDGET_SCRIPT_SRC =
-  "https://em.realscout.com/widgets/realscout-web-components.umd.js";
+import { publicEnv } from "@/lib/env";
 
 let loadPromise: Promise<void> | null = null;
+
+function widgetScriptSrc(): string {
+  return publicEnv.realScoutWidgetScriptSrc;
+}
 
 export function ensureRealScoutReady(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
@@ -17,13 +21,14 @@ export function ensureRealScoutReady(): Promise<void> {
   if (loadPromise) return loadPromise;
 
   loadPromise = (async () => {
+    const src = widgetScriptSrc();
     let script = document.querySelector<HTMLScriptElement>(
-      `script[src="${REALSCOUT_WIDGET_SCRIPT_SRC}"]`,
+      `script[src="${src}"]`,
     );
 
     if (!script) {
       script = document.createElement("script");
-      script.src = REALSCOUT_WIDGET_SCRIPT_SRC;
+      script.src = src;
       script.async = true;
       document.head.appendChild(script);
       await new Promise<void>((resolve, reject) => {
