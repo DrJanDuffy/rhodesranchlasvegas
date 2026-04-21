@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata, metaDescriptionTail } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { defaultMetadata, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
+import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import {
   type WeekdaySlug,
   WEEKDAY_SLUGS,
@@ -31,11 +33,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${label} Open Houses | Rhodes Ranch and Las Vegas 89148`,
     description: `${title} — MLS open house search, map on the open houses hub, and ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
     alternates: { canonical: `/open-houses/${raw}` },
-    openGraph: {
-      ...defaultMetadata.openGraph,
+    ...pageSocialMetadata(`/open-houses/${raw}`, {
       title: `${label} open houses | Las Vegas`,
       description: `Plan ${label} tours in ${siteContact.address.postalCode} and southwest Las Vegas. Open house listings below.`,
-    },
+    }),
   };
 }
 
@@ -47,6 +48,20 @@ export default async function OpenHousesWeekdayPage({ params }: PageProps) {
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Open houses", path: "/open-houses" },
+          { name: `${label} open houses`, path: `/open-houses/${raw}` },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: `/open-houses/${raw}`,
+          name: title,
+          description: intro.length > 300 ? `${intro.slice(0, 297).trim()}…` : intro,
+        })}
+      />
       <nav className="text-sm text-stone-600" aria-label="Breadcrumb">
         <ol className="flex flex-wrap gap-x-2 gap-y-1">
           <li>

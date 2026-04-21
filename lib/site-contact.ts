@@ -6,6 +6,8 @@ import { publicEnv, telHrefFromE164 } from "@/lib/env";
  */
 export const siteContact = {
   siteUrl: publicEnv.siteUrl,
+  /** Short brand for titles and manifest (GBP legal name is `businessName`). */
+  siteBrandShort: publicEnv.siteBrandShort,
   agentName: publicEnv.agentName,
   businessName: publicEnv.businessName,
   legalBrokerage: publicEnv.legalBrokerage,
@@ -54,5 +56,20 @@ export const siteContact = {
   /** Google My Maps embed URL for open houses (homepage). */
   openHousesMapEmbedUrl: publicEnv.openHousesMapEmbedUrl,
 } as const;
+
+/**
+ * Google Maps / reviews destination: optional GBP place or g.page link from env; otherwise NAP-based Maps search.
+ * Keeps footer, contact, and GBP “website” field aligned when you paste the official profile URL in Vercel.
+ */
+export function googleMapsProfileHref(): string {
+  const explicit = publicEnv.googleBusinessProfileMapsUrl;
+  if (explicit) return explicit;
+  return (
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(
+      `${publicEnv.agentName} ${publicEnv.legalBrokerage} ${publicEnv.addressStreet} ${publicEnv.addressLocality} ${publicEnv.addressRegion}`,
+    )
+  );
+}
 
 export type SiteContact = typeof siteContact;

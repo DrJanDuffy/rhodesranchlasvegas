@@ -6,8 +6,13 @@ import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { buyerFaq } from "@/lib/faq-buyers";
-import { defaultMetadata, metaAddressOnly, metaDescriptionTail } from "@/lib/metadata";
-import { faqPageJsonLd } from "@/lib/schema";
+import {
+  defaultMetadata,
+  metaAddressOnly,
+  metaDescriptionTail,
+  pageSocialMetadata,
+} from "@/lib/metadata";
+import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
@@ -15,16 +20,28 @@ export const metadata: Metadata = {
   title: "Buy a Home in Rhodes Ranch Las Vegas | Buyer Guide",
   description: `Rhodes Ranch Las Vegas home buyers: work with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}, and ${siteContact.agentName} for home search, showings, and offers in 89148. ${metaDescriptionTail}`,
   alternates: { canonical: "/buyers" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/buyers", {
     title: `Rhodes Ranch Buyers | ${siteContact.secondaryContactName}`,
     description: `Search homes, book tours, and get buyer guidance for Rhodes Ranch (89148). ${metaAddressOnly}`,
-  },
+  }),
 };
 
 export default function BuyersPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Buyers", path: "/buyers" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/buyers",
+          name: "Buy a home in Rhodes Ranch Las Vegas",
+          description: `Buyer guide for ${siteContact.serviceAreaDescription} with ${siteContact.secondaryContactName} and ${siteContact.agentName}.`,
+        })}
+      />
       <JsonLd data={faqPageJsonLd(buyerFaq)} />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">

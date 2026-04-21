@@ -3,17 +3,23 @@ import { siteContact } from "@/lib/site-contact";
 
 const base = siteContact.siteUrl.replace(/\/$/, "");
 
-/** WebSite graph node — pairs with RealEstateAgent for Search Console / rich result clarity. */
+const websiteDescription =
+  publicEnv.gbpBusinessDescription.length > 500
+    ? `${publicEnv.gbpBusinessDescription.slice(0, 497).trim()}…`
+    : publicEnv.gbpBusinessDescription;
+
+/** WebSite graph node — pairs with RealEstateAgent for Search Console + GBP entity consistency. */
 export function websiteJsonLd(): Record<string, unknown> {
-  const base = siteContact.siteUrl.replace(/\/$/, "");
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${base}/#website`,
     name: siteContact.businessName,
     url: base,
+    description: websiteDescription,
     inLanguage: "en-US",
     publisher: { "@id": `${base}/#agent` },
+    image: `${base}/og-default.png`,
   };
 }
 
@@ -32,6 +38,11 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
     "@type": "RealEstateAgent",
     "@id": `${base}/#agent`,
     name: siteContact.agentName,
+    image: `${base}/og-default.png`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${base}/og-default.png`,
+    },
     brand: {
       "@type": "Brand",
       name: siteContact.businessName,
@@ -98,6 +109,48 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
   }
 
   return node;
+}
+
+export type BreadcrumbCrumb = { name: string; path: string };
+
+/** WebPage node — links to WebSite + agent for GBP / entity clarity (use on key landing URLs). */
+export function webPageJsonLd(opts: {
+  path: string;
+  name: string;
+  description: string;
+}): Record<string, unknown> {
+  const p = opts.path.startsWith("/") ? opts.path : `/${opts.path}`;
+  const pageUrl = `${base}${p}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: opts.name,
+    description: opts.description,
+    isPartOf: { "@id": `${base}/#website` },
+    about: { "@id": `${base}/#agent` },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${base}/og-default.png`,
+    },
+    inLanguage: "en-US",
+  };
+}
+
+/** BreadcrumbList JSON-LD — match visible breadcrumbs; helps GSC rich results. */
+export function breadcrumbListJsonLd(crumbs: BreadcrumbCrumb[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: `${base}${c.path.startsWith("/") ? c.path : `/${c.path}`}`,
+    })),
+  };
 }
 
 export type FaqItem = { question: string; answer: string };

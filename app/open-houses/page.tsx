@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata, metaDescriptionTail } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { defaultMetadata, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
+import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { WEEKDAY_SLUGS, weekdayMeta } from "@/lib/open-houses-weekdays";
 import { siteContact } from "@/lib/site-contact";
 
@@ -12,16 +14,28 @@ export const metadata: Metadata = {
   title: "Rhodes Ranch and Las Vegas Open Houses by Day | Tour Schedule",
   description: `Plan open houses in Rhodes Ranch, Spring Valley, and Las Vegas 89148 by day of the week. Map and MLS open house search. ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
   alternates: { canonical: "/open-houses" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/open-houses", {
     title: "Open houses by day | Rhodes Ranch and Las Vegas",
     description: `Weekend map and daily open house listings for ${siteContact.serviceAreaDescription}.`,
-  },
+  }),
 };
 
 export default function OpenHousesHubPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Open houses", path: "/open-houses" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/open-houses",
+          name: "Rhodes Ranch and Las Vegas open houses by day",
+          description: `Weekend map, MLS open house search, and day-by-day planning for ${siteContact.serviceAreaDescription}.`,
+        })}
+      />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Open houses · {siteContact.address.postalCode}

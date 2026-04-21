@@ -4,8 +4,8 @@ import { NapBlock } from "@/components/sections/NapBlock";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { aeoFaq } from "@/lib/faq-aeo";
-import { defaultMetadata, metaDescriptionTail } from "@/lib/metadata";
-import { faqPageJsonLd } from "@/lib/schema";
+import { defaultMetadata, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
+import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
@@ -13,16 +13,28 @@ export const metadata: Metadata = {
   title: "Rhodes Ranch and Las Vegas Real Estate Q&A",
   description: `Straight answers about Rhodes Ranch (89148), ${siteContact.agentName}, ${siteContact.secondaryContactName}, home search, open houses, and southwest Las Vegas. ${metaDescriptionTail}`,
   alternates: { canonical: "/questions" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/questions", {
     title: "Rhodes Ranch and Las Vegas | Real estate Q&A",
     description: `Straight answers for buyers and sellers in ${siteContact.serviceAreaDescription}. Contact details on this page.`,
-  },
+  }),
 };
 
 export default function QuestionsPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Q&A", path: "/questions" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/questions",
+          name: "Rhodes Ranch and Las Vegas real estate Q&A",
+          description: `Answers for buyers and sellers in ${siteContact.serviceAreaDescription}.`,
+        })}
+      />
       <JsonLd data={faqPageJsonLd(aeoFaq)} />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">

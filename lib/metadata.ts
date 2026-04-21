@@ -13,8 +13,10 @@ export const metaAddressOnly = `${siteContact.fullAddressLine}.`;
 export const defaultMetadata: Metadata = {
   metadataBase: baseUrl,
   title: {
-    default: `${siteContact.businessName} | ${siteContact.agentName} | REALTOR®`,
-    template: `%s | ${siteContact.businessName}`,
+    /** Business name already includes “Homes by Dr. Jan Duffy”; avoid repeating the agent in the root title. */
+    default: `${siteContact.businessName} | REALTOR®`,
+    /** Child routes: page title + short brand (keeps SERP titles under typical truncation). */
+    template: `%s | ${siteContact.siteBrandShort}`,
   },
   description: (() => {
     const lead = publicEnv.gbpBusinessDescription
@@ -41,10 +43,18 @@ export const defaultMetadata: Metadata = {
   ...(publicEnv.googleSiteVerification
     ? { verification: { google: publicEnv.googleSiteVerification } }
     : {}),
+  /** Legacy geo hints for local crawlers; NAP + JSON-LD remain primary for GBP alignment. */
+  other: {
+    "geo.region": `US-${siteContact.address.addressRegion}`,
+    "geo.placename": siteContact.address.addressLocality,
+    "geo.position": `${siteContact.geo.latitude};${siteContact.geo.longitude}`,
+    ICBM: `${siteContact.geo.latitude}, ${siteContact.geo.longitude}`,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteContact.siteUrl,
+    /** Resolved against `metadataBase` — homepage; child routes must override via `openGraphForCanonicalPath`. */
+    url: "/",
     siteName: siteContact.businessName,
     images: [
       {
@@ -57,8 +67,54 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteContact.businessName} | ${siteContact.agentName}`,
+    title: `${siteContact.businessName} | REALTOR®`,
     description: `Rhodes Ranch and Las Vegas 89148 real estate with ${siteContact.agentName}. ${metaAddressOnly}`,
     images: ["/og-default.png"],
   },
 };
+
+/**
+ * Open Graph `url` must match the page canonical (path form; `metadataBase` makes it absolute).
+ * Use whenever a route overrides `openGraph` so shares and GSC see the correct URL.
+ */
+export function openGraphForCanonicalPath(
+  canonicalPath: string,
+  patch: Partial<NonNullable<Metadata["openGraph"]>> = {},
+): NonNullable<Metadata["openGraph"]> {
+  const baseOg = defaultMetadata.openGraph;
+  return {
+    ...(typeof baseOg === "object" && baseOg !== null ? baseOg : {}),
+    url: canonicalPath.startsWith("/") ? canonicalPath : `/${canonicalPath}`,
+    ...patch,
+  } as NonNullable<Metadata["openGraph"]>;
+}
+
+/** Twitter/X card — merge with site defaults (large image, default art). */
+export function twitterCardForPage(
+  patch: Partial<NonNullable<Metadata["twitter"]>> = {},
+): NonNullable<Metadata["twitter"]> {
+  const tw = defaultMetadata.twitter;
+  return {
+    ...(typeof tw === "object" && tw !== null ? tw : {}),
+    ...patch,
+  } as NonNullable<Metadata["twitter"]>;
+}
+
+/**
+ * Per-route Open Graph + Twitter using the same title/description (canonical `og:url` + aligned cards).
+ */
+export function pageSocialMetadata(
+  canonicalPath: string,
+  opts: { title: string; description: string },
+): Pick<Metadata, "openGraph" | "twitter"> {
+  return {
+    openGraph: openGraphForCanonicalPath(canonicalPath, {
+      title: opts.title,
+      description: opts.description,
+    }),
+    twitter: twitterCardForPage({
+      title: opts.title,
+      description: opts.description,
+    }),
+  };
+}

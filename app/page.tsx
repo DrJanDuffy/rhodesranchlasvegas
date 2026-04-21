@@ -7,13 +7,18 @@ import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSectio
 import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
 import { rhodesRanchFaq } from "@/lib/faq-rhodes-ranch";
 import { publicEnv } from "@/lib/env";
-import { defaultMetadata, metaAddressOnly, metaDescriptionTail } from "@/lib/metadata";
-import { faqPageJsonLd } from "@/lib/schema";
+import {
+  defaultMetadata,
+  metaAddressOnly,
+  metaDescriptionTail,
+  pageSocialMetadata,
+} from "@/lib/metadata";
+import { faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: `${siteContact.businessName} Homes for Sale | ${siteContact.agentName}`,
+  title: `${siteContact.siteBrandShort} homes for sale | ${siteContact.agentName}`,
   description: `${siteContact.agentName}, ${siteContact.agentTitle}, helps you buy or sell Rhodes Ranch Las Vegas homes (89148). Weekend open house map from ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). Partner with ${siteContact.secondaryContactName} for buyer needs. ${metaDescriptionTail}`,
   keywords: [
     "Rhodes Ranch Las Vegas homes",
@@ -24,16 +29,22 @@ export const metadata: Metadata = {
     "Spring Valley real estate",
   ],
   alternates: { canonical: "/" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
-    title: `${siteContact.businessName} Homes | ${siteContact.agentName}`,
+  ...pageSocialMetadata("/", {
+    title: `${siteContact.siteBrandShort} homes | ${siteContact.agentName}`,
     description: `${publicEnv.seoSiteTagline} Open house map: ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaAddressOnly}`,
-  },
+  }),
 };
 
 export default function HomePage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/",
+          name: `${siteContact.siteBrandShort} — Rhodes Ranch and Las Vegas ${siteContact.address.postalCode}`,
+          description: `${siteContact.agentName} (${siteContact.agentTitle}) and ${siteContact.secondaryContactName} for ${siteContact.serviceAreaDescription}. ${publicEnv.seoSiteTagline}`,
+        })}
+      />
       <JsonLd data={faqPageJsonLd(rhodesRanchFaq)} />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-900/85">

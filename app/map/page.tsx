@@ -1,7 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata, metaAddressOnly } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { defaultMetadata, metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
+import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { publicEnv } from "@/lib/env";
 import { siteContact } from "@/lib/site-contact";
 
@@ -9,11 +11,10 @@ export const metadata: Metadata = {
   title: "Rhodes Ranch and Spring Valley Area Map | Las Vegas 89148",
   description: `Interactive map of Rhodes Ranch and Spring Valley (${siteContact.address.postalCode})—orientation for buyers and sellers. ${metaAddressOnly} ${siteContact.agentName}, ${siteContact.agentTitle}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/map" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/map", {
     title: "Rhodes Ranch and Spring Valley map | Las Vegas 89148",
     description: `Community map for 89148. ${metaAddressOnly}`,
-  },
+  }),
 };
 
 export default function MapPage() {
@@ -21,6 +22,19 @@ export default function MapPage() {
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Area map", path: "/map" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/map",
+          name: "Rhodes Ranch and Spring Valley area map",
+          description: `Community orientation map for ${siteContact.address.postalCode}, Rhodes Ranch, and Spring Valley. ${metaAddressOnly}`,
+        })}
+      />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Area guide · {siteContact.address.postalCode}

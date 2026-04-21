@@ -67,8 +67,22 @@ export const publicEnv = {
     return t;
   })(),
 
+  /**
+   * Google Analytics 4 measurement ID. Override with `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel if the stream changes.
+   * Default matches the site’s live gtag stream (Google tag snippet).
+   */
+  googleAnalyticsMeasurementId: ((): string | undefined => {
+    const v =
+      envOptional("NEXT_PUBLIC_GA_MEASUREMENT_ID")?.trim() || "G-GR8HHKX1NL";
+    return /^G-[A-Z0-9]{4,15}$/i.test(v) ? v : undefined;
+  })(),
+
   agentName: env("NEXT_PUBLIC_AGENT_NAME", "Dr. Jan Duffy"),
-  businessName: env("NEXT_PUBLIC_BUSINESS_NAME", "Rhodes Ranch Las Vegas"),
+  /** Matches Google Business Profile business name (visible NAP + JSON-LD). */
+  businessName: env(
+    "NEXT_PUBLIC_BUSINESS_NAME",
+    "Rhodes Ranch Las Vegas | Homes by Dr. Jan Duffy",
+  ),
   legalBrokerage: env(
     "NEXT_PUBLIC_BROKERAGE_NAME",
     "Berkshire Hathaway HomeServices Nevada Properties",
@@ -317,12 +331,39 @@ export const publicEnv = {
   ),
 
   /**
-   * Optional `sameAs` profile URLs for RealEstateAgent JSON-LD (E-E-A-T). Comma- or space-separated HTTPS URLs, max 8.
-   * Example: `https://www.linkedin.com/in/yourprofile,https://www.youtube.com/@yourchannel`
+   * Google Maps / Business Profile public place or short link (reviews + pin).
+   * Paste from GBP “Share” (https://maps.google.com/..., https://www.google.com/maps/place/..., or https://g.page/...).
+   * When unset, the site builds a Maps search URL from NAP (footer + contact).
+   */
+  googleBusinessProfileMapsUrl: ((): string | undefined => {
+    const raw = envOptional("NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_MAPS_URL")?.trim();
+    if (!raw) return undefined;
+    try {
+      const u = new URL(raw);
+      if (u.protocol !== "https:") return undefined;
+      const h = u.hostname.toLowerCase();
+      const allowed =
+        h === "maps.google.com" ||
+        h === "www.google.com" ||
+        h === "g.page" ||
+        h.endsWith(".g.page") ||
+        h === "maps.app.goo.gl" ||
+        h === "goo.gl";
+      if (!allowed) return undefined;
+      return u.toString();
+    } catch {
+      return undefined;
+    }
+  })(),
+
+  /**
+   * `sameAs` profile URLs for RealEstateAgent JSON-LD (E-E-A-T). Comma- or space-separated HTTPS URLs, max 8.
+   * When unset, defaults to GBP-linked LinkedIn + Facebook company pages.
    */
   schemaSameAs: ((): readonly string[] => {
-    const raw = envOptional("NEXT_PUBLIC_SCHEMA_SAME_AS");
-    if (!raw) return [];
+    const raw =
+      envOptional("NEXT_PUBLIC_SCHEMA_SAME_AS")?.trim() ||
+      "https://www.linkedin.com/company/rhodesranchlasvegas/,https://www.facebook.com/rhodesranchlasvegashomes";
     const parts = raw
       .split(/[,;\s]+/)
       .map((s) => s.trim())

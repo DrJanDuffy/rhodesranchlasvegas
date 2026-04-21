@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { BuyerCtaStrip } from "@/components/buyers/BuyerCtaStrip";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata, metaAddressOnly } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { defaultMetadata, metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
+import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
@@ -11,15 +13,29 @@ export const metadata: Metadata = {
   title: "Las Vegas Home Buying Process | Rhodes Ranch Buyers",
   description: `Overview of the Las Vegas area home purchase flow for Rhodes Ranch buyers: search, offer, escrow, and closing—with ${siteContact.secondaryContactName}, ${siteContact.secondaryContactTitle}. ${metaAddressOnly} Not legal or tax advice.`,
   alternates: { canonical: "/buyers/process" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/buyers/process", {
     title: "Las Vegas Home Buying Process",
-  },
+    description: `Search through closing with ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaAddressOnly} Educational overview only.`,
+  }),
 };
 
 export default function BuyersProcessPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Buyers", path: "/buyers" },
+          { name: "Buying process", path: "/buyers/process" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/buyers/process",
+          name: "Las Vegas home buying process",
+          description: `Educational overview for Rhodes Ranch buyers: search through closing with ${siteContact.secondaryContactName}. Not legal or tax advice.`,
+        })}
+      />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Buyers · Process overview

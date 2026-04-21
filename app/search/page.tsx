@@ -2,23 +2,42 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata, metaAddressOnly, metaDescriptionTail } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  defaultMetadata,
+  metaAddressOnly,
+  metaDescriptionTail,
+  pageSocialMetadata,
+} from "@/lib/metadata";
+import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: "Homes for Sale Near Rhodes Ranch and Las Vegas | Search Listings",
   description: `Browse up-to-date homes for sale on this site. For Rhodes Ranch Las Vegas homes (89148), contact ${siteContact.agentName} (${siteContact.agentTitle}) or ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
   alternates: { canonical: "/search" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/search", {
     title: "Homes for sale near Rhodes Ranch and Las Vegas",
     description: `Find homes for sale near Rhodes Ranch and 89148. ${metaAddressOnly}`,
-  },
+  }),
 };
 
 export default function SearchPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Homes for sale", path: "/search" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/search",
+          name: "Homes for sale near Rhodes Ranch and Las Vegas",
+          description: `Active listings search for ${siteContact.serviceAreaDescription}. ${siteContact.agentName} and ${siteContact.secondaryContactName}. ${metaAddressOnly}`,
+        })}
+      />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Home search · {siteContact.address.postalCode}

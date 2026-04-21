@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Geist } from "next/font/google";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { CalendlyBadge } from "@/components/calendly/CalendlyBadge";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { publicEnv } from "@/lib/env";
 import { defaultMetadata } from "@/lib/metadata";
 import { realEstateAgentJsonLd, websiteJsonLd } from "@/lib/schema";
 import "./globals.css";
@@ -48,8 +50,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://maps.google.com" />
+        {publicEnv.googleAnalyticsMeasurementId ? (
+          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        ) : null}
       </head>
       <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
+        <GoogleAnalytics />
         <JsonLd data={realEstateAgentJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
         {/*

@@ -1,14 +1,10 @@
 import Link from "next/link";
-import { siteContact } from "@/lib/site-contact";
+import { googleMapsProfileHref, siteContact } from "@/lib/site-contact";
 import { cn } from "@/lib/utils";
 
-const gbpSearchUrl =
-  "https://www.google.com/maps/search/?api=1&query=" +
-  encodeURIComponent(
-    `${siteContact.agentName} ${siteContact.legalBrokerage} ${siteContact.address.streetAddress} ${siteContact.address.addressLocality} ${siteContact.address.addressRegion}`,
-  );
-
 export function SiteFooter({ className }: { className?: string }) {
+  const mapsAndReviewsHref = googleMapsProfileHref();
+
   return (
     <footer
       className={cn(
@@ -136,7 +132,7 @@ export function SiteFooter({ className }: { className?: string }) {
               Call now
             </a>
             <a
-              href={gbpSearchUrl}
+              href={mapsAndReviewsHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"
@@ -144,7 +140,7 @@ export function SiteFooter({ className }: { className?: string }) {
               View on Google Maps
             </a>
             <a
-              href={gbpSearchUrl}
+              href={mapsAndReviewsHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"

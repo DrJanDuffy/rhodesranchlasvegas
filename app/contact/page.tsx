@@ -6,30 +6,38 @@ import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { contactFaq } from "@/lib/faq-contact";
-import { defaultMetadata, metaDescriptionTail } from "@/lib/metadata";
-import { faqPageJsonLd } from "@/lib/schema";
-import { siteContact } from "@/lib/site-contact";
+import { defaultMetadata, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
+import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
+import { googleMapsProfileHref, siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: `Schedule a consultation | Contact ${siteContact.agentName} | ${siteContact.businessName} 89148`,
   description: `Book a private 15-minute conversation with ${siteContact.agentName} or reach ${siteContact.secondaryContactName} for Rhodes Ranch Las Vegas homes. Call ${siteContact.phoneDisplay} or visit ${siteContact.fullAddressLine}. Use the calendar below. Nevada license ${siteContact.license}. ${siteContact.legalBrokerage}.`,
   alternates: { canonical: "/contact" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/contact", {
     title: `Schedule with ${siteContact.agentName} | ${siteContact.businessName}`,
     description: `Schedule a consultation or call for Rhodes Ranch and 89148 real estate. ${metaDescriptionTail}`,
-  },
+  }),
 };
 
-const gbpSearchUrl =
-  "https://www.google.com/maps/search/?api=1&query=" +
-  encodeURIComponent(
-    `${siteContact.agentName} ${siteContact.legalBrokerage} ${siteContact.address.streetAddress} ${siteContact.address.addressLocality} ${siteContact.address.addressRegion}`,
-  );
-
 export default function ContactPage() {
+  const mapsHref = googleMapsProfileHref();
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/contact",
+          name: `Contact ${siteContact.agentName} — ${siteContact.siteBrandShort}`,
+          description: `Schedule a consultation, call ${siteContact.phoneDisplay}, or visit ${siteContact.fullAddressLine}.`,
+        })}
+      />
       <JsonLd data={faqPageJsonLd(contactFaq)} />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
@@ -69,7 +77,7 @@ export default function ContactPage() {
         <p className="mt-3 text-sm text-stone-600">
           See reviews and directions on{" "}
           <a
-            href={gbpSearchUrl}
+            href={mapsHref}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-emerald-900 underline-offset-2 hover:underline"
@@ -133,7 +141,7 @@ export default function ContactPage() {
               Email {siteContact.secondaryContactName} (buyers)
             </a>
             <a
-              href={gbpSearchUrl}
+              href={mapsHref}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-emerald-900/30 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-50"
@@ -141,7 +149,7 @@ export default function ContactPage() {
               Directions
             </a>
             <a
-              href={gbpSearchUrl}
+              href={mapsHref}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-emerald-900/30 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-50"

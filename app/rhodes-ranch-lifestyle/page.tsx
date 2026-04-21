@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { NapBlock } from "@/components/sections/NapBlock";
-import { defaultMetadata, metaAddressOnly } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { defaultMetadata, metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
+import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
@@ -10,10 +12,10 @@ export const metadata: Metadata = {
     "Rhodes Ranch Community Guide: Golf, Amenities, and Southwest Las Vegas Lifestyle | 89148",
   description: `Guard-gated Rhodes Ranch (89148): Ted Robinson golf, recreation center, trails, and resort-style living southwest of the Strip. Community context for buyers and sellers—${siteContact.agentName}, ${siteContact.legalBrokerage}. ${metaAddressOnly}`,
   alternates: { canonical: "/rhodes-ranch-lifestyle" },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+  ...pageSocialMetadata("/rhodes-ranch-lifestyle", {
     title: "Rhodes Ranch community guide: golf, amenities, and Las Vegas 89148 lifestyle",
-  },
+    description: `Community context for ${siteContact.serviceAreaDescription}. ${metaAddressOnly}`,
+  }),
 };
 
 const highlights = [
@@ -52,6 +54,19 @@ const highlights = [
 export default function RhodesRanchLifestylePage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <JsonLd
+        data={breadcrumbListJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Rhodes Ranch lifestyle", path: "/rhodes-ranch-lifestyle" },
+        ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/rhodes-ranch-lifestyle",
+          name: "Rhodes Ranch community guide — golf, amenities, and Las Vegas 89148 lifestyle",
+          description: `Editorial community overview for ${siteContact.serviceAreaDescription}. Verify hours and fees with each venue.`,
+        })}
+      />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Community guide · {siteContact.address.postalCode} · Not affiliated with named venues
