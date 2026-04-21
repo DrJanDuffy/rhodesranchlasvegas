@@ -29,9 +29,13 @@ export function CalendlyBadge() {
       });
     }
 
+    const isMobile =
+      typeof globalThis.matchMedia === "function" &&
+      globalThis.matchMedia("(max-width: 768px)").matches;
+
     if (typeof globalThis.requestIdleCallback === "function") {
       const id = globalThis.requestIdleCallback(() => scheduleInit(), {
-        timeout: 4000,
+        timeout: isMobile ? 9000 : 4000,
       });
       return () => {
         cancelled = true;
@@ -39,7 +43,7 @@ export function CalendlyBadge() {
       };
     }
 
-    const t = globalThis.setTimeout(scheduleInit, 2800);
+    const t = globalThis.setTimeout(scheduleInit, isMobile ? 6000 : 2800);
     return () => {
       cancelled = true;
       globalThis.clearTimeout(t);

@@ -11,14 +11,19 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: true,
+  preload: true,
 });
 
 /** Editorial serif for headlines—luxury real estate tone without sacrificing readability. */
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600"],
   display: "swap",
+  adjustFontFallback: true,
+  preload: false,
 });
 
 export const metadata: Metadata = defaultMetadata;

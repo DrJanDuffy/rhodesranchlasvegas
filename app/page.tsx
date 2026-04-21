@@ -75,6 +75,7 @@ export default function HomePage() {
 
       <RealScoutLeadSection
         className="mt-10"
+        listingMountStrategy="visible"
         listingIntro="Use the same live listing search we use for Rhodes Ranch clients—filter by price and property type, then call for a private tour or a focused short list."
       />
 
