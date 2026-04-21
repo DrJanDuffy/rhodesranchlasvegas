@@ -68,13 +68,13 @@ export const publicEnv = {
   })(),
 
   /**
-   * Google Analytics 4 measurement ID. Override with `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel if the stream changes.
-   * Default matches the site’s live gtag stream (Google tag snippet).
+   * Google Analytics 4 measurement ID (Google tag). Invalid `NEXT_PUBLIC_GA_MEASUREMENT_ID` values are ignored so production never loses the default stream.
    */
-  googleAnalyticsMeasurementId: ((): string | undefined => {
-    const v =
-      envOptional("NEXT_PUBLIC_GA_MEASUREMENT_ID")?.trim() || "G-GR8HHKX1NL";
-    return /^G-[A-Z0-9]{4,15}$/i.test(v) ? v : undefined;
+  googleAnalyticsMeasurementId: ((): string => {
+    const fromEnv = envOptional("NEXT_PUBLIC_GA_MEASUREMENT_ID")?.trim();
+    const fallback = "G-GR8HHKX1NL";
+    if (fromEnv && /^G-[A-Z0-9]{4,15}$/i.test(fromEnv)) return fromEnv;
+    return fallback;
   })(),
 
   agentName: env("NEXT_PUBLIC_AGENT_NAME", "Dr. Jan Duffy"),
