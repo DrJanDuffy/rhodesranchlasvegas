@@ -9,6 +9,25 @@ const siteRoot = siteContact.siteUrl.replace(/\/$/, "");
  */
 export const aeoFaq: FaqItem[] = [
   {
+    question: "Where is Rhodes Ranch in Las Vegas?",
+    answer:
+      "Rhodes Ranch is in the southwest Las Vegas valley and is commonly associated with zip code 89148 in the Spring Valley area of unincorporated Clark County.",
+  },
+  {
+    question: "Where is Rhodes Ranch Las Vegas NV?",
+    answer: `For practical navigation, use ${siteContact.fullAddressLine} as your nearby office reference point and then search/listing maps for Rhodes Ranch in 89148.`,
+  },
+  {
+    question: "How far is Rhodes Ranch from the Las Vegas Strip?",
+    answer:
+      "It is generally about a 15- to 25-minute drive depending on traffic, your exact start point on the Strip, and time of day.",
+  },
+  {
+    question: "How is the neighborhood in Rhodes Ranch, Las Vegas, NV?",
+    answer:
+      "Rhodes Ranch is widely known as a guard-gated, golf-centered community with recreation amenities and planned residential sections. Neighborhood fit depends on your budget, commute, and preferred home style, so touring at different times of day is important.",
+  },
+  {
     question: "Who is Dr. Jan Duffy and what does Rhodes Ranch Las Vegas Real Estate Division do?",
     answer: `${siteContact.agentName} is the ${siteContact.agentTitle} with ${siteContact.legalBrokerage}, Nevada license ${siteContact.license}. The Rhodes Ranch Las Vegas Real Estate Division focuses on listing strategy, pricing, and marketing for sellers, and coordinates with ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}) for purchase-side search and showings in ${siteContact.serviceAreaDescription}.`,
   },
@@ -37,6 +56,11 @@ export const aeoFaq: FaqItem[] = [
   {
     question: "What neighborhoods does your team serve beyond Rhodes Ranch?",
     answer: `We work with buyers and sellers across ${siteContact.serviceAreaDescription}, including Spring Valley and nearby southwest Las Vegas communities. If your search expands, tell us your commute and school priorities so we can adjust map search and showings.`,
+  },
+  {
+    question: "Is there a nearby community in Las Vegas as big as the Rhodes Ranch guard-gated community?",
+    answer:
+      "Several large master-planned communities exist across the Las Vegas valley, but community size, guard-gate structure, amenities, and HOA setup differ by neighborhood. The best approach is to compare current listings, maps, and rules side by side based on your priorities.",
   },
   {
     question: "Can I work with your team if I am buying and selling in the same year?",

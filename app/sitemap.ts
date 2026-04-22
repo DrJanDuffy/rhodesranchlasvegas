@@ -56,6 +56,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${base}/rhodes-ranch-mls-listings`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.91,
+    },
+    {
+      url: `${base}/rhodes-ranch-new-listings`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.88,
+    },
+    {
+      url: `${base}/rhodes-ranch-homes-under-500k`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.87,
+    },
+    {
+      url: `${base}/rhodes-ranch-pool-homes`,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.87,
+    },
+    {
       url: `${base}/open-houses`,
       lastModified,
       changeFrequency: "daily",

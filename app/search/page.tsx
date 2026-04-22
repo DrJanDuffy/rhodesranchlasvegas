@@ -3,19 +3,22 @@ import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
+import { LastUpdatedNote } from "@/components/seo/LastUpdatedNote";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { metaAddressOnly, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
-import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
+import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
+import { rhodesMlsFaq } from "@/lib/faq-rhodes-mls";
 import { siteContact } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
-  title: "Homes for Sale Near Rhodes Ranch and Las Vegas | Search Listings",
-  description: `Browse up-to-date homes for sale on this site. For Rhodes Ranch Las Vegas homes (89148), contact ${siteContact.agentName} (${siteContact.agentTitle}) or ${siteContact.secondaryContactName} (${siteContact.secondaryContactTitle}). ${metaDescriptionTail}`,
+  title: "Rhodes Ranch MLS Listings and Homes for Sale | Search 89148",
+  description: `Search Rhodes Ranch MLS listings and homes for sale in Las Vegas 89148. Filter active listings by price, map, and features, then schedule private tours with ${siteContact.agentName} and ${siteContact.secondaryContactName}. ${metaDescriptionTail}`,
   alternates: { canonical: "/search" },
   ...pageSocialMetadata("/search", {
-    title: "Homes for sale near Rhodes Ranch and Las Vegas",
-    description: `Find homes for sale near Rhodes Ranch and 89148. ${metaAddressOnly}`,
+    title: "Rhodes Ranch MLS Listings and Homes for Sale",
+    description: `MLS-backed home search for Rhodes Ranch and 89148. ${metaAddressOnly}`,
   }),
 };
 
@@ -31,22 +34,23 @@ export default function SearchPage() {
       <JsonLd
         data={webPageJsonLd({
           path: "/search",
-          name: "Homes for sale near Rhodes Ranch and Las Vegas",
-          description: `Active listings search for ${siteContact.serviceAreaDescription}. ${siteContact.agentName} and ${siteContact.secondaryContactName}. ${metaAddressOnly}`,
+          name: "Rhodes Ranch MLS listings and homes for sale",
+          description: `Active MLS-backed search for Rhodes Ranch and nearby 89148 inventory. ${siteContact.agentName} and ${siteContact.secondaryContactName}. ${metaAddressOnly}`,
         })}
       />
+      <JsonLd data={faqPageJsonLd(rhodesMlsFaq.slice(0, 4))} />
       <header className="max-w-3xl">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-900/85">
           Home search · {siteContact.address.postalCode}
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.25rem]">
-          Homes for sale near Rhodes Ranch and Las Vegas
+          Rhodes Ranch MLS Listings and Homes for Sale
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
-          Explore active listings with the on-site home search. Narrow results with your agent—or ask{" "}
-          {siteContact.agentName} ({siteContact.agentTitle}) or {siteContact.secondaryContactName} (
-          {siteContact.secondaryContactTitle}) for a Rhodes Ranch–focused search that matches budget,
-          timing, and           must-haves.
+          Explore active, MLS-backed listings with on-site map search. Narrow results by budget, beds,
+          baths, and location, then work with {siteContact.agentName} ({siteContact.agentTitle}) or{" "}
+          {siteContact.secondaryContactName} ({siteContact.secondaryContactTitle}) for a Rhodes
+          Ranch-focused short list and private tours.
         </p>
         <p className="mt-3 text-sm text-stone-600">
           Compare with Google&apos;s organic results:{" "}
@@ -62,16 +66,57 @@ export default function SearchPage() {
             Back to Rhodes Ranch overview
           </Link>
         </p>
+        <LastUpdatedNote reviewedMonthYear="April 2026" className="mt-4" />
       </header>
 
       <RealScoutLeadSection
         className="mt-10"
         titleElement="h2"
-        heading="Rhodes Ranch area listings"
+        heading="Rhodes Ranch MLS Listings"
         headingId="search-listings-heading"
-        listingIntro="Refine by price, status, and property type, then reach out for a tour in Rhodes Ranch, Spring Valley, or the southwest valley."
+        listingIntro="Refine by price, status, and property type, then request private tours in Rhodes Ranch, Spring Valley, and nearby southwest Las Vegas."
         listingMountStrategy="immediate"
       />
+
+      <section className="mt-14 rounded-2xl border border-stone-200/80 bg-white p-6 shadow-[0_6px_24px_rgb(0_0_0_/0.05)] ring-1 ring-stone-900/5 sm:p-8">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-emerald-950">
+          Popular Rhodes Ranch Listing Paths
+        </h2>
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-stone-700">
+          <li>
+            <Link href="/rhodes-ranch-mls-listings" className="font-medium text-emerald-900 hover:underline">
+              Rhodes Ranch MLS listings (all inventory)
+            </Link>
+          </li>
+          <li>
+            <Link href="/rhodes-ranch-new-listings" className="font-medium text-emerald-900 hover:underline">
+              Rhodes Ranch new listings
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/rhodes-ranch-homes-under-500k"
+              className="font-medium text-emerald-900 hover:underline"
+            >
+              Rhodes Ranch homes under $500k
+            </Link>
+          </li>
+          <li>
+            <Link href="/rhodes-ranch-pool-homes" className="font-medium text-emerald-900 hover:underline">
+              Rhodes Ranch pool homes
+            </Link>
+          </li>
+        </ul>
+      </section>
+
+      <div className="mt-14">
+        <FaqSection
+          id="search-rhodes-mls-faq"
+          titleLevel={3}
+          heading="Rhodes Ranch Search FAQ"
+          items={rhodesMlsFaq.slice(0, 4)}
+        />
+      </div>
 
       <LocalExploreNav currentPath="/search" className="mt-14" />
 

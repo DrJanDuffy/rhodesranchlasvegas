@@ -11,6 +11,22 @@ const EXPLORE_LINKS: { href: string; label: string }[] = [
     label: "Homes for sale near Rhodes Ranch, Spring Valley, and southwest Las Vegas",
   },
   {
+    href: "/rhodes-ranch-mls-listings",
+    label: "Rhodes Ranch MLS Listings - all listings, easy to search",
+  },
+  {
+    href: "/rhodes-ranch-new-listings",
+    label: "Rhodes Ranch new listings and recent status changes",
+  },
+  {
+    href: "/rhodes-ranch-homes-under-500k",
+    label: "Rhodes Ranch homes under $500k (price-focused search)",
+  },
+  {
+    href: "/rhodes-ranch-pool-homes",
+    label: "Rhodes Ranch pool homes for sale in Las Vegas 89148",
+  },
+  {
     href: "/open-houses",
     label: "Open houses by day of the week with weekend tour planning",
   },

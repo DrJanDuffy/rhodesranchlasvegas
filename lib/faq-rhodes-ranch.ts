@@ -7,6 +7,26 @@ import { siteContact } from "@/lib/site-contact";
  */
 export const rhodesRanchFaq: FaqItem[] = [
   {
+    question: "Where is Rhodes Ranch Las Vegas?",
+    answer:
+      "Rhodes Ranch is in southwest Las Vegas, generally associated with zip code 89148 in the Spring Valley area of unincorporated Clark County.",
+  },
+  {
+    question: "How far is Rhodes Ranch from the Las Vegas Strip?",
+    answer:
+      "Drive times are often in the 15- to 25-minute range depending on traffic patterns and where you start on the Strip.",
+  },
+  {
+    question: "How is the neighborhood in Rhodes Ranch, Las Vegas, NV?",
+    answer:
+      "The neighborhood is known for guard-gated access, a central golf course, and resort-style amenities. Home style, lot size, HOA rules, and commute convenience can vary by section, so touring specific streets is the best way to evaluate fit.",
+  },
+  {
+    question: "Is Rhodes Ranch in Las Vegas bankrupt?",
+    answer:
+      "Community financial or legal status can change over time, so avoid relying on rumors. For current, verifiable information, review official HOA documents and public records and consult qualified legal or financial professionals when needed.",
+  },
+  {
     question: "Is there a quick way to open Google Search for Rhodes Ranch Las Vegas?",
     answer: `Yes. Use the “Rhodes Ranch Las Vegas on Google” (or “Google Search”) link in the office block, site footer, or the Rhodes Ranch hub page—it opens the same saved Google Search view (${publicEnv.googleSearchShareUrl}) so you can compare Google’s results with our on-site home search and maps.`,
   },

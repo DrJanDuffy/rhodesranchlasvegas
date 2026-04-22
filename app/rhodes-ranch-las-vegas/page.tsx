@@ -7,6 +7,7 @@ import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
+import { LastUpdatedNote } from "@/components/seo/LastUpdatedNote";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { rhodesRanchFaq } from "@/lib/faq-rhodes-ranch";
 import { publicEnv } from "@/lib/env";
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
   keywords: [
     "Rhodes Ranch Las Vegas",
     "Rhodes Ranch homes for sale",
+    "Rhodes Ranch MLS listings",
     "89148 real estate",
     "Rhodes Ranch Las Vegas homes",
     "Spring Valley homes",
@@ -78,10 +80,17 @@ export default function RhodesRanchLasVegasHubPage() {
           <strong>{siteContact.secondaryContactName}</strong> for tours and pricing context—without
           hype or unverified market claims.
         </p>
+        <LastUpdatedNote reviewedMonthYear="April 2026" className="mt-4" />
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
-            href="/search"
+            href="/rhodes-ranch-mls-listings"
             className="rounded-full bg-emerald-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-950/15 ring-1 ring-white/10 transition hover:bg-emerald-950"
+          >
+            Rhodes Ranch MLS Listings
+          </Link>
+          <Link
+            href="/search"
+            className="rounded-full border border-emerald-900/25 bg-emerald-50/90 px-5 py-2.5 text-sm font-semibold text-emerald-950 shadow-sm hover:bg-emerald-100/90"
           >
             Search Rhodes Ranch area listings
           </Link>
@@ -111,6 +120,8 @@ export default function RhodesRanchLasVegasHubPage() {
 
       <RealScoutLeadSection
         className="mt-10"
+        heading="Rhodes Ranch MLS Listings and Homes for Sale"
+        headingId="rhodes-hub-listings-heading"
         listingMountStrategy="visible"
         listingIntro="Filter by price, beds, and baths for Rhodes Ranch and nearby Spring Valley—same MLS-backed search we use to prep private tours and offer strategy."
       />
