@@ -70,6 +70,14 @@ export default function RhodesRanchPoolHomesPage() {
         listingIntro="Pool-oriented listings and nearby options in 89148. Use filters and map search for the right mix of price and features."
         listingMountStrategy="immediate"
       />
+      <RealScoutLeadSection
+        className="mt-12"
+        variant="openHouses"
+        heading="Open house listings (broker search)"
+        headingId="rhodes-ranch-pool-homes-open-house-heading"
+        listingIntro="Search open house inventory from our office feed—filter in the widget, then call for guard-gate access or a private showing if the home is not holding a public open."
+        listingMountStrategy="immediate"
+      />
 
       <LocalExploreNav currentPath={canonicalPath} className="mt-14" />
       <div className="mt-14">

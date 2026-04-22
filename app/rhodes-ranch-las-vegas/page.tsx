@@ -125,6 +125,14 @@ export default function RhodesRanchLasVegasHubPage() {
         listingMountStrategy="visible"
         listingIntro="Filter by price, beds, and baths for Rhodes Ranch and nearby Spring Valley—same MLS-backed search we use to prep private tours and offer strategy."
       />
+      <RealScoutLeadSection
+        className="mt-12"
+        variant="openHouses"
+        heading="Open house listings (broker search)"
+        headingId="rhodes-hub-open-house-listings-heading"
+        listingIntro="Search open house inventory from our office feed—filter in the widget, then call for guard-gate access or a private showing if the home is not holding a public open."
+        listingMountStrategy="immediate"
+      />
 
       <section
         className="mt-12 rounded-2xl border border-stone-200/90 bg-gradient-to-br from-white via-white to-emerald-50/35 p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5 sm:p-8"

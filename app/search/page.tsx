@@ -77,6 +77,14 @@ export default function SearchPage() {
         listingIntro="Refine by price, status, and property type, then request private tours in Rhodes Ranch, Spring Valley, and nearby southwest Las Vegas."
         listingMountStrategy="immediate"
       />
+      <RealScoutLeadSection
+        className="mt-12"
+        variant="openHouses"
+        heading="Open house listings (broker search)"
+        headingId="search-open-house-listings-heading"
+        listingIntro="Search open house inventory from our office feed—filter in the widget, then call for guard-gate access or a private showing if the home is not holding a public open."
+        listingMountStrategy="immediate"
+      />
 
       <section className="mt-14 rounded-2xl border border-stone-200/80 bg-white p-6 shadow-[0_6px_24px_rgb(0_0_0_/0.05)] ring-1 ring-stone-900/5 sm:p-8">
         <h2 className="font-display text-2xl font-semibold tracking-tight text-emerald-950">
