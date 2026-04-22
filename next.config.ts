@@ -18,6 +18,10 @@ const csp = [
   "upgrade-insecure-requests",
 ].join("; ");
 
+/* Lighthouse “Legacy JavaScript”: `browserslist.production` in package.json targets modern engines. Polyfill
+ * strings in `/_next/static/chunks/*.js` often come from Next’s client runtime. After `next build`, grep those
+ * files to confirm; meaningful reduction may require a Next upgrade (see vercel/next.js discussions on modern output). */
+
 const nextConfig: NextConfig = {
   /** Tailwind-friendly: inline CSS in production to shorten the HTML → stylesheet critical chain (FCP/LCP). */
   experimental: {

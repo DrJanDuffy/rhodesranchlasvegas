@@ -11,6 +11,21 @@ function widgetScriptSrc(): string {
   return publicEnv.realScoutWidgetScriptSrc;
 }
 
+const REALSCOUT_EM_ORIGIN = "https://em.realscout.com";
+
+/** One-time hint when we are about to request the UMD script—avoids unused global preconnect on LCP. */
+function ensureRealScoutPreconnect(): void {
+  if (typeof document === "undefined") return;
+  const id = "realscout-em-preconnect";
+  if (document.getElementById(id)) return;
+  const link = document.createElement("link");
+  link.id = id;
+  link.rel = "preconnect";
+  link.href = REALSCOUT_EM_ORIGIN;
+  link.crossOrigin = "anonymous";
+  document.head.appendChild(link);
+}
+
 export function ensureRealScoutReady(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
 
@@ -27,6 +42,7 @@ export function ensureRealScoutReady(): Promise<void> {
     );
 
     if (!script) {
+      ensureRealScoutPreconnect();
       script = document.createElement("script");
       script.src = src;
       script.async = true;
