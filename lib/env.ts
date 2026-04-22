@@ -213,6 +213,18 @@ export const publicEnv = {
   ),
 
   /**
+   * Optional Google My Maps embed: multiple pins (office, meeting points, etc.).
+   * Create at https://www.google.com/mymaps — add locations → Share → Embed on my website — copy the iframe `src` (must start with `https://www.google.com/maps/d/embed`).
+   * When set, a “Key locations” block appears on `/contact` (anchor `#locations-mymap`).
+   */
+  locationsMapEmbedUrl: ((): string | undefined => {
+    const raw = envOptional("NEXT_PUBLIC_LOCATIONS_MAP_EMBED_URL")?.trim();
+    if (!raw) return undefined;
+    if (!raw.startsWith("https://www.google.com/maps/d/embed")) return undefined;
+    return raw;
+  })(),
+
+  /**
    * Query for maps.google.com embed when NEXT_PUBLIC_MAP_EMBED_URL is not set.
    * Defaults to office address line + city, state, zip.
    */
@@ -392,6 +404,35 @@ export const publicEnv = {
   googleBusinessProfileMapsUrl: ((): string | undefined => {
     const raw = envOptional("NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_MAPS_URL")?.trim();
     if (!raw) return undefined;
+    try {
+      const u = new URL(raw);
+      if (u.protocol !== "https:") return undefined;
+      const h = u.hostname.toLowerCase();
+      const allowed =
+        h === "maps.google.com" ||
+        h === "www.google.com" ||
+        h === "g.page" ||
+        h.endsWith(".g.page") ||
+        h === "maps.app.goo.gl" ||
+        h === "goo.gl";
+      if (!allowed) return undefined;
+      return u.toString();
+    } catch {
+      return undefined;
+    }
+  })(),
+
+  /**
+   * Google Business Profile “write a review” (or g.page/.../review) link from GBP → request reviews.
+   * When set (or when using the project default), “View Google reviews” and footer review CTAs use this; Directions and “View on Google Maps” use {@link publicEnv.googleBusinessProfileMapsUrl}.
+   * Override: `NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_REVIEW_URL`.
+   */
+  googleBusinessProfileReviewUrl: ((): string | undefined => {
+    const fromEnv = envOptional("NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_REVIEW_URL")?.trim();
+    const raw =
+      fromEnv && fromEnv.length > 0
+        ? fromEnv
+        : "https://g.page/r/CYB8-3JNkbuyEBI/review";
     try {
       const u = new URL(raw);
       if (u.protocol !== "https:") return undefined;

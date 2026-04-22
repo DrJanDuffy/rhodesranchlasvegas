@@ -1,9 +1,15 @@
 import Link from "next/link";
-import { googleMapsProfileHref, googleSearchShareHref, siteContact } from "@/lib/site-contact";
+import {
+  googleBusinessProfileReviewHref,
+  googleMapsProfileHref,
+  googleSearchShareHref,
+  siteContact,
+} from "@/lib/site-contact";
 import { cn } from "@/lib/utils";
 
 export function SiteFooter({ className }: { className?: string }) {
-  const mapsAndReviewsHref = googleMapsProfileHref();
+  const mapsProfileHref = googleMapsProfileHref();
+  const gbpReviewHref = googleBusinessProfileReviewHref();
   const googleSearchShareUrl = googleSearchShareHref();
 
   return (
@@ -134,6 +140,11 @@ export function SiteFooter({ className }: { className?: string }) {
                 Contact and directions
               </Link>
             </li>
+            <li>
+              <Link href="/locations" className="text-stone-300 hover:text-white">
+                Office and key locations
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
@@ -148,7 +159,7 @@ export function SiteFooter({ className }: { className?: string }) {
               Call now
             </a>
             <a
-              href={mapsAndReviewsHref}
+              href={mapsProfileHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"
@@ -156,7 +167,7 @@ export function SiteFooter({ className }: { className?: string }) {
               View on Google Maps
             </a>
             <a
-              href={mapsAndReviewsHref}
+              href={gbpReviewHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"

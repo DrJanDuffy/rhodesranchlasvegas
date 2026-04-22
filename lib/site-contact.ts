@@ -74,6 +74,16 @@ export function googleMapsProfileHref(): string {
   );
 }
 
+/**
+ * Google Business Profile review / rating flow (g.page/.../review, etc.).
+ * When unset in env, falls back to a project default; if still unset, use {@link googleMapsProfileHref}.
+ */
+export function googleBusinessProfileReviewHref(): string {
+  const explicit = publicEnv.googleBusinessProfileReviewUrl;
+  if (explicit) return explicit;
+  return googleMapsProfileHref();
+}
+
 /** Google Search share URL (see `publicEnv.googleSearchShareUrl`); opens the saved “Rhodes Ranch Las Vegas” SERP. */
 export function googleSearchShareHref(): string {
   return publicEnv.googleSearchShareUrl;

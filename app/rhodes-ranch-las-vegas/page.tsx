@@ -11,7 +11,7 @@ import { rhodesRanchFaq } from "@/lib/faq-rhodes-ranch";
 import { publicEnv } from "@/lib/env";
 import { metaAddressOnly, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
-import { googleMapsProfileHref, siteContact } from "@/lib/site-contact";
+import { googleBusinessProfileReviewHref, googleMapsProfileHref, siteContact } from "@/lib/site-contact";
 
 const DirectionsToOffice = dynamic(
   () =>
@@ -50,6 +50,7 @@ export const metadata: Metadata = {
 
 export default function RhodesRanchLasVegasHubPage() {
   const mapsHref = googleMapsProfileHref();
+  const gbpReviewHref = googleBusinessProfileReviewHref();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -97,6 +98,12 @@ export default function RhodesRanchLasVegasHubPage() {
             className="rounded-full bg-emerald-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-950/15 ring-1 ring-white/10 transition hover:bg-emerald-950"
           >
             Search Rhodes Ranch area listings
+          </Link>
+          <Link
+            href="/locations"
+            className="rounded-full border border-stone-300/90 bg-white/90 px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm backdrop-blur hover:border-stone-400"
+          >
+            Office and key locations
           </Link>
           <Link
             href="/contact#schedule"
@@ -207,7 +214,7 @@ export default function RhodesRanchLasVegasHubPage() {
               Directions
             </a>
             <a
-              href={mapsHref}
+              href={gbpReviewHref}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-emerald-900/30 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-50"

@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { contactFaq } from "@/lib/faq-contact";
 import { metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
-import { googleMapsProfileHref, siteContact } from "@/lib/site-contact";
+import { googleBusinessProfileReviewHref, googleMapsProfileHref, siteContact } from "@/lib/site-contact";
 
 const DirectionsToOffice = dynamic(
   () =>
@@ -39,6 +39,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const mapsHref = googleMapsProfileHref();
+  const gbpReviewHref = googleBusinessProfileReviewHref();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -168,7 +169,7 @@ export default function ContactPage() {
               Directions
             </a>
             <a
-              href={mapsHref}
+              href={gbpReviewHref}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-emerald-900/30 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-950 hover:bg-emerald-50"
@@ -193,6 +194,29 @@ export default function ContactPage() {
       <div className="mt-14 max-w-6xl">
         <DirectionsToOffice />
       </div>
+
+      <section
+        className="mt-12 max-w-3xl rounded-2xl border border-emerald-900/10 bg-emerald-50/35 p-6"
+        aria-labelledby="locations-link-heading"
+      >
+        <h3
+          id="locations-link-heading"
+          className="font-display text-lg font-semibold text-emerald-950"
+        >
+          Office, maps, and key locations
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-stone-700">
+          For the full page with the office map, optional multi-stop Google map, hours, and
+          turn-by-turn directions, open{" "}
+          <Link
+            href="/locations"
+            className="font-semibold text-emerald-900 underline-offset-2 hover:underline"
+          >
+            office and key locations
+          </Link>
+          .
+        </p>
+      </section>
 
       <div className="mt-16">
         <FaqSection

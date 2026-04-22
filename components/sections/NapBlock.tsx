@@ -1,14 +1,30 @@
-import { googleMapsProfileHref, googleSearchShareHref, siteContact } from "@/lib/site-contact";
+import {
+  googleBusinessProfileReviewHref,
+  googleMapsProfileHref,
+  googleSearchShareHref,
+  siteContact,
+} from "@/lib/site-contact";
 
-export function NapBlock() {
+type NapBlockProps = {
+  /** Use h2 on dedicated “locations” or hub pages that demote other sections to h3. @default 3 */
+  titleLevel?: 2 | 3;
+  /** Must match `aria-labelledby` and heading `id` (unique if multiple blocks on one view). */
+  headingId?: string;
+};
+
+export function NapBlock({ titleLevel = 3, headingId = "nap-heading" }: NapBlockProps) {
+  const TitleTag = titleLevel === 2 ? "h2" : "h3";
   return (
     <section
-      aria-labelledby="nap-heading"
+      aria-labelledby={headingId}
       className="rounded-2xl border border-stone-200/90 bg-white p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5"
     >
-      <h3 id="nap-heading" className="font-display text-xl font-semibold text-emerald-950">
+      <TitleTag
+        id={headingId}
+        className="font-display text-xl font-semibold text-emerald-950"
+      >
         Office and contact
-      </h3>
+      </TitleTag>
       <dl className="mt-4 space-y-2 text-sm">
         <div>
           <dt className="font-medium text-stone-800">Name</dt>
@@ -70,7 +86,7 @@ export function NapBlock() {
               </a>
               <a
                 className="font-medium text-emerald-900 hover:underline"
-                href={googleMapsProfileHref()}
+                href={googleBusinessProfileReviewHref()}
                 target="_blank"
                 rel="noopener noreferrer"
               >
