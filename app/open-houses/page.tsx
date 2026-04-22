@@ -91,14 +91,6 @@ export default function OpenHousesHubPage() {
         </ul>
       </section>
 
-      <RealScoutLeadSection
-        className="mt-14 border-t-0"
-        variant="openHouses"
-        heading="Open house listings (broker search)"
-        headingId="hub-open-house-listings-heading"
-        listingIntro="Search open house inventory from our office feed—filter in the widget, then call for guard-gate access or a private showing if the home is not holding a public open."
-      />
-
       <LocalExploreNav currentPath="/open-houses" className="mt-14" />
 
       <div className="mt-14">

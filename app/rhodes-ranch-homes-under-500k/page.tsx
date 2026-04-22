@@ -70,15 +70,6 @@ export default function RhodesRanchHomesUnder500kPage() {
         listingIntro="Active homes near the under-$500k target, plus map filters to compare alternatives in 89148."
         listingMountStrategy="immediate"
       />
-      <RealScoutLeadSection
-        className="mt-12"
-        variant="openHouses"
-        heading="Open house listings (broker search)"
-        headingId="rhodes-ranch-under-500k-open-house-heading"
-        listingIntro="Search open house inventory from our office feed—filter in the widget, then call for guard-gate access or a private showing if the home is not holding a public open."
-        listingMountStrategy="immediate"
-      />
-
       <LocalExploreNav currentPath={canonicalPath} className="mt-14" />
       <div className="mt-14">
         <NapBlock />
