@@ -1,30 +1,9 @@
 /**
- * Single-flight loader for the office listings UMD web component (client-only).
- * One script tag; waits until <realscout-office-listings> is defined.
- * Script URL defaults in {@link publicEnv.realScoutWidgetScriptSrc} (override with NEXT_PUBLIC_REALSCOUT_SCRIPT_URL).
+ * Single-flight readiness check for the office listings web component (client-only).
+ * Script is loaded once globally in app/layout.tsx; this helper only waits for element registration.
  */
-import { publicEnv } from "@/lib/env";
 
 let loadPromise: Promise<void> | null = null;
-
-function widgetScriptSrc(): string {
-  return publicEnv.realScoutWidgetScriptSrc;
-}
-
-const REALSCOUT_EM_ORIGIN = "https://em.realscout.com";
-
-/** One-time hint when we are about to request the UMD script—avoids unused global preconnect on LCP. */
-function ensureRealScoutPreconnect(): void {
-  if (typeof document === "undefined") return;
-  const id = "realscout-em-preconnect";
-  if (document.getElementById(id)) return;
-  const link = document.createElement("link");
-  link.id = id;
-  link.rel = "preconnect";
-  link.href = REALSCOUT_EM_ORIGIN;
-  link.crossOrigin = "anonymous";
-  document.head.appendChild(link);
-}
 
 export function ensureRealScoutReady(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
@@ -36,33 +15,18 @@ export function ensureRealScoutReady(): Promise<void> {
   if (loadPromise) return loadPromise;
 
   loadPromise = (async () => {
-    const src = widgetScriptSrc();
-    let script = document.querySelector<HTMLScriptElement>(
-      `script[src="${src}"]`,
-    );
-
-    if (!script) {
-      ensureRealScoutPreconnect();
-      script = document.createElement("script");
-      script.src = src;
-      script.async = true;
-      document.head.appendChild(script);
-      await new Promise<void>((resolve, reject) => {
-        script!.onload = () => resolve();
-        script!.onerror = () => reject(new Error("Office listings script failed to load"));
-      });
-    } else {
-      await new Promise<void>((resolve) => {
-        if (window.customElements.get("realscout-office-listings")) {
-          resolve();
-          return;
-        }
-        script!.addEventListener("load", () => resolve(), { once: true });
-        if (document.readyState === "complete") {
-          setTimeout(resolve, 0);
-        }
-      });
-    }
+    await new Promise<void>((resolve) => {
+      if (window.customElements.get("realscout-office-listings")) {
+        resolve();
+        return;
+      }
+      // On client-side route transitions, the load event may already have fired.
+      if (document.readyState === "complete") {
+        resolve();
+        return;
+      }
+      window.addEventListener("load", () => resolve(), { once: true });
+    });
 
     const deadline = Date.now() + 25_000;
     while (

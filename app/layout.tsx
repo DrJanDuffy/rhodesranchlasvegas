@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Geist } from "next/font/google";
+import Script from "next/script";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { CalendlyBadge } from "@/components/calendly/CalendlyBadge";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { publicEnv } from "@/lib/env";
 import { defaultMetadata } from "@/lib/metadata";
 import { realEstateAgentJsonLd, websiteJsonLd } from "@/lib/schema";
 import "./globals.css";
@@ -53,13 +55,17 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <GoogleAnalytics />
+        <Script
+          id="realscout-web-components"
+          src={publicEnv.realScoutWidgetScriptSrc}
+          strategy="afterInteractive"
+        />
       </head>
       <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
         <JsonLd data={realEstateAgentJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
         {/*
-          Office listings widget script loads from the client (lib/realscout-load.ts) when the widget mounts.
-          Do not add a second script tag here — avoids duplicate loads and define() races.
+          RealScout widget script is loaded once globally in <head> (rule-compliant, avoids per-mount races).
         */}
         <SiteHeader />
         <div className="flex-1">{children}</div>
