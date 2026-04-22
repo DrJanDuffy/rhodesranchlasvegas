@@ -173,7 +173,7 @@ export default function HomePage() {
       <section className="mt-14 grid gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6 text-slate-700">
           <h2 className="font-display text-2xl font-semibold tracking-tight text-emerald-950 sm:text-[1.75rem]">
-            Why buyers watch Rhodes Ranch
+            Why Buyers Watch Rhodes Ranch
           </h2>
           <p className="leading-relaxed text-stone-700">
             Guard-gated Rhodes Ranch pairs a central Ted Robinson golf course with recreation,
@@ -201,7 +201,7 @@ export default function HomePage() {
 
       <section className="mt-16">
         <h2 className="font-display text-2xl font-semibold tracking-tight text-emerald-950">
-          Rhodes Ranch real estate help
+          Rhodes Ranch Real Estate Help
         </h2>
         <p className="mt-3 max-w-3xl leading-relaxed text-stone-700">
           Whether you are relocating from California, upsizing locally, or preparing to sell Rhodes

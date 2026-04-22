@@ -60,7 +60,7 @@ export default function RhodesRanchLasVegasHubPage() {
           Local hub · {siteContact.address.postalCode} · Southwest Las Vegas
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-[2.35rem]">
-          Rhodes Ranch Las Vegas Homes and real estate
+          Rhodes Ranch Las Vegas Homes and Real Estate
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           This page is your starting point for the query thousands of buyers and sellers use—
@@ -163,7 +163,7 @@ export default function RhodesRanchLasVegasHubPage() {
       <div className="mt-14 grid gap-10 lg:grid-cols-2">
         <div className="space-y-6">
           <h2 className="font-display text-xl font-semibold text-emerald-950 sm:text-2xl">
-            Office, call, and Google Business Profile
+            Office, Call, and Google Business Profile
           </h2>
           <p className="text-sm leading-relaxed text-stone-600">
             NAP and hours match our{" "}
@@ -211,7 +211,7 @@ export default function RhodesRanchLasVegasHubPage() {
           <NapBlock />
         </div>
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-emerald-950">Map and service area</h2>
+          <h2 className="text-lg font-semibold text-emerald-950">Map and Service Area</h2>
           <MapEmbed
             title={`${siteContact.businessName} — office map (${siteContact.address.postalCode})`}
           />

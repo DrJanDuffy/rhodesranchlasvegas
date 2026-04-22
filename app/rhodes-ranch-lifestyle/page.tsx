@@ -102,7 +102,7 @@ export default function RhodesRanchLifestylePage() {
       <div className="mt-12 max-w-3xl space-y-12 text-stone-700">
         <section aria-labelledby="overview-heading">
           <h2 id="overview-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Rhodes Ranch at a glance
+            Rhodes Ranch at a Glance
           </h2>
           <p className="mt-4 leading-relaxed">
             Rhodes Ranch is a guard-gated, roughly 1,330-acre master-planned community in Spring
@@ -126,7 +126,7 @@ export default function RhodesRanchLifestylePage() {
 
         <section aria-labelledby="golf-heading">
           <h2 id="golf-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Living in Rhodes Ranch: golf and the club
+            Living in Rhodes Ranch: Golf and the Club
           </h2>
           <p className="mt-4 leading-relaxed">
             Rhodes Ranch is built around the 18-hole{" "}
@@ -149,7 +149,7 @@ export default function RhodesRanchLifestylePage() {
 
         <section aria-labelledby="rec-center-heading">
           <h2 id="rec-center-heading" className="font-display text-2xl font-semibold text-emerald-950">
-            Recreation center and indoor amenities
+            Recreation Center and Indoor Amenities
           </h2>
           <p className="mt-4 leading-relaxed">
             Beyond golf, Rhodes Ranch offers a large recreation center—on the order of 35,000 square

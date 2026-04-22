@@ -54,7 +54,7 @@ export default function BuyersPage() {
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Whether you are relocating, upsizing, or buying your first Nevada home, our team focuses on
-          Rhodes Ranch Las Vegas homes and the surrounding southwest valley.{" "}
+          Rhodes Ranch Las Vegas Homes and the surrounding southwest valley.{" "}
           <strong>{siteContact.secondaryContactName}</strong> is your{" "}
           {siteContact.secondaryContactTitle}; <strong>{siteContact.agentName}</strong> leads listing
           strategy when you also sell. For Google&apos;s search results on the neighborhood name, open{" "}
@@ -73,7 +73,7 @@ export default function BuyersPage() {
 
       <section className="mt-14 space-y-6 text-slate-700">
         <h2 className="text-2xl font-semibold text-emerald-950">
-          Why buyers start their search here
+          Why Buyers Start Their Search Here
         </h2>
         <p className="leading-relaxed">
           Rhodes Ranch offers guard-gated neighborhoods, a Ted Robinson golf course, recreation, and
@@ -85,7 +85,7 @@ export default function BuyersPage() {
       </section>
 
       <section className="mt-14">
-        <h2 className="text-2xl font-semibold text-emerald-950">Your buyer journey (overview)</h2>
+        <h2 className="text-2xl font-semibold text-emerald-950">Your Buyer Journey (Overview)</h2>
         <ol className="mt-4 list-decimal space-y-3 pl-6 text-slate-700">
           <li>
             <strong>Finance first.</strong> Connect with a mortgage professional for pre-approval so
@@ -119,7 +119,7 @@ export default function BuyersPage() {
 
       <section className="mt-14 rounded-2xl border border-emerald-900/10 bg-white p-6 shadow-sm sm:p-8">
         <h2 className="text-2xl font-semibold text-emerald-950">
-          Explore the neighborhood before you offer
+          Explore the Neighborhood Before You Offer
         </h2>
         <p className="mt-3 leading-relaxed text-slate-700">
           Lifestyle, golf, and nearby attractions help you decide if Rhodes Ranch fits your daily

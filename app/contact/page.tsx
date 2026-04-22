@@ -167,7 +167,7 @@ export default function ContactPage() {
           <NapBlock />
         </div>
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-emerald-950">Map and service area</h2>
+          <h2 className="text-lg font-semibold text-emerald-950">Map and Service Area</h2>
           <MapEmbed
             title={`Office map — ${siteContact.fullAddressLine} (${siteContact.legalBrokerage})`}
           />

@@ -77,7 +77,7 @@ export function SiteFooter({ className }: { className?: string }) {
           <ul className="mt-3 space-y-2.5 text-sm">
             <li>
               <Link href="/rhodes-ranch-las-vegas" className="text-stone-300 hover:text-white">
-                Rhodes Ranch Las Vegas homes and real estate hub
+                Rhodes Ranch Las Vegas Homes and Real Estate Hub
               </Link>
             </li>
             <li>

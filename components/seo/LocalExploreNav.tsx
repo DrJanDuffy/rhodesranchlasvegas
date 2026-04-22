@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const EXPLORE_LINKS: { href: string; label: string }[] = [
   {
     href: "/rhodes-ranch-las-vegas",
-    label: "Rhodes Ranch Las Vegas homes and local real estate hub (89148)",
+    label: "Rhodes Ranch Las Vegas Homes and Local Real Estate Hub (89148)",
   },
   {
     href: "/search",
