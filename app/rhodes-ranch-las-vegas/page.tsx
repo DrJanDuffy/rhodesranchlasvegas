@@ -170,6 +170,36 @@ export default function RhodesRanchLasVegasHubPage() {
         </ul>
       </section>
 
+      {/* Seller Section — added after buyer-focused help section */}
+      <section className="mt-12 border-t pt-10">
+        <h3 className="text-2xl font-semibold mb-4">Thinking about selling in Rhodes Ranch?</h3>
+        <p className="mb-4 text-gray-700 leading-relaxed">
+          Rhodes Ranch sellers consistently get more than online estimates show — because guard-gated
+          communities, golf course views, and upgraded finishes don&apos;t show up in automated
+          valuations. Dr. Jan Duffy has been pricing and marketing homes in 89148 for over 35 years.
+          You get a strategy built for your specific section, not a generic market average.
+        </p>
+        <ul className="list-disc list-inside mb-6 text-gray-700 space-y-1">
+          <li>Accurate pricing based on current closed sales — not Zestimates</li>
+          <li>Marketing that reaches California equity buyers and local move-ups</li>
+          <li>Clear communication from list to close, no surprises</li>
+        </ul>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link
+            href="/contact"
+            className="inline-block bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition-colors"
+          >
+            Get your home&apos;s value
+          </Link>
+          <a
+            href="tel:+17026026878"
+            className="inline-block border border-black text-black px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors"
+          >
+            Call (702) 602-6878
+          </a>
+        </div>
+      </section>
+
       <div className="mt-14 grid gap-10 lg:grid-cols-2">
         <div className="space-y-6">
           <h2 className="font-display text-xl font-semibold text-emerald-950 sm:text-2xl">
