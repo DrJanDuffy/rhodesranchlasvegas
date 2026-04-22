@@ -102,7 +102,10 @@ export function DirectionsToOffice() {
                   cb: (r: object | null, s: string) => void,
                 ) => void;
               };
-              DirectionsRenderer: new () => {
+              DirectionsRenderer: new (options?: {
+                map?: unknown;
+                suppressMarkers?: boolean;
+              }) => {
                 setMap: (m: unknown) => void;
                 setPanel: (el: HTMLElement) => void;
                 setDirections: (r: object) => void;
