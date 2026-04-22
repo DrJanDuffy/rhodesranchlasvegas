@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -65,44 +66,7 @@ export default function QuestionsPage() {
         />
       </div>
 
-      <section className="mt-14 rounded-2xl border border-emerald-900/10 bg-emerald-50/40 p-6 sm:p-8">
-        <h3 className="font-display text-xl font-semibold text-emerald-950">
-          Related guides
-        </h3>
-        <ul className="mt-4 list-disc space-y-2 pl-6 text-sm leading-relaxed text-stone-700">
-          <li>
-            <Link href="/buyers" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              Home buyer guide (Rhodes Ranch)
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/buyers/process"
-              className="font-medium text-emerald-900 underline-offset-2 hover:underline"
-            >
-              Las Vegas home buying process
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/rhodes-ranch-lifestyle"
-              className="font-medium text-emerald-900 underline-offset-2 hover:underline"
-            >
-              Rhodes Ranch lifestyle and amenities
-            </Link>
-          </li>
-          <li>
-            <Link href="/open-houses" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              Open houses by day and weekend map
-            </Link>
-          </li>
-          <li>
-            <Link href="/search" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              Search Rhodes Ranch area homes
-            </Link>
-          </li>
-        </ul>
-      </section>
+      <LocalExploreNav currentPath="/questions" className="mt-14" />
 
       <div className="mt-14">
         <NapBlock />

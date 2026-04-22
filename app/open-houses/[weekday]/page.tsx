@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -107,6 +108,8 @@ export default async function OpenHousesWeekdayPage({ params }: PageProps) {
         headingId={`open-house-${raw}-listings-heading`}
         listingIntro={`Broker open house search for ${label}—confirm date and time on each listing card, then use the hub map when you plan multiple stops across ${siteContact.address.postalCode}.`}
       />
+
+      <LocalExploreNav currentPath={`/open-houses/${raw}`} className="mt-14" />
 
       <div className="mt-14">
         <NapBlock />

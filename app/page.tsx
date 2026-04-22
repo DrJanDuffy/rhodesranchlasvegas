@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -217,6 +218,8 @@ export default function HomePage() {
           .
         </p>
       </section>
+
+      <LocalExploreNav currentPath="/" className="mt-16" />
 
       <div className="mt-16">
         <FaqSection

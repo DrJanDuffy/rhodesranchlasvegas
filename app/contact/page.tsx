@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { CalendlyInline } from "@/components/calendly/CalendlyInline";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
@@ -217,6 +218,8 @@ export default function ContactPage() {
           .
         </p>
       </section>
+
+      <LocalExploreNav currentPath="/contact" className="mt-12" />
 
       <div className="mt-16">
         <FaqSection

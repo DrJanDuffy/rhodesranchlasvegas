@@ -5,6 +5,7 @@ import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSectio
 import { FaqSection } from "@/components/sections/FaqSection";
 import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { rhodesRanchFaq } from "@/lib/faq-rhodes-ranch";
@@ -244,6 +245,11 @@ export default function RhodesRanchLasVegasHubPage() {
         IDX listing data and disclaimers appear with search tools where provided.{" "}
         {metaDescriptionTail}
       </p>
+
+      <LocalExploreNav
+        currentPath="/rhodes-ranch-las-vegas"
+        className="mt-14"
+      />
 
       <div className="mt-16">
         <FaqSection

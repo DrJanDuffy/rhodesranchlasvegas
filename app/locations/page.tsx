@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { LocationsMyMapEmbed } from "@/components/sections/LocationsMyMapEmbed";
@@ -112,6 +113,8 @@ export default function LocationsPage() {
           <DirectionsToOffice />
         </div>
       </section>
+
+      <LocalExploreNav currentPath="/locations" className="mt-14" />
 
       <div className="mt-14">
         <NapBlock titleLevel={2} headingId="nap-locations-heading" />

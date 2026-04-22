@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { BuyerCtaStrip } from "@/components/buyers/BuyerCtaStrip";
 import { NapBlock } from "@/components/sections/NapBlock";
@@ -133,6 +134,8 @@ export default function BuyersProcessPage() {
           </Link>
         </p>
       </section>
+
+      <LocalExploreNav currentPath="/buyers/process" className="mt-14" />
 
       <div className="mt-14">
         <NapBlock />

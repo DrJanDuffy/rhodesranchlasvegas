@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
 import { NapBlock } from "@/components/sections/NapBlock";
@@ -97,6 +98,8 @@ export default function OpenHousesHubPage() {
         headingId="hub-open-house-listings-heading"
         listingIntro="Search open house inventory from our office feed—filter in the widget, then call for guard-gate access or a private showing if the home is not holding a public open."
       />
+
+      <LocalExploreNav currentPath="/open-houses" className="mt-14" />
 
       <div className="mt-14">
         <NapBlock />

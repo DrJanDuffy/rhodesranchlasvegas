@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
@@ -32,7 +33,7 @@ const highlights = [
   },
   {
     name: "Cowabunga Canyon Waterpark",
-    href: "https://www.cowabungacanyon.com",
+    href: "https://cowabungavegas.com/canyon/",
     body: "Another summer water-park option for valley residents and visitors.",
   },
   {
@@ -324,6 +325,11 @@ export default function RhodesRanchLifestylePage() {
           .
         </p>
       </section>
+
+      <LocalExploreNav
+        currentPath="/rhodes-ranch-lifestyle"
+        className="mt-14"
+      />
 
       <div className="mt-14">
         <NapBlock />

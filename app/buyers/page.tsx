@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { BuyerCtaStrip } from "@/components/buyers/BuyerCtaStrip";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -151,6 +152,8 @@ export default function BuyersPage() {
           <BuyerCtaStrip />
         </div>
       </section>
+
+      <LocalExploreNav currentPath="/buyers" className="mt-14" />
 
       <div className="mt-14">
         <NapBlock />

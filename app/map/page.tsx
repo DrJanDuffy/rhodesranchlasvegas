@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
@@ -81,6 +82,8 @@ export default function MapPage() {
         Map data © Google. Boundaries and labels are for orientation only; verify schools, HOA, and
         parcel lines with official sources.
       </p>
+
+      <LocalExploreNav currentPath="/map" className="mt-12" />
 
       <div className="mt-10 max-w-2xl">
         <NapBlock />
