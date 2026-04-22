@@ -40,8 +40,17 @@ export const defaultMetadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  ...(publicEnv.googleSiteVerification
-    ? { verification: { google: publicEnv.googleSiteVerification } }
+  ...(publicEnv.googleSiteVerification || publicEnv.bingSiteVerification
+    ? {
+        verification: {
+          ...(publicEnv.googleSiteVerification
+            ? { google: publicEnv.googleSiteVerification }
+            : {}),
+          ...(publicEnv.bingSiteVerification
+            ? { other: { "msvalidate.01": publicEnv.bingSiteVerification } }
+            : {}),
+        },
+      }
     : {}),
   /** Legacy geo hints for local crawlers; NAP + JSON-LD remain primary for GBP alignment. */
   other: {

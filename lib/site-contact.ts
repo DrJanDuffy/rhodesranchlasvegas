@@ -53,6 +53,8 @@ export const siteContact = {
   ],
   serviceAreaDescription: publicEnv.serviceAreaDescription,
   hoursSummaryLine: publicEnv.hoursSummaryLine,
+  /** Mirrors GBP “From the business” highlights (empty string = hide in UI). */
+  gbpHighlightAttributesLine: publicEnv.gbpHighlightAttributesLine,
   /** Google My Maps embed URL for open houses (homepage). */
   openHousesMapEmbedUrl: publicEnv.openHousesMapEmbedUrl,
 } as const;
@@ -70,6 +72,11 @@ export function googleMapsProfileHref(): string {
       `${publicEnv.agentName} ${publicEnv.legalBrokerage} ${publicEnv.addressStreet} ${publicEnv.addressLocality} ${publicEnv.addressRegion}`,
     )
   );
+}
+
+/** Google Search share URL (see `publicEnv.googleSearchShareUrl`); opens the saved “Rhodes Ranch Las Vegas” SERP. */
+export function googleSearchShareHref(): string {
+  return publicEnv.googleSearchShareUrl;
 }
 
 export type SiteContact = typeof siteContact;

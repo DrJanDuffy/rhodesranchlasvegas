@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { googleMapsProfileHref, siteContact } from "@/lib/site-contact";
+import { googleMapsProfileHref, googleSearchShareHref, siteContact } from "@/lib/site-contact";
 import { cn } from "@/lib/utils";
 
 export function SiteFooter({ className }: { className?: string }) {
   const mapsAndReviewsHref = googleMapsProfileHref();
+  const googleSearchShareUrl = googleSearchShareHref();
 
   return (
     <footer
@@ -69,6 +70,11 @@ export function SiteFooter({ className }: { className?: string }) {
           </p>
           <ul className="mt-3 space-y-2.5 text-sm">
             <li>
+              <Link href="/rhodes-ranch-las-vegas" className="text-stone-300 hover:text-white">
+                Rhodes Ranch Las Vegas homes and real estate hub
+              </Link>
+            </li>
+            <li>
               <Link href="/buyers" className="text-stone-300 hover:text-white">
                 Home buyer guide (Rhodes Ranch)
               </Link>
@@ -109,6 +115,16 @@ export function SiteFooter({ className }: { className?: string }) {
               </Link>
             </li>
             <li>
+              <a
+                href={googleSearchShareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-300 hover:text-white"
+              >
+                Rhodes Ranch Las Vegas on Google Search
+              </a>
+            </li>
+            <li>
               <Link href="/questions" className="text-stone-300 hover:text-white">
                 Real estate Q&amp;A (Rhodes Ranch and Las Vegas)
               </Link>
@@ -146,6 +162,14 @@ export function SiteFooter({ className }: { className?: string }) {
               className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"
             >
               Google reviews
+            </a>
+            <a
+              href={googleSearchShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit rounded-md border border-emerald-700/80 bg-emerald-950/40 px-3 py-2 font-medium text-emerald-100 hover:border-emerald-500/60 hover:bg-emerald-900/50"
+            >
+              Google Search (Rhodes Ranch)
             </a>
           </div>
         </div>

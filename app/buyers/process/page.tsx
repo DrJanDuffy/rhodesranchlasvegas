@@ -58,51 +58,68 @@ export default function BuyersProcessPage() {
         listingIntro="Browse current listings while you learn the purchase timeline—pause on any step to talk with your buyer specialist or schedule a call."
       />
 
-      <div className="mt-12 max-w-3xl space-y-10 text-slate-700">
-        <section>
-          <h2 className="text-xl font-semibold text-emerald-950">1. Budget and pre-approval</h2>
-          <p className="mt-3 leading-relaxed">
-            Meet with a mortgage loan officer for pre-approval. That sets your price range and helps
-            you act quickly when the right Rhodes Ranch Las Vegas home lists.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-emerald-950">2. Search and shortlist</h2>
-          <p className="mt-3 leading-relaxed">
-            Use the{" "}
-            <Link href="/search" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
-              Home search
-            </Link>{" "}
-            to track new inventory. Save favorites and note questions about HOA documents, golf
-            membership, or community rules—we help you request disclosures through normal channels.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-emerald-950">3. Tours and due diligence</h2>
-          <p className="mt-3 leading-relaxed">
-            We schedule showings that comply with guard-gated access. For condition and systems, rely
-            on licensed inspectors and seller disclosures—not guesswork.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-emerald-950">4. Offer and contract</h2>
-          <p className="mt-3 leading-relaxed">
-            Offers include price, earnest money, contingencies, and timelines. We explain common
-            Las Vegas purchase agreement concepts in plain language; your decisions drive terms.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-emerald-950">5. Escrow and closing</h2>
-          <p className="mt-3 leading-relaxed">
-            Title and escrow coordinate signatures, payoffs, and recording. Your lender funds the
-            loan when conditions are cleared. Closing day ends with keys when the transaction is
-            funded and recorded—your escrow officer confirms details.
-          </p>
-        </section>
-      </div>
+      <section
+        className="mt-12 max-w-3xl text-slate-700"
+        aria-labelledby="key-phases-heading"
+      >
+        <h2
+          id="key-phases-heading"
+          className="text-2xl font-semibold text-emerald-950"
+        >
+          Key phases: from pre-approval to keys
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          Timelines and details vary by lender, property, and contract—this is a general outline.
+        </p>
+        <div className="mt-8 space-y-10">
+          <section>
+            <h3 className="text-xl font-semibold text-emerald-950">1. Budget and pre-approval</h3>
+            <p className="mt-3 leading-relaxed">
+              Meet with a mortgage loan officer for pre-approval. That sets your price range and
+              helps you act quickly when the right Rhodes Ranch Las Vegas home lists.
+            </p>
+          </section>
+          <section>
+            <h3 className="text-xl font-semibold text-emerald-950">2. Search and shortlist</h3>
+            <p className="mt-3 leading-relaxed">
+              Use the{" "}
+              <Link
+                href="/search"
+                className="font-medium text-emerald-900 underline-offset-2 hover:underline"
+              >
+                Home search
+              </Link>{" "}
+              to track new inventory. Save favorites and note questions about HOA documents, golf
+              membership, or community rules—we help you request disclosures through normal channels.
+            </p>
+          </section>
+          <section>
+            <h3 className="text-xl font-semibold text-emerald-950">3. Tours and due diligence</h3>
+            <p className="mt-3 leading-relaxed">
+              We schedule showings that comply with guard-gated access. For condition and systems,
+              rely on licensed inspectors and seller disclosures—not guesswork.
+            </p>
+          </section>
+          <section>
+            <h3 className="text-xl font-semibold text-emerald-950">4. Offer and contract</h3>
+            <p className="mt-3 leading-relaxed">
+              Offers include price, earnest money, contingencies, and timelines. We explain common
+              Las Vegas purchase agreement concepts in plain language; your decisions drive terms.
+            </p>
+          </section>
+          <section>
+            <h3 className="text-xl font-semibold text-emerald-950">5. Escrow and closing</h3>
+            <p className="mt-3 leading-relaxed">
+              Title and escrow coordinate signatures, payoffs, and recording. Your lender funds the
+              loan when conditions are cleared. Closing day ends with keys when the transaction is
+              funded and recorded—your escrow officer confirms details.
+            </p>
+          </section>
+        </div>
+      </section>
 
       <section className="mt-14 rounded-2xl border border-emerald-900/15 bg-emerald-50/50 p-6">
-        <h2 className="text-lg font-semibold text-emerald-950">Work with our buyer specialist</h2>
+        <h3 className="text-lg font-semibold text-emerald-950">Work with our buyer specialist</h3>
         <p className="mt-2 text-sm leading-relaxed text-slate-700">
           {siteContact.secondaryContactName}, {siteContact.secondaryContactTitle}, supports buyers
           touring and purchasing in {siteContact.serviceAreaDescription}.

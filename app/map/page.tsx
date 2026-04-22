@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { defaultMetadata, metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
+import { metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { publicEnv } from "@/lib/env";
 import { siteContact } from "@/lib/site-contact";
@@ -52,17 +53,16 @@ export default function MapPage() {
           <Link href="/contact" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
             contact {siteContact.agentName} or {siteContact.secondaryContactName}
           </Link>
+          . For the Google Search view of &ldquo;Rhodes Ranch Las Vegas,&rdquo; open{" "}
+          <GoogleSearchShareLink className="font-medium text-emerald-900 underline-offset-2 hover:underline" />
           .
         </p>
       </header>
 
       <section
         className="mt-10 overflow-hidden rounded-2xl border border-emerald-900/15 bg-white shadow-sm"
-        aria-labelledby="embed-map-heading"
+        aria-label="Rhodes Ranch and Spring Valley interactive map"
       >
-        <h2 id="embed-map-heading" className="sr-only">
-          Rhodes Ranch and Spring Valley interactive map
-        </h2>
         <div className="relative aspect-4/3 w-full min-h-[280px] sm:min-h-[360px] lg:min-h-[420px]">
           <iframe
             title="Map of Rhodes Ranch, Spring Valley, Nevada"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { NapBlock } from "@/components/sections/NapBlock";
@@ -51,7 +52,7 @@ export default function HomePage() {
           Southwest Las Vegas · {siteContact.address.postalCode}
         </p>
         <h1 className="font-display mt-3 text-4xl font-semibold leading-[1.12] tracking-tight text-emerald-950 sm:text-5xl">
-          Rhodes Ranch Las Vegas homes: local expertise for buyers and sellers
+          Rhodes Ranch Las Vegas Homes: local expertise for buyers and sellers
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-stone-700">
           Rhodes Ranch is a guard-gated, master-planned community in Spring Valley—about six miles
@@ -68,6 +69,12 @@ export default function HomePage() {
             className="rounded-full bg-emerald-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-950/15 ring-1 ring-white/10 transition hover:bg-emerald-950"
           >
             Browse Rhodes Ranch Las Vegas area homes
+          </Link>
+          <Link
+            href="/rhodes-ranch-las-vegas"
+            className="rounded-full border border-emerald-900/40 bg-emerald-100/80 px-5 py-2.5 text-sm font-semibold text-emerald-950 shadow-sm hover:bg-emerald-200/80"
+          >
+            Rhodes Ranch Las Vegas real estate hub
           </Link>
           <Link
             href="/contact#schedule"
@@ -154,6 +161,12 @@ export default function HomePage() {
         <Link href="/contact" className="text-emerald-900 underline-offset-2 hover:underline">
           Contact for access
         </Link>
+        <span aria-hidden="true" className="text-stone-400">
+          ·
+        </span>
+        <GoogleSearchShareLink className="text-emerald-900 underline-offset-2 hover:underline">
+          Same query on Google Search
+        </GoogleSearchShareLink>
       </nav>
 
       <section className="mt-14 grid gap-10 lg:grid-cols-3">
@@ -163,8 +176,16 @@ export default function HomePage() {
           </h2>
           <p className="leading-relaxed text-stone-700">
             Guard-gated Rhodes Ranch pairs a central Ted Robinson golf course with recreation,
-            trails, and southwest Las Vegas convenience. For the full community story—amenities,
-            recreation center, golf club context, and day-trip ideas—read the{" "}
+            trails, and southwest Las Vegas convenience. For a dedicated search-intent page (NAP, map, and FAQ aligned with our Google
+            profile), use the{" "}
+            <Link
+              href="/rhodes-ranch-las-vegas"
+              className="font-medium text-emerald-900 underline-offset-2 hover:underline"
+            >
+              Rhodes Ranch Las Vegas real estate hub
+            </Link>
+            . For the full community story—amenities, recreation center, golf club context, and
+            day-trip ideas—read the{" "}
             <Link
               href="/rhodes-ranch-lifestyle"
               className="font-medium text-emerald-900 underline-offset-2 hover:underline"
@@ -198,7 +219,12 @@ export default function HomePage() {
       </section>
 
       <div className="mt-16">
-        <FaqSection id="faq-heading" heading="Rhodes Ranch FAQ" items={rhodesRanchFaq} />
+        <FaqSection
+          id="faq-heading"
+          titleLevel={3}
+          heading="Rhodes Ranch FAQ"
+          items={rhodesRanchFaq}
+        />
       </div>
     </main>
   );

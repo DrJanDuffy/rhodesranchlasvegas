@@ -101,6 +101,12 @@ export function realEstateAgentJsonLd(): Record<string, unknown> {
       "Southwest Las Vegas homes",
       "Las Vegas open houses",
       "Rhodes Ranch open houses",
+      ...(siteContact.gbpHighlightAttributesLine
+        ? [
+            "Women-owned real estate business Las Vegas",
+            "Veteran-owned business Las Vegas",
+          ]
+        : []),
     ],
   };
 

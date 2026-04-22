@@ -49,6 +49,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://maps.google.com" />
+        <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <GoogleAnalytics />

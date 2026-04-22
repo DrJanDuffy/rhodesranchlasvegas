@@ -68,6 +68,31 @@ export const publicEnv = {
   })(),
 
   /**
+   * Bing Webmaster Tools — HTML meta verification (`<meta name="msvalidate.01" content="…">`).
+   * Paste the **content** value from Bing → My site → Add site → HTML meta tag.
+   */
+  bingSiteVerification: (() => {
+    const v = envOptional("NEXT_PUBLIC_BING_SITE_VERIFICATION");
+    if (!v) return undefined;
+    const t = v.trim();
+    if (t.length < 8 || t.length > 256 || /[<>"'\s]/.test(t)) return undefined;
+    return t;
+  })(),
+
+  /**
+   * Google Search share link (e.g. share.google/... for “Rhodes Ranch Las Vegas”).
+   * Used in NAP, footer, and key pages; override in Vercel to swap campaigns.
+   */
+  googleSearchShareUrl: (() => {
+    const fallback = "https://share.google/pSOTtFR1dDF1BnTGt";
+    const v = envOptional("NEXT_PUBLIC_GOOGLE_SEARCH_SHARE_URL");
+    if (!v) return fallback;
+    const t = v.trim();
+    if (!/^https:\/\//i.test(t) || t.length > 2048) return fallback;
+    return t;
+  })(),
+
+  /**
    * GA4 Web data stream — Measurement ID (Google tag).
    * Admin reference: stream name `rhodesranchlasvegas`, numeric stream ID `14412088623`, URL must match `NEXT_PUBLIC_SITE_URL` (https://www.rhodesranchlasvegas.com, no typos).
    * Invalid `NEXT_PUBLIC_GA_MEASUREMENT_ID` env values are ignored so production keeps this default.
@@ -155,6 +180,16 @@ export const publicEnv = {
     "NEXT_PUBLIC_HOURS_SUMMARY",
     "Open daily 9:00 a.m.–6:00 p.m. (Las Vegas time).",
   ),
+
+  /**
+   * Short line shown with NAP (mirrors GBP attributes). Set empty in Vercel to hide: NEXT_PUBLIC_GBP_HIGHLIGHT_ATTRIBUTES_LINE=
+   */
+  gbpHighlightAttributesLine: (() => {
+    const raw = process.env.NEXT_PUBLIC_GBP_HIGHLIGHT_ATTRIBUTES_LINE;
+    if (typeof raw === "string" && raw.trim() === "") return "";
+    if (typeof raw === "string" && raw.trim() !== "") return raw.trim();
+    return "Women-owned · Veteran-owned";
+  })(),
 
   /**
    * Opening/closing times for JSON-LD — applied to all days listed in `siteContact.openingHoursSpecification`
@@ -331,6 +366,23 @@ export const publicEnv = {
     "NEXT_PUBLIC_CALENDLY_BADGE_LABEL",
     "Schedule with Dr. Jan Duffy",
   ),
+
+  /**
+   * Google Maps JavaScript API key (Directions, map on /contact and /rhodes-ranch-las-vegas).
+   * Set in Vercel (Project or inherited Team env) as a `NEXT_PUBLIC_*` var so it is available to the client bundle.
+   * After adding or changing the value, trigger a new deployment — Next bakes `NEXT_PUBLIC_*` in at build time.
+   * Enable “Maps JavaScript API” and “Directions API”; restrict the key by HTTP referrer to this site.
+   * Primary: `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — optional alias: `NEXT_PUBLIC_GOOGLE_MAPS_PLATFORM_KEY`.
+   */
+  googleMapsApiKey: ((): string | undefined => {
+    const raw =
+      envOptional("NEXT_PUBLIC_GOOGLE_MAPS_API_KEY")?.trim() ||
+      envOptional("NEXT_PUBLIC_GOOGLE_MAPS_PLATFORM_KEY")?.trim();
+    if (!raw) return undefined;
+    if (raw.length < 30 || raw.length > 256) return undefined;
+    if (!/^AIza[0-9A-Za-z\-_]+$/.test(raw)) return undefined;
+    return raw;
+  })(),
 
   /**
    * Google Maps / Business Profile public place or short link (reviews + pin).

@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     },
     {
+      url: `${base}/rhodes-ranch-las-vegas`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.92,
+    },
+    {
       url: `${base}/rhodes-ranch-lifestyle`,
       lastModified,
       changeFrequency: "monthly",

@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
-import {
-  defaultMetadata,
-  metaAddressOnly,
-  metaDescriptionTail,
-  pageSocialMetadata,
-} from "@/lib/metadata";
+import { metaAddressOnly, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
@@ -49,7 +45,12 @@ export default function SearchPage() {
           Explore active listings with the on-site home search. Narrow results with your agent—or ask{" "}
           {siteContact.agentName} ({siteContact.agentTitle}) or {siteContact.secondaryContactName} (
           {siteContact.secondaryContactTitle}) for a Rhodes Ranch–focused search that matches budget,
-          timing, and must-haves.
+          timing, and           must-haves.
+        </p>
+        <p className="mt-3 text-sm text-stone-600">
+          Compare with Google&apos;s organic results:{" "}
+          <GoogleSearchShareLink className="font-medium text-emerald-900 underline-offset-2 hover:underline" />
+          .
         </p>
         <p className="mt-3 text-sm text-stone-600">
           <Link href="/contact#schedule" className="font-medium text-emerald-900 hover:underline">
@@ -64,6 +65,7 @@ export default function SearchPage() {
 
       <RealScoutLeadSection
         className="mt-10"
+        titleElement="h2"
         heading="Rhodes Ranch area listings"
         headingId="search-listings-heading"
         listingIntro="Refine by price, status, and property type, then reach out for a tour in Rhodes Ranch, Spring Valley, or the southwest valley."

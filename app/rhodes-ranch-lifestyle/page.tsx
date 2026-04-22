@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { defaultMetadata, metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
+import { metaAddressOnly, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
 
@@ -78,7 +79,17 @@ export default function RhodesRanchLifestylePage() {
           {siteContact.serviceAreaDescription}. Below is an editorial overview of the neighborhood—
           golf and HOA-related amenities are operated by their respective organizations; verify
           hours, fees, and programs directly with them. Retail and attraction names are for
-          orientation only.
+          orientation only. For listings, maps, and NAP that match our Google Business Profile, start
+          at the{" "}
+          <Link
+            href="/rhodes-ranch-las-vegas"
+            className="font-medium text-emerald-900 underline-offset-2 hover:underline"
+          >
+            Rhodes Ranch Las Vegas real estate hub
+          </Link>
+          . For Google&apos;s search results for the same query, use{" "}
+          <GoogleSearchShareLink className="font-medium text-emerald-900 underline-offset-2 hover:underline" />
+          .
         </p>
       </header>
 
@@ -158,9 +169,9 @@ export default function RhodesRanchLifestylePage() {
         </section>
 
         <section aria-labelledby="outdoor-heading">
-          <h2 id="outdoor-heading" className="font-display text-2xl font-semibold text-emerald-950">
+          <h3 id="outdoor-heading" className="font-display text-2xl font-semibold text-emerald-950">
             Outdoor amenities and nearby open space
-          </h2>
+          </h3>
           <p className="mt-4 leading-relaxed">
             Inside the gates, residents also use outdoor amenities such as basketball courts,
             playgrounds, tennis courts, and extensive walking and biking trails. The community
@@ -192,9 +203,9 @@ export default function RhodesRanchLifestylePage() {
         </section>
 
         <section aria-labelledby="lifestyle-heading">
-          <h2 id="lifestyle-heading" className="font-display text-2xl font-semibold text-emerald-950">
+          <h3 id="lifestyle-heading" className="font-display text-2xl font-semibold text-emerald-950">
             Resort-style living and city access
-          </h2>
+          </h3>
           <p className="mt-4 leading-relaxed">
             Many families choose Rhodes Ranch for a resort-style feel—golf, recreation, and
             trails—while staying outside the densest parts of the urban core. When you want more
@@ -208,9 +219,9 @@ export default function RhodesRanchLifestylePage() {
         </section>
 
         <section aria-labelledby="market-heading">
-          <h2 id="market-heading" className="font-display text-2xl font-semibold text-emerald-950">
+          <h3 id="market-heading" className="font-display text-2xl font-semibold text-emerald-950">
             Homes, pricing, and HOA context
-          </h2>
+          </h3>
           <p className="mt-4 leading-relaxed">
             Inventory in Rhodes Ranch spans attached products through large single-family homes;
             values differ by neighborhood, condition, lot size, and timing. Older homes on larger lots
@@ -236,9 +247,9 @@ export default function RhodesRanchLifestylePage() {
           aria-labelledby="cta-heading"
           className="rounded-2xl border border-stone-200/90 bg-gradient-to-br from-emerald-50/50 to-stone-50/40 shadow-[0_8px_30px_rgb(0_0_0_/0.05)] ring-1 ring-stone-900/5 p-6 sm:p-8"
         >
-          <h2 id="cta-heading" className="font-display text-xl font-semibold text-emerald-950">
+          <h3 id="cta-heading" className="font-display text-xl font-semibold text-emerald-950">
             Want to go deeper?
-          </h2>
+          </h3>
           <p className="mt-3 leading-relaxed">
             For a no-obligation conversation about buying or selling in Rhodes Ranch, call{" "}
             <a
@@ -266,10 +277,13 @@ export default function RhodesRanchLifestylePage() {
         </section>
       </div>
 
-      <section className="mt-14 space-y-6">
-        <h2 className="font-display text-2xl font-semibold text-emerald-950">
+      <section className="mt-14 space-y-6" aria-labelledby="recreation-landmarks-heading">
+        <h3
+          id="recreation-landmarks-heading"
+          className="font-display text-2xl font-semibold text-emerald-950"
+        >
           Recreation and landmarks (editorial)
-        </h2>
+        </h3>
         <p className="max-w-3xl text-sm leading-relaxed text-stone-600">
           Quick links to official or authoritative sites—same list as our short &ldquo;nearby&rdquo;
           reference. Not sponsored.
@@ -280,7 +294,7 @@ export default function RhodesRanchLifestylePage() {
               key={item.name}
               className="rounded-2xl border border-stone-200/80 bg-white p-6 shadow-[0_4px_20px_rgb(0_0_0_/0.04)] ring-1 ring-stone-900/5"
             >
-              <h3 className="text-xl font-medium text-stone-900">
+              <h4 className="text-xl font-medium text-stone-900">
                 <a
                   href={item.href}
                   target="_blank"
@@ -289,7 +303,7 @@ export default function RhodesRanchLifestylePage() {
                 >
                   {item.name}
                 </a>
-              </h3>
+              </h4>
               <p className="mt-2 text-sm leading-relaxed text-stone-700">{item.body}</p>
             </li>
           ))}
@@ -297,7 +311,7 @@ export default function RhodesRanchLifestylePage() {
       </section>
 
       <section className="mt-12 rounded-2xl border border-dashed border-emerald-900/30 bg-emerald-50/40 p-6">
-        <h2 className="font-display text-xl font-semibold text-emerald-950">Work with a local REALTOR®</h2>
+        <h3 className="font-display text-xl font-semibold text-emerald-950">Work with a local REALTOR®</h3>
         <p className="mt-2 text-sm leading-relaxed text-stone-700">
           Return to the{" "}
           <Link href="/" className="font-medium text-emerald-900 underline-offset-2 hover:underline">

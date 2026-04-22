@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { BuyerCtaStrip } from "@/components/buyers/BuyerCtaStrip";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -55,7 +56,9 @@ export default function BuyersPage() {
           Rhodes Ranch Las Vegas homes and the surrounding southwest valley.{" "}
           <strong>{siteContact.secondaryContactName}</strong> is your{" "}
           {siteContact.secondaryContactTitle}; <strong>{siteContact.agentName}</strong> leads listing
-          strategy when you also sell.
+          strategy when you also sell. For Google&apos;s search results on the neighborhood name, open{" "}
+          <GoogleSearchShareLink className="font-medium text-emerald-900 underline-offset-2 hover:underline" />
+          .
         </p>
         <div className="mt-6">
           <BuyerCtaStrip />
@@ -130,11 +133,16 @@ export default function BuyersPage() {
       </section>
 
       <div className="mt-16">
-        <FaqSection id="buyers-faq-heading" heading="Buyer FAQ" items={buyerFaq} />
+        <FaqSection
+          id="buyers-faq-heading"
+          titleLevel={3}
+          heading="Buyer FAQ"
+          items={buyerFaq}
+        />
       </div>
 
       <section className="mt-12 border-t border-emerald-900/10 pt-10">
-        <h2 className="text-xl font-semibold text-emerald-950">Ready for the next step?</h2>
+        <h3 className="text-xl font-semibold text-emerald-950">Ready for the next step?</h3>
         <p className="mt-2 text-slate-700">
           Tell us your timeline and must-haves—we will suggest a search plan and tour strategy for
           Rhodes Ranch Las Vegas homes.

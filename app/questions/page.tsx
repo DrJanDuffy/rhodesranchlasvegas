@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -49,22 +50,25 @@ export default function QuestionsPage() {
           <Link href="/contact" className="font-medium text-emerald-900 underline-offset-2 hover:underline">
             contact the office
           </Link>{" "}
-          with specifics. Office phone and address are listed below.
+          with specifics. Office phone and address are listed below. To see Google&apos;s search
+          results for the community alongside your research, open{" "}
+          <GoogleSearchShareLink />.
         </p>
       </header>
 
       <div className="mt-14">
         <FaqSection
           id="questions-faq-heading"
+          titleLevel={2}
           heading="Questions and answers"
           items={aeoFaq}
         />
       </div>
 
       <section className="mt-14 rounded-2xl border border-emerald-900/10 bg-emerald-50/40 p-6 sm:p-8">
-        <h2 className="font-display text-xl font-semibold text-emerald-950">
+        <h3 className="font-display text-xl font-semibold text-emerald-950">
           Related guides
-        </h2>
+        </h3>
         <ul className="mt-4 list-disc space-y-2 pl-6 text-sm leading-relaxed text-stone-700">
           <li>
             <Link href="/buyers" className="font-medium text-emerald-900 underline-offset-2 hover:underline">

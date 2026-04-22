@@ -1,4 +1,4 @@
-import { siteContact } from "@/lib/site-contact";
+import { googleMapsProfileHref, googleSearchShareHref, siteContact } from "@/lib/site-contact";
 
 export function NapBlock() {
   return (
@@ -6,9 +6,9 @@ export function NapBlock() {
       aria-labelledby="nap-heading"
       className="rounded-2xl border border-stone-200/90 bg-white p-6 shadow-[0_8px_30px_rgb(0_0_0_/0.06)] ring-1 ring-stone-900/5"
     >
-      <h2 id="nap-heading" className="font-display text-xl font-semibold text-emerald-950">
+      <h3 id="nap-heading" className="font-display text-xl font-semibold text-emerald-950">
         Office and contact
-      </h2>
+      </h3>
       <dl className="mt-4 space-y-2 text-sm">
         <div>
           <dt className="font-medium text-stone-800">Name</dt>
@@ -52,6 +52,45 @@ export function NapBlock() {
         <div>
           <dt className="font-medium text-stone-800">Service area</dt>
           <dd>{siteContact.serviceAreaDescription}</dd>
+        </div>
+        <div>
+          <dt className="font-medium text-stone-800">Google Maps and reviews</dt>
+          <dd className="space-y-2">
+            {siteContact.gbpHighlightAttributesLine ? (
+              <span className="block text-stone-700">{siteContact.gbpHighlightAttributesLine}</span>
+            ) : null}
+            <div className="flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:gap-x-4">
+              <a
+                className="font-medium text-emerald-900 hover:underline"
+                href={googleMapsProfileHref()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Directions on Google
+              </a>
+              <a
+                className="font-medium text-emerald-900 hover:underline"
+                href={googleMapsProfileHref()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Google reviews
+              </a>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt className="font-medium text-stone-800">Google Search</dt>
+          <dd>
+            <a
+              className="font-medium text-emerald-900 hover:underline"
+              href={googleSearchShareHref()}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open “Rhodes Ranch Las Vegas” on Google
+            </a>
+          </dd>
         </div>
         <div>
           <dt className="font-medium text-stone-800">Email</dt>

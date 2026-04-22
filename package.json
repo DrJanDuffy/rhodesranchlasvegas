@@ -10,7 +10,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verify:h1": "node scripts/verify-one-h1.mjs",
+    "verify:h2": "node scripts/verify-max-h2.mjs"
   },
   "browserslist": {
     "production": [

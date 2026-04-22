@@ -101,6 +101,7 @@ export default async function OpenHousesWeekdayPage({ params }: PageProps) {
 
       <RealScoutLeadSection
         className="mt-10"
+        titleElement="h2"
         variant="openHouses"
         heading={`Open house listings — ${label}`}
         headingId={`open-house-${raw}-listings-heading`}

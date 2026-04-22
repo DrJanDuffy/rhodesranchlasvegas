@@ -1,10 +1,19 @@
 import type { FaqItem } from "@/lib/schema";
+import { publicEnv } from "@/lib/env";
 import { siteContact } from "@/lib/site-contact";
 
 /**
  * Static FAQ copy for AEO; keep answers accurate—no dollar amounts for HOA or fees unless sourced.
  */
 export const rhodesRanchFaq: FaqItem[] = [
+  {
+    question: "Is there a quick way to open Google Search for Rhodes Ranch Las Vegas?",
+    answer: `Yes. Use the “Rhodes Ranch Las Vegas on Google” (or “Google Search”) link in the office block, site footer, or the Rhodes Ranch hub page—it opens the same saved Google Search view (${publicEnv.googleSearchShareUrl}) so you can compare Google’s results with our on-site home search and maps.`,
+  },
+  {
+    question: "Does this website match the Google Business Profile for Rhodes Ranch Las Vegas?",
+    answer: `Yes. The business name, address, phone, hours, and service area on this site are written to align with the Google Business Profile for ${siteContact.businessName}. For live reviews, directions, and the public listing on Google Maps, use the “Reviews and directions on Google” link in the office block on this page or open the Maps link from the footer.`,
+  },
   {
     question: "Is Rhodes Ranch a gated community?",
     answer:

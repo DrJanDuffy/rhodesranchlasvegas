@@ -1,14 +1,31 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { CalendlyInline } from "@/components/calendly/CalendlyInline";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { MapEmbed } from "@/components/sections/MapEmbed";
 import { NapBlock } from "@/components/sections/NapBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { contactFaq } from "@/lib/faq-contact";
-import { defaultMetadata, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
+import { metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
 import { googleMapsProfileHref, siteContact } from "@/lib/site-contact";
+
+const DirectionsToOffice = dynamic(
+  () =>
+    import("@/components/directions/DirectionsToOffice").then((m) => ({
+      default: m.DirectionsToOffice,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <p className="text-sm text-stone-500" role="status">
+        Loading directions…
+      </p>
+    ),
+  },
+);
 
 export const metadata: Metadata = {
   title: `Schedule a consultation | Contact ${siteContact.agentName} | ${siteContact.businessName} 89148`,
@@ -84,6 +101,8 @@ export default function ContactPage() {
           >
             Google Maps
           </a>
+          . For the same Google Search view we link sitewide, use{" "}
+          <GoogleSearchShareLink className="font-medium text-emerald-900 underline-offset-2 hover:underline" />
           . Call or text for the fastest response during business hours.
         </p>
       </section>
@@ -171,9 +190,14 @@ export default function ContactPage() {
         </div>
       </div>
 
+      <div className="mt-14 max-w-6xl">
+        <DirectionsToOffice />
+      </div>
+
       <div className="mt-16">
         <FaqSection
           id="contact-faq-heading"
+          titleLevel={3}
           heading="Questions about scheduling and contact"
           items={contactFaq}
         />

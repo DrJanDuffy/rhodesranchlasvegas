@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { OpenHousesMapSection } from "@/components/sections/OpenHousesMapSection";
 import { NapBlock } from "@/components/sections/NapBlock";
+import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { defaultMetadata, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
@@ -47,7 +48,10 @@ export default function OpenHousesHubPage() {
           Use the weekend map to route your tour, then pick a day below for MLS open house listings
           and tips. Times change—confirm on each listing and refresh the map before you drive.{" "}
           <strong>{siteContact.secondaryContactName}</strong> ({siteContact.secondaryContactTitle})
-          maintains the map; <strong>{siteContact.agentName}</strong> supports listings and strategy.
+          maintains the map; <strong>{siteContact.agentName}</strong> supports listings and strategy.{" "}
+          See also{" "}
+          <GoogleSearchShareLink className="font-medium text-emerald-900 underline-offset-2 hover:underline" />{" "}
+          for how Google surfaces the community name.
         </p>
       </header>
 
