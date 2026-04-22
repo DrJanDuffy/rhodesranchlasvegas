@@ -79,6 +79,12 @@ export function RealScoutLeadSection({
           Listing data comes from participating brokers; availability, price, and status change daily.
           Broker listing rules require attribution on listing detail pages—confirm with your REALTOR®.
         </p>
+        {variant === "openHouses" ? (
+          <p className="mt-2 text-xs leading-relaxed text-stone-600">
+            If no homes appear, there may be no currently published open houses matching this office
+            feed filter. Call for private-showing options and nearby alternatives.
+          </p>
+        ) : null}
       </div>
     </section>
   );
