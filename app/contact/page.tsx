@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CalendlyInline } from "@/components/calendly/CalendlyInline";
 import { DirectionsToOfficeDynamic } from "@/components/directions/DirectionsToOfficeDynamic";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
