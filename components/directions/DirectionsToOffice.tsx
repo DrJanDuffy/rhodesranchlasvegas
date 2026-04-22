@@ -270,7 +270,7 @@ export function DirectionsToOffice() {
             <button
               type="button"
               onClick={runRoute}
-              disabled={loading || (apiKey && !mapReady)}
+              disabled={loading || (!!apiKey && !mapReady)}
               className="rounded-full bg-emerald-900 px-5 py-2.5 text-sm font-semibold text-white shadow shadow-emerald-950/20 ring-1 ring-white/10 transition hover:bg-emerald-950 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? "Calculating…" : "Show route and travel time"}
