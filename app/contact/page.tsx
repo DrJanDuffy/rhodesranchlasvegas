@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { CalendlyInline } from "@/components/calendly/CalendlyInline";
+import { DirectionsToOfficeDynamic } from "@/components/directions/DirectionsToOfficeDynamic";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
@@ -12,21 +12,6 @@ import { contactFaq } from "@/lib/faq-contact";
 import { metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
 import { googleBusinessProfileReviewHref, googleMapsProfileHref, siteContact } from "@/lib/site-contact";
-
-const DirectionsToOffice = dynamic(
-  () =>
-    import("@/components/directions/DirectionsToOffice").then((m) => ({
-      default: m.DirectionsToOffice,
-    })),
-  {
-    ssr: false,
-    loading: () => (
-      <p className="text-sm text-stone-500" role="status">
-        Loading directions…
-      </p>
-    ),
-  },
-);
 
 export const metadata: Metadata = {
   title: `Schedule a consultation | Contact ${siteContact.agentName} | ${siteContact.businessName} 89148`,
@@ -193,7 +178,7 @@ export default function ContactPage() {
       </div>
 
       <div className="mt-14 max-w-6xl">
-        <DirectionsToOffice />
+        <DirectionsToOfficeDynamic />
       </div>
 
       <section

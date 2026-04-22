@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import Link from "next/link";
+import { DirectionsToOfficeDynamic } from "@/components/directions/DirectionsToOfficeDynamic";
 import { RealScoutLeadSection } from "@/components/realscout/RealScoutLeadSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { MapEmbed } from "@/components/sections/MapEmbed";
@@ -13,21 +13,6 @@ import { publicEnv } from "@/lib/env";
 import { metaAddressOnly, metaDescriptionTail, pageSocialMetadata } from "@/lib/metadata";
 import { breadcrumbListJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/schema";
 import { googleBusinessProfileReviewHref, googleMapsProfileHref, siteContact } from "@/lib/site-contact";
-
-const DirectionsToOffice = dynamic(
-  () =>
-    import("@/components/directions/DirectionsToOffice").then((m) => ({
-      default: m.DirectionsToOffice,
-    })),
-  {
-    ssr: false,
-    loading: () => (
-      <p className="text-sm text-stone-500" role="status">
-        Loading directions…
-      </p>
-    ),
-  },
-);
 
 const canonicalPath = "/rhodes-ranch-las-vegas";
 
@@ -238,7 +223,7 @@ export default function RhodesRanchLasVegasHubPage() {
       </div>
 
       <div className="mt-14">
-        <DirectionsToOffice />
+        <DirectionsToOfficeDynamic />
       </div>
 
       <p className="mt-10 max-w-3xl text-sm text-stone-600">

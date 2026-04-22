@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import { DirectionsToOfficeDynamic } from "@/components/directions/DirectionsToOfficeDynamic";
 import { LocalExploreNav } from "@/components/seo/LocalExploreNav";
 import { GoogleSearchShareLink } from "@/components/seo/GoogleSearchShareLink";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -15,21 +15,6 @@ import {
 } from "@/lib/metadata";
 import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/schema";
 import { siteContact } from "@/lib/site-contact";
-
-const DirectionsToOffice = dynamic(
-  () =>
-    import("@/components/directions/DirectionsToOffice").then((m) => ({
-      default: m.DirectionsToOffice,
-    })),
-  {
-    ssr: false,
-    loading: () => (
-      <p className="text-sm text-stone-500" role="status">
-        Loading directions…
-      </p>
-    ),
-  },
-);
 
 const path = "/locations";
 
@@ -110,7 +95,7 @@ export default function LocationsPage() {
           />
         </div>
         <div className="mt-8 max-w-6xl">
-          <DirectionsToOffice />
+          <DirectionsToOfficeDynamic />
         </div>
       </section>
 
