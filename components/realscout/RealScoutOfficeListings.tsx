@@ -75,14 +75,17 @@ export function RealScoutOfficeListings({
             widget.setAttribute("property-types", realScoutPropertyTypes);
           }
           widget.setAttribute("listings-per-page", realScoutListingsPerPage);
+          // Open-house strips should not inherit strict global price gates; show all qualifying opens.
         } else if (realScoutWidgetMode === "full") {
           widget.setAttribute("listing-status", realScoutListingStatus);
           widget.setAttribute("property-types", realScoutPropertyTypes);
+          widget.setAttribute("price-min", realScoutPriceMin);
+          widget.setAttribute("price-max", realScoutPriceMax);
         } else {
           widget.setAttribute("listings-per-page", realScoutListingsPerPage);
+          widget.setAttribute("price-min", realScoutPriceMin);
+          widget.setAttribute("price-max", realScoutPriceMax);
         }
-        widget.setAttribute("price-min", realScoutPriceMin);
-        widget.setAttribute("price-max", realScoutPriceMax);
 
         el.replaceChildren(widget);
         if (!cancelled) setHasWidget(true);
