@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: path },
   ...pageSocialMetadata(path, {
     title: "Office and key locations | Rhodes Ranch and Las Vegas",
-    description: `NAP that matches our Google Business Profile, office map, and optional multi-stop location map. ${metaAddressOnly}`,
+    description: `NAP that matches our Google Business Profile, office map, and open house tour map. ${metaAddressOnly}`,
   }),
 };
 

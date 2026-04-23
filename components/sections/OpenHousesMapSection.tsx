@@ -56,7 +56,7 @@ export function OpenHousesMapSection() {
         id="open-houses-map-heading"
         className="font-display text-2xl font-semibold tracking-tight text-emerald-950 sm:text-[1.65rem]"
       >
-        Where are this weekend&apos;s open houses in Rhodes Ranch and Las Vegas?
+        Where are the open houses and tour stops in Rhodes Ranch and Las Vegas?
       </h3>
       <p className="mt-3 max-w-3xl leading-relaxed text-stone-700">
         <strong>{secondaryContactName}</strong>, {secondaryContactTitle}, hosts the current tour

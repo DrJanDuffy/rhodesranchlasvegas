@@ -47,6 +47,13 @@ export function smsHrefFromE164(e164: string): string {
 }
 
 /**
+ * Google My Maps embed — Las Vegas open house tour (replace `mid` when you publish a new My Map).
+ * Default for open-houses and key-locations map URLs unless `NEXT_PUBLIC_LOCATIONS_MAP_EMBED_URL` overrides the latter.
+ */
+const DEFAULT_GOOGLE_MYM_MAP_EMBED_URL =
+  "https://www.google.com/maps/d/embed?mid=12gQ1w5bzxrQ41HSGCdEJWFfhMtSkBwI&ehbc=2E312F";
+
+/**
  * All public site configuration used by NAP, metadata, maps, and widgets.
  * Defaults match production Rhodes Ranch / Dr. Jan Duffy branding; override per deploy.
  */
@@ -204,24 +211,26 @@ export const publicEnv = {
   mapEmbedUrl: envOptional("NEXT_PUBLIC_MAP_EMBED_URL"),
 
   /**
-   * Google My Maps embed for weekend open houses (Share → Embed a map).
-   * Used on the homepage; update in Vercel when the map layer changes.
+   * Google My Maps embed for open house tours (Share → Embed a map).
+   * Homepage, `/open-houses`, and (by default) `/locations` “Key locations”.
    */
   openHousesMapEmbedUrl: env(
     "NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL",
-    "https://www.google.com/maps/d/embed?mid=1BCGJcJb8ItmJtXroBUqvrBlpwRlDKGk&ehbc=2E312F",
+    DEFAULT_GOOGLE_MYM_MAP_EMBED_URL,
   ),
 
   /**
-   * Optional Google My Maps embed: multiple pins (office, meeting points, etc.).
-   * Create at https://www.google.com/mymaps — add locations → Share → Embed on my website — copy the iframe `src` (must start with `https://www.google.com/maps/d/embed`).
-   * When set, a “Key locations” block appears on `/contact` (anchor `#locations-mymap`).
+   * Google My Maps for “Key locations” on `/locations` (and linked from `/contact`).
+   * Defaults to the same embed as open houses; set `NEXT_PUBLIC_LOCATIONS_MAP_EMBED_URL` for a
+   * separate office-only or multi-tour map.
    */
   locationsMapEmbedUrl: ((): string | undefined => {
     const raw = envOptional("NEXT_PUBLIC_LOCATIONS_MAP_EMBED_URL")?.trim();
-    if (!raw) return undefined;
-    if (!raw.startsWith("https://www.google.com/maps/d/embed")) return undefined;
-    return raw;
+    if (raw) {
+      if (!raw.startsWith("https://www.google.com/maps/d/embed")) return undefined;
+      return raw;
+    }
+    return DEFAULT_GOOGLE_MYM_MAP_EMBED_URL;
   })(),
 
   /**

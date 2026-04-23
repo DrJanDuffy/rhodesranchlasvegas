@@ -42,7 +42,11 @@ If the browser shows Vercel’s minimal **404: NOT_FOUND** page (`Code: NOT_FOUN
 3. **Git** — **Settings → Git**: confirm the correct GitHub repo and **Production Branch** (`main`).
 4. **Framework** — Should detect **Next.js**. [`vercel.json`](vercel.json) sets `framework: "nextjs"` and explicit install/build commands for consistency.
 5. **Environment variables** — In **Settings → Environment Variables**, set **`NEXT_PUBLIC_SITE_URL`** to your live canonical URL (no trailing slash), e.g. `https://www.yourdomain.com`. Copy names from [`.env.example`](.env.example). This must match the hostname you use in Search Console and your Google Business Profile website field.
-6. **Custom domains** — **Settings → Domains**: each domain must be attached to **this** project. At your DNS host (e.g. Cloudflare), use the records Vercel shows. For Cloudflare, use **DNS only (gray cloud)** for records pointing at Vercel—orange-cloud proxy can break SSL or routing with Vercel.
-7. **Local sanity check** — Run `npm run build` locally; it must succeed before expecting a green Vercel deploy.
+6. **Open house map (same My Map on every domain)** — One Google My Map can power every site. Do **not** use the My Maps *edit* URL in iframes; use the **embed** URL:
+   - **`NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL`** = `https://www.google.com/maps/d/embed?mid=12gQ1w5bzxrQ41HSGCdEJWFfhMtSkBwI&ehbc=2E312F`
+   - Optional: **`NEXT_PUBLIC_LOCATIONS_MAP_EMBED_URL`** — same value unless a site should show a different “Key locations” map (see [`.env.example`](.env.example)). If unset, `lib/env.ts` defaults the locations map to the same embed.
+   - **Vercel portfolio:** In **Team → Settings → Environment Variables** (or each project’s **Settings → Environment Variables**), set the same `NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL` for **Production** (and Preview if you test maps there), then **redeploy** each project so the new `NEXT_PUBLIC_*` is baked in. Cloned/forked repos: either merge the default from `lib/env.ts` or set the variable per project.
+7. **Custom domains** — **Settings → Domains**: each domain must be attached to **this** project. At your DNS host (e.g. Cloudflare), use the records Vercel shows. For Cloudflare, use **DNS only (gray cloud)** for records pointing at Vercel—orange-cloud proxy can break SSL or routing with Vercel.
+8. **Local sanity check** — Run `npm run build` locally; it must succeed before expecting a green Vercel deploy.
 
 Reference: [Vercel NOT_FOUND](https://vercel.com/docs/errors/NOT_FOUND).

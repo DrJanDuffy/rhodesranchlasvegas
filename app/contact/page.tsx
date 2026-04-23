@@ -193,7 +193,7 @@ export default function ContactPage() {
           Office, maps, and key locations
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-stone-700">
-          For the full page with the office map, optional multi-stop Google map, hours, and
+          For the full page with the office map, open house tour map, hours, and
           turn-by-turn directions, open{" "}
           <Link
             href="/locations"

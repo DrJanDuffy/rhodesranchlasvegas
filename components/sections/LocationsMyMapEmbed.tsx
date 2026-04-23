@@ -17,8 +17,9 @@ type LocationsMyMapEmbedProps = {
 };
 
 /**
- * Optional multi-pin map from Google My Maps (free). Set `NEXT_PUBLIC_LOCATIONS_MAP_EMBED_URL`
- * to the iframe `src` from My Maps → Share → Embed on my website.
+ * Google My Maps embed (free). Defaults to the same tour map as
+ * `NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL`; set `NEXT_PUBLIC_LOCATIONS_MAP_EMBED_URL` for a
+ * different iframe `src` (My Maps → Share → Embed on my website).
  */
 export function LocationsMyMapEmbed({
   className = "",
@@ -67,9 +68,9 @@ export function LocationsMyMapEmbed({
         Key locations
       </TitleTag>
       <p className="mt-2 max-w-2xl text-sm text-stone-600">
-        Custom map with the office and other places you may visit with {siteContact.agentName} or{" "}
-        {siteContact.secondaryContactName}. Created in Google My Maps at no cost—confirm hours and
-        access for each stop before you go.
+        Custom Google Map with current open house tour stops and other pins across{" "}
+        {siteContact.serviceAreaDescription}. Confirm each showing time and access (including
+        guard gate) on the listing before you drive.
       </p>
       <div className="mt-4 overflow-hidden rounded-2xl border border-emerald-900/15 bg-white shadow-sm">
         <iframe
