@@ -44,6 +44,7 @@ export function RealScoutOfficeListings({
       setError(null);
       setHasWidget(false);
       try {
+        const ready = ensureRealScoutReady();
         if (mountStrategy === "idle") {
           await waitForIdle(2000);
         } else if (mountStrategy === "visible") {
@@ -52,7 +53,7 @@ export function RealScoutOfficeListings({
         }
         if (cancelled || !el) return;
 
-        await ensureRealScoutReady();
+        await ready;
         if (cancelled || !el) return;
 
         const {

@@ -46,22 +46,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${cormorant.variable} h-full antialiased`}>
       <head>
-        {/*
-          RealScout: global UMD once in head (reliable customElements registration). `ensureRealScoutReady`
-          still runs before mount and can fall back to injecting the tag in rare edge cases.
-        */}
         <link rel="dns-prefetch" href="https://maps.google.com" />
         <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <GoogleAnalytics />
+      </head>
+      <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
+        {/*
+          RealScout UMD: keep `next/script` in the body so App Router executes it predictably; same id + src as `ensureRealScoutReady` fallback.
+        */}
         <Script
           id="realscout-web-components"
           src={publicEnv.realScoutWidgetScriptSrc}
           strategy="afterInteractive"
         />
-      </head>
-      <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
         <JsonLd data={realEstateAgentJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
         <SiteHeader />
