@@ -56,6 +56,15 @@ export default function OpenHousesHubPage() {
         </p>
       </header>
 
+      <RealScoutLeadSection
+        className="mt-10"
+        titleElement="h2"
+        variant="openHouses"
+        heading="Open house listings (MLS)"
+        headingId="open-houses-hub-listings-heading"
+        listingIntro={`Broker open house search for ${siteContact.serviceAreaDescription}—confirm times on each card, then use the map below to plan your route.`}
+      />
+
       <OpenHousesMapSection />
 
       <section
