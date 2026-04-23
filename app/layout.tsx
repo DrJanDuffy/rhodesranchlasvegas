@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Geist } from "next/font/google";
-import Script from "next/script";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { CalendlyBadge } from "@/components/calendly/CalendlyBadge";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { publicEnv } from "@/lib/env";
 import { defaultMetadata } from "@/lib/metadata";
 import { realEstateAgentJsonLd, websiteJsonLd } from "@/lib/schema";
 import "./globals.css";
@@ -47,26 +45,18 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${cormorant.variable} h-full antialiased`}>
       <head>
         {/*
-          RealScout + Calendly: no global preconnect — widgets load after idle/visible (PSI “unused preconnect”).
-          Warm `em.realscout.com` in lib/realscout-load.ts right before the UMD script is injected.
+          RealScout UMD loads on demand in lib/realscout-load.ts (after idle/visible in RealScoutOfficeListings).
+          No head preconnect to em.realscout.com — avoids PSI “unused preconnect” on pages without a listing strip.
         */}
         <link rel="dns-prefetch" href="https://maps.google.com" />
         <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <GoogleAnalytics />
-        <Script
-          id="realscout-web-components"
-          src={publicEnv.realScoutWidgetScriptSrc}
-          strategy="afterInteractive"
-        />
       </head>
       <body className="luxury-canvas min-h-full flex flex-col font-sans text-stone-900">
         <JsonLd data={realEstateAgentJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
-        {/*
-          RealScout widget script is loaded once globally in <head> (rule-compliant, avoids per-mount races).
-        */}
         <SiteHeader />
         <div className="flex-1">{children}</div>
         <SiteFooter />

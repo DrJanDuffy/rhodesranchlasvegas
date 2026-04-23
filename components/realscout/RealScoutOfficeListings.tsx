@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 export type RealScoutMountStrategy = "immediate" | "idle" | "visible";
 
 /**
- * Office listings custom element (broker IDX search). Loads UMD once via ensureRealScoutReady(),
- * then mounts with createElement (reliable with React). Default minimal mode avoids extra
+ * Office listings custom element (broker IDX search). UMD is injected once in the document head
+ * via `ensureRealScoutReady()`, then the element is mounted with createElement (reliable with React). Default minimal mode avoids extra
  * type/status filters; list price min/max still scope results to a purchase-oriented band.
  *
  * `mountStrategy` defaults to `idle` to improve LCP on marketing pages (listing images are heavy).
