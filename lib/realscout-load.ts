@@ -1,7 +1,7 @@
 /**
- * Single-flight UMD load for the RealScout `realscout-office-listings` web component (client-only).
- * Injects the RealScout UMD from `publicEnv.realScoutWidgetScriptSrc` once, then waits for
- * `customElements.define` so `RealScoutOfficeListings` can mount the element.
+ * RealScout `realscout-office-listings` UMD readiness (client-only).
+ * Expects a global script in `app/layout.tsx` (next/script) so registration is reliable after hydration.
+ * If that tag is missing (edge cases), injects the UMD once and waits for the custom element.
  */
 
 import { publicEnv } from "@/lib/env";
@@ -10,13 +10,46 @@ const SCRIPT_ID = "realscout-web-components-umd";
 
 let loadPromise: Promise<void> | null = null;
 
-function findScript(src: string): HTMLScriptElement | null {
-  const byId = document.getElementById(SCRIPT_ID);
-  if (byId instanceof HTMLScriptElement) return byId;
+function isRealScoutUmdUrl(scriptEl: HTMLScriptElement, expectedSrc: string): boolean {
+  if (scriptEl.getAttribute("id") === "realscout-web-components" || scriptEl.getAttribute("id") === SCRIPT_ID) {
+    return true;
+  }
+  try {
+    const a = new URL(expectedSrc);
+    const b = new URL(scriptEl.src);
+    return a.hostname === b.hostname && a.pathname === b.pathname;
+  } catch {
+    return scriptEl.src === expectedSrc;
+  }
+}
+
+function findRealScoutScriptTag(expectedSrc: string): HTMLScriptElement | null {
   for (const el of document.querySelectorAll<HTMLScriptElement>("script[src]")) {
-    if (el.src === src) return el;
+    if (isRealScoutUmdUrl(el, expectedSrc)) return el;
   }
   return null;
+}
+
+function injectUmdAndAwaitLoad(): Promise<void> {
+  const src = publicEnv.realScoutWidgetScriptSrc;
+  const s = document.createElement("script");
+  s.id = SCRIPT_ID;
+  s.src = src;
+  s.async = true;
+  document.head.appendChild(s);
+  return new Promise<void>((resolve, reject) => {
+    s.addEventListener("load", () => resolve(), { once: true });
+    s.addEventListener(
+      "error",
+      () =>
+        reject(
+          new Error(
+            "RealScout UMD failed to load (check CSP script-src for em.realscout.com).",
+          ),
+        ),
+      { once: true },
+    );
+  });
 }
 
 export function ensureRealScoutReady(): Promise<void> {
@@ -29,29 +62,32 @@ export function ensureRealScoutReady(): Promise<void> {
   if (loadPromise) return loadPromise;
 
   loadPromise = (async () => {
-    const src = publicEnv.realScoutWidgetScriptSrc;
-    if (!findScript(src)) {
-      const s = document.createElement("script");
-      s.id = SCRIPT_ID;
-      s.src = src;
-      s.async = true;
-      document.head.appendChild(s);
-      await new Promise<void>((resolve, reject) => {
-        s.addEventListener("load", () => resolve(), { once: true });
-        s.addEventListener(
-          "error",
-          () =>
-            reject(
-              new Error(
-                "RealScout UMD failed to load (check CSP script-src for em.realscout.com).",
-              ),
-            ),
-          { once: true },
-        );
+    const expectedSrc = publicEnv.realScoutWidgetScriptSrc;
+
+    // After navigation / hydration, allow layout’s next/script to append the tag.
+    if (document.readyState !== "complete") {
+      await new Promise<void>((resolve) => {
+        window.addEventListener("load", () => resolve(), { once: true });
       });
+    } else {
+      await new Promise<void>((r) => requestAnimationFrame(() => r()));
     }
 
-    const deadline = Date.now() + 25_000;
+    for (let i = 0; i < 100; i++) {
+      if (window.customElements.get("realscout-office-listings")) {
+        return;
+      }
+      if (findRealScoutScriptTag(expectedSrc)) {
+        break;
+      }
+      await new Promise((r) => setTimeout(r, 30));
+    }
+
+    if (!window.customElements.get("realscout-office-listings") && !findRealScoutScriptTag(expectedSrc)) {
+      await injectUmdAndAwaitLoad();
+    }
+
+    const deadline = Date.now() + 30_000;
     while (
       !window.customElements.get("realscout-office-listings") &&
       Date.now() < deadline

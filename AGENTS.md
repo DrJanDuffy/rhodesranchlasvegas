@@ -13,7 +13,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 Follow this to avoid regressions (broken UMD load, duplicate scripts, or unwanted global MLS weight):
 
-1. **Script (once)** — The RealScout UMD is injected **only** from [`lib/realscout-load.ts`](lib/realscout-load.ts) (`ensureRealScoutReady()`), invoked from `RealScoutOfficeListings` when a listing strip actually mounts. **Do not** add a global `<Script>` in `app/layout.tsx` (avoids loading MLS weight on every route and `customElements.define` races from duplicate tags). **Never** use `type="module"` on the UMD file.
+1. **Script (once)** — Load the RealScout UMD **once** in `app/layout.tsx` with `next/script` (`id="realscout-web-components"`, `strategy="afterInteractive"`). [`lib/realscout-load.ts`](lib/realscout-load.ts) `ensureRealScoutReady()` waits for registration and can **fallback-inject** the UMD in rare cases if the head tag is missing. **Do not** add a second UMD with `type="module"`; use the `.umd.js` file only.
 2. **Widget mount** — `RealScoutOfficeListings` is a client component: it waits for the custom element to be defined, then uses `document.createElement("realscout-office-listings")` and `setAttribute`. Default **`NEXT_PUBLIC_REALSCOUT_WIDGET_MODE=minimal`** (agent + sort + listings-per-page); use **`full`** for price/type/status filters.
 3. **Where to render the office-listings strip** — **Default:** import `RealScoutLeadSection` on **marketing routes** (`app/**/page.tsx`), typically **below each page’s hero**, **not** in root layout unless the user asks for a site-wide strip.
 

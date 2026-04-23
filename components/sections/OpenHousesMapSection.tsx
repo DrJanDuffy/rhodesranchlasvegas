@@ -33,17 +33,38 @@ export function OpenHousesMapSection() {
       return;
     }
 
+    const failSafe = setTimeout(() => {
+      startTransition(() => setIframeSrc(embedSrcFull));
+    }, 12_000);
+
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setIframeSrc(embedSrcFull);
-          obs.disconnect();
+      (entries) => {
+        for (const entry of entries) {
+          if (entry?.isIntersecting) {
+            clearTimeout(failSafe);
+            setIframeSrc(embedSrcFull);
+            obs.disconnect();
+            return;
+          }
         }
       },
       { rootMargin: "280px 0px 200px 0px", threshold: 0.01 },
     );
     obs.observe(root);
-    return () => obs.disconnect();
+    requestAnimationFrame(() => {
+      if (typeof obs.takeRecords !== "function") return;
+      for (const entry of obs.takeRecords()) {
+        if (entry.isIntersecting) {
+          clearTimeout(failSafe);
+          setIframeSrc(embedSrcFull);
+          obs.disconnect();
+        }
+      }
+    });
+    return () => {
+      clearTimeout(failSafe);
+      obs.disconnect();
+    };
   }, [embedSrcFull]);
 
   return (
